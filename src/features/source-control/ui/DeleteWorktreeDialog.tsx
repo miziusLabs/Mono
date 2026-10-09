@@ -94,14 +94,14 @@ export function DeleteWorktreeDialog({
         <p className="text-content/75">
           This permanently deletes the working copy and everything inside it.
         </p>
-        <div className="rounded-lg border border-content/10 bg-content/5 p-3">
+        <div className="rounded-lg border border-transparent bg-content/5 p-3">
           <p className="flex items-start gap-2.5 text-[12px] text-content/55">
             <Folder className="mt-px size-3.5 shrink-0 text-content/35" />
             <span className="min-w-0 flex-1 break-all font-mono">
               {prettyCwd(tree.path)}
             </span>
           </p>
-          <ul className="mt-2.5 flex flex-col gap-2 border-t border-content/8 pt-2.5 text-[12.5px] text-content/75">
+          <ul className="mt-2.5 flex flex-col gap-2 border-t border-transparent pt-2.5 text-[12.5px] text-content/75">
             {sessionCount > 0 && (
               <Consequence
                 icon={MessageSquare}
@@ -147,7 +147,7 @@ export function DeleteWorktreeDialog({
           </ul>
         </div>
         {sessionCount > 0 && (
-          <div className="flex items-center justify-between gap-3 rounded-lg border border-content/10 p-3">
+          <div className="flex items-center justify-between gap-3 rounded-lg border border-transparent p-3">
             <span
               id="delete-worktree-sessions-label"
               className="text-[12.5px] text-content/75"

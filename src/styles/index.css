@@ -31,8 +31,6 @@
   --color-content: hsl(
     var(--theme-hue) var(--theme-saturation) var(--content-lightness)
   );
-  /* Structural separators: use border-stroke, divide-stroke, or bg-stroke. */
-  --color-stroke: color-mix(in srgb, var(--color-content) 7%, transparent);
   /* Interactive fills keep their dark-theme contrast but use gentler ink in
      light mode. Prefer these over content opacity for selected/raised UI. */
   --color-selection-subtle: color-mix(
@@ -740,7 +738,6 @@ html.has-chat-background.chat-background-effect-ready.chat-background-gradient-b
 
 html.has-user-accent .user-message-bubble {
   background: color-mix(in srgb, var(--user-accent-color) 24%, transparent);
-  border-color: color-mix(in srgb, var(--user-accent-color) 30%, transparent);
 }
 
 /*
@@ -994,7 +991,6 @@ html.theme-light .plan-steps {
   place-items: center;
   width: 16px;
   height: 16px;
-  border: 1.5px solid var(--mode-color);
   border-radius: 9999px;
   color: var(--mode-color);
   font-size: 8.5px;
@@ -1181,7 +1177,6 @@ html.theme-light .orchestrator-constellation {
   content: "";
   position: absolute;
   inset: 0;
-  border: 1.5px solid var(--mode-color);
   border-radius: inherit;
   opacity: 0;
 }
@@ -1293,25 +1288,6 @@ html.theme-light .orchestrator-constellation {
   }
 }
 
-.edit-last-turn-composer {
-  border-style: dashed;
-  border-color: color-mix(
-    in srgb,
-    var(--user-accent-color, var(--color-accent)) 32%,
-    transparent
-  );
-}
-
-.edit-last-turn-bubble {
-  outline: 1px dashed
-    color-mix(
-      in srgb,
-      var(--user-accent-color, var(--color-accent)) 45%,
-      transparent
-    );
-  outline-offset: 1px;
-}
-
 .edit-last-turn-button {
   color: var(--user-accent-color, var(--color-accent));
   background: color-mix(
@@ -1327,7 +1303,6 @@ html.theme-light .orchestrator-constellation {
 
 html.has-user-accent .user-message-bubble[data-draft="true"] {
   background: color-mix(in srgb, var(--user-accent-color) 8%, transparent);
-  border-color: color-mix(in srgb, var(--user-accent-color) 38%, transparent);
 }
 
 .user-link-preview {
@@ -1432,8 +1407,6 @@ input,
   padding-left: 0;
   padding-inline-start: 1rem;
   border-left: 0;
-  border-inline-start: 4px solid
-    color-mix(in srgb, var(--color-content) 20%, transparent);
 }
 
 .agent-markdown [data-streamdown="ordered-list"],
@@ -1454,8 +1427,6 @@ input,
   padding: 0.15em 0;
   padding-inline-start: 0.75em;
   border: 0;
-  border-inline-start: 2px solid
-    color-mix(in srgb, var(--color-content) 16%, transparent);
   color: color-mix(in srgb, var(--color-content) 55%, transparent);
 }
 
@@ -1489,7 +1460,6 @@ html.is-explorer-file-dragging * {
   padding: 0 9px 0 7px !important;
   overflow: hidden;
   pointer-events: none !important;
-  border: 1px solid color-mix(in srgb, var(--color-content) 12%, transparent);
   border-radius: 5px;
   background: color-mix(
     in srgb,
@@ -1695,7 +1665,7 @@ header[data-tauri-drag-region] button {
 .agent-markdown [data-streamdown="table-wrapper"] {
   gap: 0;
   padding: 0;
-  border-color: color-mix(in srgb, var(--color-content) 10%, transparent);
+  border-color: transparent;
   border-radius: 10px;
   background: color-mix(in srgb, var(--color-content) 6%, transparent);
 }
@@ -1899,13 +1869,6 @@ header[data-tauri-drag-region] button {
   display: none;
 }
 
-.agent-markdown
-  .markdown-code-shell:has(.markdown-code-fallback-label:empty)
-  [data-streamdown="code-block-header"]
-  + [data-streamdown="code-block-body"] {
-  border-top: 0;
-}
-
 .agent-markdown [data-streamdown="heading-1"] {
   font-size: 22px;
 }
@@ -1969,8 +1932,6 @@ header[data-tauri-drag-region] button {
 .agent-markdown [data-streamdown="code-block-body"] {
   padding: 10px 8px 10px 0;
   border: 0;
-  border-top: 1px solid
-    color-mix(in srgb, var(--color-content) 10%, transparent);
   border-radius: 0;
   background: transparent;
   font-size: 12px;
@@ -1979,12 +1940,6 @@ header[data-tauri-drag-region] button {
   max-width: 100%;
   overflow-x: auto;
   overscroll-behavior-x: contain;
-}
-
-.agent-markdown
-  [data-streamdown="code-block-header"]:has(span:empty)
-  + [data-streamdown="code-block-body"] {
-  border-top: 0;
 }
 
 .agent-markdown [data-streamdown="code-block-body"] pre {
@@ -2032,11 +1987,6 @@ html:not(.theme-light) .markdown-code-token {
   background: transparent;
 }
 
-.agent-markdown [data-streamdown="table"] > :not(:last-child),
-.agent-markdown [data-streamdown="table-body"] > :not(:last-child) {
-  border-color: color-mix(in srgb, var(--color-content) 5%, transparent);
-}
-
 .agent-markdown [data-streamdown="table-header-cell"],
 .agent-markdown [data-streamdown="table-cell"] {
   padding: 8px 10px;
@@ -2046,10 +1996,13 @@ html:not(.theme-light) .markdown-code-token {
   vertical-align: top;
 }
 
+.agent-markdown [data-streamdown="table"] > :not(:last-child),
+.agent-markdown [data-streamdown="table-body"] > :not(:last-child) {
+  border-color: transparent;
+}
+
 .agent-markdown [data-streamdown="horizontal-rule"] {
   border: 0;
-  border-top: 1px solid
-    color-mix(in srgb, var(--color-content) 10%, transparent);
 }
 
 .agent-markdown p,
@@ -2364,9 +2317,7 @@ html:not(.theme-light) .markdown-code-token {
   opacity: 0;
 }
 
-/* The agent's name pill, which the mascot stands on. */
 .mono-pill {
-  border-color: color-mix(in srgb, var(--color-content) 14%, transparent);
   background: color-mix(in srgb, var(--color-content) 6%, transparent);
 }
 
@@ -2498,7 +2449,6 @@ html.theme-light.has-user-accent .agent-chat-user-bubble {
 
 html.theme-light .mono-pill {
   background: #fff;
-  border-color: rgb(0 0 0 / 0.06);
   box-shadow:
     0 1px 2px rgb(0 0 0 / 0.06),
     0 4px 14px rgb(0 0 0 / 0.08);
@@ -2810,117 +2760,6 @@ html.theme-light .mono-pill {
 }
 
 /*
- * The rail: a spine down the group with a step branching off it on a curve,
- * drawn on the step itself so it follows however tall that step turns out to
- * be. The curve is a quarter circle, tangent to the spine at the top and to
- * the row at the bottom, so nothing turns a hard corner.
- */
-.zen-phase-step {
-  position: relative;
-  padding-left: 20px;
-  /*
-   * Opaque, not translucent: the curve leaves the spine on a tangent, so the
-   * two run along each other for a pixel or two. A translucent rail stacks
-   * there and lights up; the same colour painted twice does not.
-   */
-  --zen-rail: color-mix(
-    in srgb,
-    var(--color-content) 14%,
-    var(--color-background-base)
-  );
-}
-
-.zen-phase-step::before,
-.zen-phase-step::after {
-  content: "";
-  position: absolute;
-  left: 6px;
-}
-
-/*
- * A height, not top/bottom, so the spine can grow down past a step when the
- * next one lands under it.
- */
-.zen-phase-step::before {
-  top: 0;
-  height: 100%;
-  width: 1px;
-  background: var(--zen-rail);
-}
-
-/* The last step is where the spine leaves off, curve and all. */
-.zen-phase-step:last-child::before {
-  height: 7px;
-}
-
-.zen-phase-step::after {
-  top: 6px;
-  width: 8px;
-  height: 8px;
-  border-left: 1px solid var(--zen-rail);
-  border-bottom: 1px solid var(--zen-rail);
-  border-bottom-left-radius: 8px;
-}
-
-/*
- * The connector: a line dropping out of the chevron and curving into the first
- * thing the fold holds, so opened work reads as hanging off that line rather
- * than running on from the answer below it. Same geometry as the phase rail —
- * 23px is the chevron's own centre (16px of row padding plus half a 14px
- * icon), and the curve is a quarter circle tangent to both.
- */
-.zen-fold-drop,
-.zen-fold-rail {
-  position: relative;
-  --zen-rail: color-mix(
-    in srgb,
-    var(--color-content) 14%,
-    var(--color-background-base)
-  );
-}
-
-/* Out of the chevron, down through the gap to the row below. */
-.zen-fold-drop::after {
-  content: "";
-  position: absolute;
-  left: 23px;
-  top: 22px;
-  bottom: -4px;
-  width: 1px;
-  background: var(--zen-rail);
-}
-
-/* The spine, carried by every row so it follows however tall they turn out. */
-.zen-fold-rail::before {
-  content: "";
-  position: absolute;
-  left: 23px;
-  top: 0;
-  bottom: 0;
-  width: 1px;
-  background: var(--zen-rail);
-}
-
-/* The last row is where the spine ends, at its final branch. */
-.zen-fold-tail::before {
-  bottom: auto;
-  height: 7px;
-}
-
-/* Every row branches off the spine on the same curve as an activity step. */
-.zen-fold-rail::after {
-  content: "";
-  position: absolute;
-  left: 23px;
-  top: 6px;
-  width: 8px;
-  height: 8px;
-  border-left: 1px solid var(--zen-rail);
-  border-bottom: 1px solid var(--zen-rail);
-  border-bottom-left-radius: 8px;
-}
-
-/*
  * Prose the fold holds is the agent talking while it works — process, not
  * result. It stays readable at one notch quieter: muted ink, headings
  * demoted to bold lines, and tighter spacing, so a mid-run note never poses
@@ -2965,7 +2804,7 @@ html.theme-light .mono-pill {
 
 .zen-fold-prose .agent-markdown [data-streamdown="code-block"],
 .zen-fold-prose .agent-markdown [data-streamdown="table-wrapper"] {
-  border-color: color-mix(in srgb, var(--color-content) 8%, transparent);
+  border-color: transparent;
   background: color-mix(in srgb, var(--color-content) 4%, transparent);
 }
 
@@ -3041,9 +2880,8 @@ html.theme-light .mono-pill {
 
 /*
  * A live step arrives in beats over its --step-ms: its slot opens and pushes
- * what is below down while the spine runs on past the step above into the
- * gap and the branch curves off it. Only once the branch is drawn does the
- * row rise into the room, revealed from the bottom up by a soft-edged mask. The next step in a burst
+ * what is below down while the row rises into the room, revealed from the
+ * bottom up by a soft-edged mask. The next step in a burst
  * waits for the last beat. The slot clips while it opens, so the row's rise
  * never adds scrollable overflow to the pinned live window.
  */
@@ -3056,26 +2894,9 @@ html.theme-light .mono-pill {
   }
 }
 
-@keyframes zen-rail-grow {
-  from {
-    transform: scaleY(0);
-  }
-}
-
-/* A wipe from the top-left traces the quarter curve in order. */
-@keyframes zen-branch-draw {
-  from {
-    clip-path: inset(0 100% 100% 0);
-  }
-  to {
-    clip-path: inset(0);
-  }
-}
-
 /*
- * The mask is three times the row's height: clear on top, a soft ramp, then
- * solid. Sliding it up from the clear third to the solid one sweeps the ramp
- * over the row from its bottom edge to its top.
+ * The mask is three times the row's height. Sliding it up reveals the row
+ * from its bottom edge to its top.
  */
 @keyframes zen-step-in {
   from {
@@ -3093,24 +2914,10 @@ html.theme-light .mono-pill {
 }
 
 /*
- * The step above lengthening its spine once it is no longer the last, at its
- * own pace: steps next to each other in a burst are paced alike.
- */
-.zen-phase-step[data-live]::before {
-  transition: height calc(var(--step-ms, 320ms) * 0.3) ease-in;
-}
-
-/*
- * A step queued behind others is out of the layout until its turn, and the
- * step above keeps the short spine of a last step until then too, so no rail
- * hangs into a gap that is not there yet.
+ * A step queued behind others stays out of the layout until its turn.
  */
 .zen-phase-step[data-waiting] {
   display: none;
-}
-
-.zen-phase-step:has(+ .zen-phase-step[data-waiting])::before {
-  height: 7px;
 }
 
 .zen-phase-step[data-entering] {
@@ -3118,20 +2925,6 @@ html.theme-light .mono-pill {
   overflow: clip;
   animation: zen-step-open calc(var(--step-ms) * 0.4)
     cubic-bezier(0.22, 1, 0.36, 1) both;
-}
-
-.zen-phase-step[data-entering]:is(
-    :last-child,
-    :has(+ .zen-phase-step[data-waiting])
-  )::before {
-  transform-origin: top;
-  animation: zen-rail-grow calc(var(--step-ms) * 0.15) ease-in-out
-    calc(var(--step-ms) * 0.15) both;
-}
-
-.zen-phase-step[data-entering]::after {
-  animation: zen-branch-draw calc(var(--step-ms) * 0.2) ease-out
-    calc(var(--step-ms) * 0.3) both;
 }
 
 .zen-phase-step[data-entering] > * {
@@ -3232,14 +3025,11 @@ html.theme-light .mono-pill {
 @media (prefers-reduced-motion: reduce) {
   .agent-markdown.word-fading [data-word-fade],
   .zen-phase-step[data-entering],
-  .zen-phase-step[data-entering]::before,
-  .zen-phase-step[data-entering]::after,
   .zen-tool-spin,
   .zen-thinking-pulse {
     animation: none;
   }
 
-  .zen-phase-step[data-live]::before,
   .zen-phase-body {
     transition: none;
   }
@@ -3322,9 +3112,8 @@ html.theme-light .popover-backdrop {
   }
 }
 
-/* /btw: a sheet that morphs out of the composer box over the transcript
-   (the clip is animated from BtwSheet). Its surface is the popover glass:
-   the same tint, blur, border, and shadow. */
+/* /btw: a sheet that morphs out of the composer box over the transcript.
+   The clip is animated from BtwSheet. */
 /* The session composer steps aside while the glass sheet's own composer
    sits over it, so the two never show through each other. BtwSheet fades it
    in step with the morph; this is its resting state under an open sheet. */
@@ -3339,8 +3128,7 @@ html.theme-light .popover-backdrop {
   animation-play-state: paused;
 }
 
-/* The composer's outline, carried between the session composer's box and
-   the side composer's box while their contents cross-fade inside it. */
+/* The invisible morph frame carries its fill and radius between composers. */
 .btw-morph-frame {
   position: absolute;
   top: 0;
@@ -3349,7 +3137,6 @@ html.theme-light .popover-backdrop {
   height: 0;
   opacity: 0;
   pointer-events: none;
-  border: 1px solid color-mix(in srgb, var(--color-content) 12%, transparent);
   border-radius: var(--radius-lg, 0.5rem);
   background: color-mix(in srgb, var(--color-content) 3%, transparent);
 }
@@ -3513,8 +3300,6 @@ html.theme-light .btw-burst {
 
 /* Match the composer box it morphs out of. */
 .btw-sheet-glass {
-  border: 1px solid color-mix(in srgb, var(--color-content) 10%, transparent);
-  border-bottom: 0;
   border-radius: var(--radius-lg, 0.5rem) var(--radius-lg, 0.5rem) 0 0;
   box-shadow:
     0 20px 25px -5px rgb(0 0 0 / 0.1),
@@ -3572,7 +3357,6 @@ html.theme-light .btw-burst {
   justify-content: space-between;
   gap: 12px;
   padding: 10px 11px;
-  border: 1px solid color-mix(in srgb, #f87171 24%, transparent);
   border-radius: 10px;
   background: color-mix(in srgb, #f87171 7%, transparent);
 }

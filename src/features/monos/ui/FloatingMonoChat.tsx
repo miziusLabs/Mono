@@ -167,7 +167,7 @@ export function FloatingMonoChat({ onShown }: { onShown: () => void }) {
       <div className={CARD}>
         <header
           data-tauri-drag-region
-          className="flex shrink-0 items-center gap-2 border-b border-content/8 px-3 py-3"
+          className="flex shrink-0 items-center gap-2 border-b border-transparent px-3 py-3"
         >
           {mono ? (
             <PixelMascot
@@ -256,7 +256,7 @@ export function FloatingMonoChat({ onShown }: { onShown: () => void }) {
             {failure ? (
               <p
                 role="alert"
-                className="shrink-0 border-b border-content/8 px-3 py-2 text-[12px] text-red-400"
+                className="shrink-0 border-b border-transparent px-3 py-2 text-[12px] text-red-400"
               >
                 {failure}
               </p>
@@ -361,7 +361,7 @@ function MonoRail({
           setCreating(true);
           void onCreate().finally(() => setCreating(false));
         }}
-        className="grid size-8 shrink-0 place-items-center rounded-lg border border-content/10 bg-content/5 text-content/60 hover:bg-content/10 hover:text-content disabled:opacity-40"
+        className="grid size-8 shrink-0 place-items-center rounded-lg border border-transparent bg-content/5 text-content/60 hover:bg-content/10 hover:text-content disabled:opacity-40"
       >
         <Plus className="size-3.5" strokeWidth={1.75} />
       </button>
@@ -568,7 +568,7 @@ function ArtifactSheet({
         role="dialog"
         aria-modal="true"
         aria-label={artifact?.title ?? label}
-        className={`absolute inset-x-0 top-10 bottom-0 flex flex-col rounded-t-[10px] border-t border-content/10 bg-content/5 shadow-[0_-12px_32px_rgb(0_0_0/0.18)] backdrop-blur-3xl transition-transform duration-300 ease-out motion-reduce:transition-none ${
+        className={`absolute inset-x-0 top-10 bottom-0 flex flex-col rounded-t-[10px] border-t border-transparent bg-content/5 shadow-[0_-12px_32px_rgb(0_0_0/0.18)] backdrop-blur-3xl transition-transform duration-300 ease-out motion-reduce:transition-none ${
           open ? "translate-y-0" : "translate-y-full"
         }`}
       >

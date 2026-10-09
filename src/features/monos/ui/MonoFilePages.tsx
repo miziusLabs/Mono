@@ -223,7 +223,7 @@ export function MemoryPage({
         )}
       </div>
       {files ? (
-        <div className="shrink-0 border-t border-stroke px-2 pb-3">
+        <div className="shrink-0 border-t border-transparent px-2 pb-3">
           <MemoryGauge memory={files.memory} />
         </div>
       ) : null}

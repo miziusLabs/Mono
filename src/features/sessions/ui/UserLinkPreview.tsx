@@ -410,7 +410,7 @@ function GithubWorkItemCard({
             {labels.slice(0, 3).map((label) => (
               <span
                 key={label.name}
-                className="inline-flex max-w-28 items-center gap-1 rounded-full border border-content/10 bg-content/[0.035] px-1.5 py-0.5 text-[9px] text-content/55"
+                className="inline-flex max-w-28 items-center gap-1 rounded-full bg-content/[0.06] px-1.5 py-0.5 text-[9px] text-content/55"
               >
                 <span
                   aria-hidden="true"
@@ -444,7 +444,7 @@ function GithubWorkItemCard({
         </div>
       ) : null}
 
-      <div className="mt-3 flex items-center gap-1.5 border-t border-content/[0.07] pt-2 text-[10px] text-content/35">
+      <div className="mt-3 flex items-center gap-1.5 pt-2 text-[10px] text-content/35">
         <ExternalLink className="size-3" aria-hidden="true" />
         Click the chip to open on GitHub
       </div>
@@ -493,7 +493,7 @@ function GithubAvatar({
     return (
       <span
         aria-hidden="true"
-        className="grid shrink-0 place-items-center rounded-full border border-background-base bg-content/10 font-medium text-content/50"
+        className="grid shrink-0 place-items-center rounded-full bg-content/10 font-medium text-content/50"
         style={{
           width: size,
           height: size,
@@ -513,7 +513,7 @@ function GithubAvatar({
       referrerPolicy="no-referrer"
       draggable={false}
       onError={() => setFailed(true)}
-      className="shrink-0 rounded-full border border-background-base bg-content/10 object-cover"
+      className="shrink-0 rounded-full bg-content/10 object-cover"
       style={{ width: size, height: size }}
     />
   );

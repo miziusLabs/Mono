@@ -80,7 +80,7 @@ export function DiffCommentComposer({
             }
           }}
           placeholder="Leave a comment…"
-          className="max-h-40 min-h-18 w-full resize-y rounded-lg border border-content/10 bg-background-base/70 px-2.5 py-2 text-[13px] leading-5 text-content outline-none placeholder:text-content/35 focus:border-content/20"
+          className="max-h-40 min-h-18 w-full resize-y rounded-lg border border-transparent bg-background-base/70 px-2.5 py-2 text-[13px] leading-5 text-content outline-none placeholder:text-content/35 focus-visible:outline-2 focus-visible:outline-accent"
         />
         <div className="mt-2 flex items-center justify-between gap-3">
           <span className="text-[10px] text-content/35">{MOD}↩ to add</span>

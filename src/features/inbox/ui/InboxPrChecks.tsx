@@ -564,7 +564,7 @@ export function InboxPrChecks({
           title="Retry loading checks"
           aria-label="Retry loading checks"
           onClick={onRefresh}
-          className="inline-flex h-7 items-center gap-1.5 rounded-md border border-content/15 px-3 text-[12px] text-content/80 hover:bg-content/5"
+          className="inline-flex h-7 items-center gap-1.5 rounded-md bg-content/[0.03] px-3 text-[12px] text-content/80 hover:bg-content/5"
         >
           <RefreshCw className="size-3.5" strokeWidth={1.75} />
           Retry
@@ -641,7 +641,7 @@ export function InboxPrChecks({
               Fix all failed
               <span
                 aria-hidden="true"
-                className="ml-1 border-l border-current/20 pl-2 text-[10px] opacity-55"
+                className="ml-1 pl-2 text-[10px] opacity-55"
               >
                 {counts.fail}
               </span>
@@ -705,7 +705,7 @@ export function InboxPrChecks({
       {rows.length > 0 ? (
         <div className="flex items-center justify-between gap-3 py-2">
           <div
-            className="inline-flex gap-0.5 rounded-lg border border-stroke bg-content/[0.02] p-0.5"
+            className="inline-flex gap-0.5 rounded-lg bg-content/[0.04] p-0.5"
             aria-label="Filter checks"
           >
             {(
@@ -820,7 +820,7 @@ export function InboxPrChecks({
               type="button"
               aria-expanded={showOthers}
               onClick={() => setShowOthers(!showOthers)}
-              className="mt-3 flex items-center gap-2 border-t border-stroke px-2 pt-4 text-left text-[11px] text-content/50 hover:text-content"
+              className="mt-3 flex items-center gap-2 px-2 pt-4 text-left text-[11px] text-content/50 hover:text-content"
             >
               <ChevronRight
                 className={`size-3 ${showOthers ? "rotate-90" : ""}`}

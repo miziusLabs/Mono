@@ -303,7 +303,7 @@ export function ExplorerMenu({
         {header ? (
           <>
             {header}
-            <div role="separator" className="my-1 h-px bg-content/10" />
+            <div role="separator" className="my-1 h-px bg-transparent" />
           </>
         ) : null}
         {items.map((item, index) => {
@@ -312,7 +312,7 @@ export function ExplorerMenu({
               <div
                 key={`sep-${index}`}
                 role="separator"
-                className="my-1 h-px bg-content/10"
+                className="my-1 h-px bg-transparent"
               />
             );
           }

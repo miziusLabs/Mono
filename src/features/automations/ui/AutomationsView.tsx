@@ -127,7 +127,7 @@ type Props = {
 const ACTION =
   "inline-flex items-center gap-1.5 rounded-md px-3 text-[12px] disabled:cursor-default disabled:opacity-40";
 const ACTION_FILLED = `${ACTION} h-6.5 bg-content font-medium text-background-base hover:bg-content/80`;
-const ACTION_OUTLINE = `${ACTION} h-7 border border-content/15 text-content/80 hover:border-content/30 hover:bg-content/10 hover:text-content`;
+const ACTION_OUTLINE = `${ACTION} h-7 border border-transparent text-content/80 hover:border-transparent hover:bg-content/10 hover:text-content`;
 
 let rememberedAutomationId: string | null = null;
 
@@ -149,7 +149,7 @@ export function AutomationsView({
       className="flex min-h-0 min-w-0 flex-1 flex-col text-content"
     >
       <div
-        className="flex h-10 shrink-0 select-none items-center border-b border-stroke"
+        className="flex h-10 shrink-0 select-none items-center border-b border-transparent"
         data-tauri-drag-region="deep"
       >
         {IS_MAC && compactRail ? <div className="w-4 shrink-0" /> : null}
@@ -351,8 +351,8 @@ function AutomationsContent({
 
   return (
     <div className="flex min-h-0 min-w-0 flex-1 text-content">
-      <aside className="flex w-[280px] shrink-0 flex-col border-r border-stroke">
-        <div className="flex h-9 shrink-0 items-center gap-1 border-b border-stroke px-2">
+      <aside className="flex w-[280px] shrink-0 flex-col border-r border-transparent">
+        <div className="flex h-9 shrink-0 items-center gap-1 border-b border-transparent px-2">
           <label className="relative flex h-7 min-w-0 flex-1 items-center">
             <Search className="pointer-events-none absolute left-2 size-3 shrink-0 text-content/40" />
             <span className="sr-only">Filter automations</span>
@@ -419,7 +419,7 @@ function AutomationsContent({
 
       <main className="flex min-h-0 min-w-0 flex-1 flex-col">
         {error ? (
-          <div className="m-4 flex shrink-0 items-start gap-2 rounded-lg border border-red-400/20 bg-red-400/8 px-3 py-2 text-[12px] text-red-300">
+          <div className="m-4 flex shrink-0 items-start gap-2 rounded-lg border border-transparent bg-red-400/8 px-3 py-2 text-[12px] text-red-300">
             <AlertCircle className="mt-0.5 size-3.5 shrink-0" />
             <span>{error}</span>
           </div>
@@ -622,7 +622,7 @@ function AutomationPicker({
           <button
             type="button"
             onClick={onBlank}
-            className="flex min-h-37 flex-col rounded-xl border border-dashed border-content/15 p-4 text-left hover:border-content/25 hover:bg-content/5"
+            className="flex min-h-37 flex-col rounded-xl border border-dashed border-transparent p-4 text-left hover:border-transparent hover:bg-content/5"
           >
             <div className="flex gap-3">
               <span className="grid size-9 shrink-0 place-items-center rounded-full bg-content/8 text-content/70">
@@ -645,7 +645,7 @@ function AutomationPicker({
                 key={template.id}
                 type="button"
                 onClick={() => onPick(template)}
-                className="flex min-h-37 flex-col rounded-xl border border-content/10 p-4 text-left hover:border-content/16 hover:bg-content/5"
+                className="flex min-h-37 flex-col rounded-xl border border-transparent p-4 text-left hover:border-transparent hover:bg-content/5"
               >
                 <div className="flex gap-3">
                   <span className="grid size-9 shrink-0 place-items-center rounded-full bg-content/8 text-content/70">
@@ -968,7 +968,7 @@ function AutomationEditor({
 
   return (
     <form className="flex min-h-0 min-w-0 flex-1 flex-col" onSubmit={onSubmit}>
-      <div className="relative w-full shrink-0 border-b border-stroke">
+      <div className="relative w-full shrink-0 border-b border-transparent">
         <div className="mx-auto flex w-full max-w-5xl flex-col gap-2.5 px-8 pt-5">
           <header className="flex flex-col gap-2.5">
             <div className="flex items-start gap-6">
@@ -1029,7 +1029,7 @@ function AutomationEditor({
               </span>
               <span
                 aria-hidden
-                className="h-3 ml-2 w-px shrink-0 bg-content/15"
+                className="h-3 ml-2 w-px shrink-0 bg-transparent"
               />
               <SearchableProjectPicker
                 cwd={draft.cwd}
@@ -1042,7 +1042,7 @@ function AutomationEditor({
                 <>
                   <span
                     aria-hidden
-                    className="h-3 w-px shrink-0 bg-content/15"
+                    className="h-3 w-px shrink-0 bg-transparent"
                   />
                   <button
                     ref={menuButton}
@@ -1135,7 +1135,7 @@ function AutomationEditor({
           <div className="mx-auto w-full max-w-5xl space-y-8 px-8 py-5 pb-10">
             <section>
               <SectionTitle>Triggers</SectionTitle>
-              <div className="mt-3 rounded-md border border-content/10">
+              <div className="mt-3 rounded-md border border-transparent">
                 {draft.triggers.length > 0 ? (
                   <ul className="px-3 py-1.5">
                     {draft.triggers.map((trigger) => (
@@ -1157,7 +1157,7 @@ function AutomationEditor({
                   </ul>
                 ) : null}
                 {draft.triggers.length > 0 ? (
-                  <div className="border-t border-content/8" />
+                  <div className="border-t border-transparent" />
                 ) : null}
                 <button
                   ref={triggerButton}
@@ -1195,7 +1195,7 @@ function AutomationEditor({
                   }}
                   className="overflow-hidden"
                 >
-                  <label className="flex h-11 items-center gap-2.5 border-b border-stroke px-3 text-content/45 focus-within:text-content/70">
+                  <label className="flex h-11 items-center gap-2.5 border-b border-transparent px-3 text-content/45 focus-within:text-content/70">
                     <Search className="size-3.5 shrink-0" strokeWidth={1.75} />
                     <span className="sr-only">Search triggers</span>
                     <input
@@ -1315,7 +1315,7 @@ function AutomationEditor({
 
             <section>
               <SectionTitle>Instructions</SectionTitle>
-              <div className="relative mt-3 rounded-md border border-content/10 bg-content/3 backdrop-blur-sm has-focus:border-content/20">
+              <div className="relative mt-3 rounded-md border border-transparent bg-content/3 backdrop-blur-sm has-focus:outline-2 has-focus:outline-accent">
                 <PromptField
                   value={draft.prompt}
                   harness={draft.harness}
@@ -1367,7 +1367,7 @@ function AutomationEditor({
 
             <section>
               <SectionTitle>Session</SectionTitle>
-              <div className="mt-3 divide-y divide-content/7 rounded-md border border-content/10">
+              <div className="mt-3 divide-y divide-transparent rounded-md border border-transparent">
                 <SettingsRow
                   label="Working copy"
                   hint="This repo, or a fresh worktree"
@@ -1421,7 +1421,7 @@ function AutomationEditor({
               </div>
             </section>
 
-            <details className="rounded-md border border-content/10">
+            <details className="rounded-md border border-transparent">
               <summary className="flex min-h-14 cursor-default list-none items-center justify-between gap-3 px-4 active:opacity-75">
                 <span>
                   <span className="block text-[13px] font-medium text-content/75">
@@ -1433,7 +1433,7 @@ function AutomationEditor({
                 </span>
                 <ChevronDown className="size-3.5 text-content/40" />
               </summary>
-              <div className="divide-y divide-content/7 border-t border-content/8">
+              <div className="divide-y divide-transparent border-t border-transparent">
                 <SettingsRow
                   label="Missed-run grace"
                   hint="Catch up if a scheduled run was missed"
@@ -1454,14 +1454,14 @@ function AutomationEditor({
           <section className="mx-auto w-full max-w-5xl px-8 py-5 pb-10">
             <SectionTitle>Run history</SectionTitle>
             {runs.length > 0 ? (
-              <div className="mt-3 overflow-hidden rounded-md border border-content/10">
+              <div className="mt-3 overflow-hidden rounded-md border border-transparent">
                 <div className={`${RUN_GRID} h-10 text-[11px] text-content/40`}>
                   <span>Trigger</span>
                   <span>Triggered</span>
                   <span>Status</span>
                   <span className="text-right">Duration</span>
                 </div>
-                <ul className="divide-y divide-content/8 border-t border-content/8">
+                <ul className="divide-y divide-transparent border-t border-transparent">
                   {runs.slice(0, 100).map((run) => (
                     <RunRow
                       key={run.id}
@@ -1473,7 +1473,7 @@ function AutomationEditor({
                 </ul>
               </div>
             ) : (
-              <div className="mt-3 rounded-md border border-dashed border-content/10 px-4 py-16 text-center text-[12px] text-content/40">
+              <div className="mt-3 rounded-md border border-dashed border-transparent px-4 py-16 text-center text-[12px] text-content/40">
                 This automation has not run yet.
               </div>
             )}

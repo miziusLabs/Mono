@@ -81,7 +81,7 @@ export function InboxDescriptionSummary({
   return (
     <section
       data-inbox-description
-      className="flex flex-col gap-2 rounded-lg border border-stroke bg-content/[0.02] px-3.5 py-3"
+      className="flex flex-col gap-2 rounded-lg bg-content/[0.03] px-3.5 py-3"
     >
       {expanded ? (
         <AgentMarkdown text={body} cwd={cwd} allowRemoteMedia />
@@ -176,7 +176,7 @@ export function InboxPrChangesGlance({
       ) : diff && files.length === 0 ? (
         <p className="text-[12px] text-content/45">No file changes</p>
       ) : shown.length > 0 ? (
-        <ul className="flex flex-col overflow-hidden rounded-lg border border-stroke">
+        <ul className="flex flex-col space-y-1 overflow-hidden rounded-lg">
           {shown.map((file) => {
             const slash = file.path.lastIndexOf("/");
             const dir = slash >= 0 ? file.path.slice(0, slash + 1) : "";
@@ -187,7 +187,7 @@ export function InboxPrChangesGlance({
             return (
               <li
                 key={file.path}
-                className="border-b border-stroke last:border-b-0"
+                className="rounded-md bg-content/[0.015]"
               >
                 <button
                   type="button"

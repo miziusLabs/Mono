@@ -296,7 +296,7 @@ export function InboxFiltersMenu({
         hiddenJiraProjectIds,
       ) ? (
         <>
-          <div role="separator" className="my-1 h-px bg-content/10" />
+          <div role="separator" className="my-1" />
           <button
             type="button"
             role="menuitem"

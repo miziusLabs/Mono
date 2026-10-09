@@ -415,7 +415,7 @@ export function MonoProjectCommit({
 
   return (
     <div className="flex min-h-0 flex-1 flex-col" data-mono-commit={root}>
-      <div className="shrink-0 border-b border-stroke p-2">
+      <div className="shrink-0 border-b border-transparent p-2">
         <div className="relative">
           <textarea
             ref={messageRef}
@@ -497,7 +497,7 @@ export function MonoProjectCommit({
             aria-expanded={menuOpen}
             disabled={!!busy || !index?.branch}
             onClick={() => setMenuOpen((open) => !open)}
-            className={`grid h-7 w-7 shrink-0 place-items-center rounded-r-md border-l border-background-base/10 ${
+            className={`grid h-7 w-7 shrink-0 place-items-center rounded-r-md border-l border-transparent ${
               canCommit
                 ? "bg-content text-background-base hover:bg-content/80"
                 : "bg-content/40 text-background-base hover:bg-content"
@@ -509,7 +509,7 @@ export function MonoProjectCommit({
             <div
               role="menu"
               aria-label="Commit options"
-              className="absolute top-full right-0 z-30 mt-1 min-w-48 rounded-md border border-content/10 bg-background-base py-1 shadow-lg"
+              className="absolute top-full right-0 z-30 mt-1 min-w-48 rounded-md border border-transparent bg-background-base py-1 shadow-lg"
             >
               <button
                 type="button"

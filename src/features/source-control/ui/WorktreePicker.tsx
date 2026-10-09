@@ -175,7 +175,7 @@ export function WorktreePicker({
           data-branch-picker
           className="flex flex-col overflow-hidden"
         >
-          <label className="flex shrink-0 items-center gap-2 border-b border-stroke px-3 py-2">
+          <label className="flex shrink-0 items-center gap-2 border-b border-transparent px-3 py-2">
             <Search className="size-3.5 text-content/40" />
             <input
               ref={search}
@@ -275,7 +275,7 @@ export function WorktreePicker({
               </p>
             )}
           </div>
-          <div className="shrink-0 border-t border-stroke p-1 text-[12px]">
+          <div className="shrink-0 border-t border-transparent p-1 text-[12px]">
             <button
               type="button"
               disabled={busy}

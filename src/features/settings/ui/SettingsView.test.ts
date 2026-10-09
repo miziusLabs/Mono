@@ -580,7 +580,7 @@ describe("settings pages", () => {
     const section = container.querySelector(
       '[data-setting-id="project-notifications"]',
     )!;
-    const highlight = () => section.querySelector(".border-accent\\/60");
+    const highlight = () => section.querySelector(".bg-accent\\/8");
     expect(highlight()).not.toBeNull();
     expect(project.getAttribute("aria-expanded")).toBe("true");
     expect(document.activeElement).toBe(card);
@@ -631,13 +631,13 @@ describe("settings pages", () => {
     const project = section.querySelector(
       'button[aria-label="Notification categories for work/app"]',
     )!;
-    expect(section.querySelector(".border-accent\\/60")).not.toBeNull();
+    expect(section.querySelector(".bg-accent\\/8")).not.toBeNull();
     expect(project.getAttribute("aria-expanded")).toBe("true");
     expect(document.activeElement).toBe(project.closest("fieldset"));
 
     await act(async () => vi.advanceTimersByTimeAsync(1800));
 
-    expect(section.querySelector(".border-accent\\/60")).toBeNull();
+    expect(section.querySelector(".bg-accent\\/8")).toBeNull();
     expect(project.getAttribute("aria-expanded")).toBe("true");
     expect(document.activeElement).toBe(project.closest("fieldset"));
   });
@@ -887,7 +887,7 @@ describe("settings search", () => {
     expect(
       section?.querySelector('[aria-label="Project notifications"]'),
     ).not.toBeNull();
-    expect(section?.querySelector(".border-accent\\/60")).not.toBeNull();
+    expect(section?.querySelector(".bg-accent\\/8")).not.toBeNull();
   });
 
   // A page whose name starts with the query beats a setting that merely

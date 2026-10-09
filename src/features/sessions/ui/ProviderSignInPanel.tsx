@@ -30,7 +30,7 @@ export function ProviderSignInPanel({
       className="flex min-h-68 flex-col items-center justify-center px-5 py-6"
       aria-live="polite"
     >
-      <span className="grid size-16 place-items-center rounded-2xl bg-content/[0.06] text-content ring-1 ring-inset ring-content/[0.08] shadow-sm">
+      <span className="grid size-16 place-items-center rounded-2xl bg-content/[0.06] text-content shadow-sm">
         <HarnessIcon harness={harness} className="size-9" />
       </span>
       <h2 className="mt-3.5 text-[15px] font-medium leading-5 text-content">

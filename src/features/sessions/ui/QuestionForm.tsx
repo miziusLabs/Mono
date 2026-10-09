@@ -105,7 +105,7 @@ export function QuestionForm({ prompt, onReply, onInteraction }: Props) {
       onChangeCapture={interact}
     >
       <form
-        className="rounded-lg border border-content/10 bg-content/3 px-3 py-2.5"
+        className="rounded-lg bg-content/3 px-3 py-2.5"
         onSubmit={(event) => {
           event.preventDefault();
           continueCurrent();
@@ -280,7 +280,7 @@ function QuestionFields({
           value={custom}
           onChange={(event) => onCustom(event.target.value)}
           placeholder="Type your answer"
-          className="mt-1.5 w-full rounded-md border border-content/15 bg-transparent px-2 py-1 text-[12px] text-content outline-none placeholder:text-content/35 focus:border-content/30"
+          className="mt-1.5 w-full rounded-md bg-content/5 px-2 py-1 text-[12px] text-content outline-none placeholder:text-content/35 focus-visible:ring-1 focus-visible:ring-accent/60"
         />
       ) : (
         <div
@@ -312,20 +312,20 @@ function QuestionFields({
                     setHighlighted(optionIndex);
                     onSelect(option.id);
                   }}
-                  className={`flex w-full items-start gap-2 rounded-md border px-2 py-1.5 text-left focus-visible:outline-2 focus-visible:outline-offset-1 focus-visible:outline-accent ${
+                  className={`flex w-full items-start gap-2 rounded-md px-2 py-1.5 text-left focus-visible:outline-2 focus-visible:outline-offset-1 focus-visible:outline-accent ${
                     active
-                      ? "border-content/35 bg-selection"
-                      : "border-content/10 hover:bg-content/5"
+                      ? "bg-selection"
+                      : "hover:bg-content/5"
                   }`}
                 >
                   <span
                     aria-hidden
-                    className={`mt-0.5 grid size-3.5 shrink-0 place-items-center border ${
+                    className={`mt-0.5 grid size-3.5 shrink-0 place-items-center ${
                       question.multiSelect ? "rounded-[3px]" : "rounded-full"
                     } ${
                       active
-                        ? "border-content bg-content text-background-base"
-                        : "border-content/30"
+                        ? "bg-content text-background-base"
+                        : "bg-content/10"
                     }`}
                   >
                     {active ? (
@@ -348,7 +348,7 @@ function QuestionFields({
                     value={custom}
                     onChange={(event) => onCustom(event.target.value)}
                     placeholder="Type your answer"
-                    className="mt-1 w-full rounded-md border border-content/15 bg-transparent px-2 py-1 text-[12px] text-content outline-none placeholder:text-content/35 focus:border-content/30"
+                    className="mt-1 w-full rounded-md bg-content/5 px-2 py-1 text-[12px] text-content outline-none placeholder:text-content/35 focus-visible:ring-1 focus-visible:ring-accent/60"
                     onClick={(event) => event.stopPropagation()}
                     onFocus={() => {
                       if (!customSelected) onSelect(customId);

@@ -1322,7 +1322,7 @@ function SelectPill({
           {menuSettings.map((menuSetting, groupIndex) => (
             <Fragment key={menuSetting.id}>
               {groupIndex > 0 ? (
-                <div role="separator" className="my-1 h-px bg-content/10" />
+                <div role="separator" className="my-1" />
               ) : null}
               <div
                 role={grouped ? "group" : undefined}
@@ -1517,7 +1517,7 @@ function ModelFlyout({
         role="tablist"
         aria-label="Providers"
         aria-orientation="vertical"
-        className="flex w-11 shrink-0 flex-col items-center gap-1 border-r border-stroke p-1.5"
+        className="flex w-11 shrink-0 flex-col items-center gap-1 bg-content/[0.025] p-1.5"
       >
         <ProviderTabButton
           title="Favorites"
@@ -1543,7 +1543,7 @@ function ModelFlyout({
       </nav>
 
       <div className="flex min-h-0 min-w-0 flex-1 flex-col">
-        <label className="flex shrink-0 items-center gap-2 border-b border-stroke px-3 py-2.5 text-content/50">
+        <label className="flex shrink-0 items-center gap-2 bg-content/[0.02] px-3 py-2.5 text-content/50">
           <Search className="size-3.5 shrink-0" strokeWidth={1.75} />
           <input
             ref={searchRef}

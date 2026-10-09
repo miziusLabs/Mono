@@ -160,7 +160,7 @@ export function TranscriptFind({
       <div
         role="search"
         aria-label="Find in conversation"
-        className="pointer-events-auto flex w-[min(360px,calc(100cqw-24px))] items-center gap-1 rounded-lg border border-content/10 bg-content/5 p-1 shadow-lg backdrop-blur-xl"
+        className="pointer-events-auto flex w-[min(360px,calc(100cqw-24px))] items-center gap-1 rounded-lg bg-content/5 p-1 shadow-lg backdrop-blur-xl"
       >
         <Search
           className="ml-1 size-3.5 shrink-0 text-content/50"

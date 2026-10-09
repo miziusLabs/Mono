@@ -59,13 +59,13 @@ export function MonoSidebar({
             : "0px",
         } as CSSProperties
       }
-      className="mono-details-panel relative flex h-full min-h-0 shrink-0 flex-col border-l border-stroke font-sans"
+      className="mono-details-panel relative flex h-full min-h-0 shrink-0 flex-col border-l border-transparent font-sans"
     >
       <div
         role="separator"
         aria-orientation="vertical"
         aria-label={`Resize Mono ${kind}`}
-        className={`absolute inset-y-0 -left-1 z-20 w-2 cursor-col-resize touch-none ${resize.dragging ? "bg-content/15" : "hover:bg-content/10"}`}
+        className="absolute inset-y-0 -left-1 z-20 w-2 cursor-col-resize touch-none"
         onPointerDown={resize.onPointerDown}
         onDoubleClick={resize.onDoubleClick}
       />
@@ -91,7 +91,7 @@ export function MonoSidebarHeader({
 }) {
   return (
     <header
-      className="flex h-10 shrink-0 items-stretch border-b border-stroke"
+      className="flex h-10 shrink-0 items-stretch border-b border-transparent"
       style={{ paddingRight: "var(--mono-window-controls-width)" }}
       data-tauri-drag-region="deep"
     >

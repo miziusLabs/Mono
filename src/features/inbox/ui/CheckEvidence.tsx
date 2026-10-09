@@ -118,9 +118,9 @@ function CheckAnnotation({
   const [messageTitle, ...messageLines] = annotation.message.split(/\r?\n/);
   const Mark = annotation.level === "failure" ? CircleX : AlertCircle;
   return (
-    <div className="min-w-0 overflow-hidden rounded-lg border border-stroke bg-background-base/35">
+    <div className="min-w-0 overflow-hidden rounded-lg bg-background-base/35">
       {annotation.path ? (
-        <div className="flex min-w-0 items-center gap-1.5 border-b border-stroke bg-content/[0.02] px-3 py-2 text-[12px] text-content/65">
+        <div className="flex min-w-0 items-center gap-1.5 bg-content/[0.02] px-3 py-2 text-[12px] text-content/65">
           <FileTypeIcon name={annotation.path} isDir={false} size={13} />
           <span title={location} className="min-w-0 flex-1 truncate">
             {location}
@@ -146,7 +146,7 @@ function CheckAnnotation({
           {excerpt.map((line, index) => (
             <div
               key={index}
-              className={`flex min-w-max gap-4 border-l-2 pr-3 ${firstLine + index === annotation.line ? "border-rose-400/40 bg-rose-400/[0.06] text-content/85" : "border-transparent text-content/45"}`}
+              className={`flex min-w-max gap-4 pr-3 ${firstLine + index === annotation.line ? "bg-rose-400/[0.06] text-content/85" : "text-content/45"}`}
             >
               <span className="w-8 shrink-0 select-none text-right tabular-nums text-content/30">
                 {firstLine + index}
@@ -157,7 +157,7 @@ function CheckAnnotation({
         </div>
       ) : null}
       <div
-        className={`flex min-w-0 items-start gap-2 px-3 py-3 ${excerpt.length ? "border-t border-stroke" : ""}`}
+        className={`flex min-w-0 items-start gap-2 px-3 py-3 ${excerpt.length ? "bg-content/[0.02]" : ""}`}
       >
         <Mark
           className={`mt-0.5 size-3 shrink-0 ${annotation.level === "failure" ? "text-rose-400/70" : "text-amber-400/70"}`}

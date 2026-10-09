@@ -258,7 +258,7 @@ describe("AgentTranscript collapsed work", () => {
     ]);
 
     expect(markup).toContain('data-draft="true"');
-    expect(markup).toContain("border-dashed");
+    expect(markup).toContain("bg-content/6");
     expect(markup).toContain('aria-label="Send draft"');
     expect(markup).toContain('aria-label="Remove draft"');
     expect(markup).toContain(">Draft</span>");

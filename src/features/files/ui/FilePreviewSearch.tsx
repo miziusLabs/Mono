@@ -350,14 +350,14 @@ export function FilePreviewSearch({
         <div
           role="search"
           aria-label="Find in preview"
-          className="relative z-30 flex h-[35px] shrink-0 items-center gap-1 border-b border-stroke px-2 py-1 text-content"
+          className="relative z-30 flex h-[35px] shrink-0 items-center gap-1 border-b border-transparent px-2 py-1 text-content"
           onKeyDown={onKeyDown}
         >
           <div
-            className={`flex h-[26px] min-w-0 flex-1 items-center rounded-md border bg-content/[0.06] px-2 ${
+            className={`flex h-[26px] min-w-0 flex-1 items-center rounded-md border border-transparent px-2 ${
               (query && total === 0) || result.invalid
-                ? "border-red-400/55"
-                : "border-content/10"
+                ? "bg-red-400/[0.08]"
+                : "bg-content/[0.06]"
             }`}
           >
             <input

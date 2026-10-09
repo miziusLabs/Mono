@@ -51,8 +51,10 @@ export function LinkSessionWorkItemDialog({
               setUrl(event.target.value);
               if (error) setError("");
             }}
-            className={`h-9 rounded-md border bg-content/5 px-2.5 text-[13px] text-content outline-none placeholder:text-content/30 focus:border-content/30 ${
-              error ? "border-red-400/60" : "border-content/10"
+            className={`h-9 rounded-md px-2.5 text-[13px] text-content outline-none placeholder:text-content/30 focus-visible:ring-1 ${
+              error
+                ? "bg-red-400/[0.06] focus-visible:ring-red-400/60"
+                : "bg-content/5 focus-visible:ring-accent/60"
             }`}
           />
           {error ? (

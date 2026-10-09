@@ -1011,7 +1011,7 @@ export const FileTree = memo(function FileTree({
         onContextMenu={onBackgroundMenu}
       >
         <div
-          className="flex h-9 shrink-0 items-center gap-px overflow-visible border-b border-stroke px-2"
+          className="flex h-9 shrink-0 items-center gap-px overflow-visible border-b border-transparent px-2"
           onContextMenu={(e) => e.stopPropagation()}
         >
           <HeaderIcon label="New File" onClick={() => startCreate(false)}>
@@ -1448,7 +1448,7 @@ export function NameRow({
             }
           }}
           onBlur={() => finish(issue === null || issue.severity !== "error")}
-          className="h-5 min-w-0 flex-1 rounded-sm bg-content/10 px-1 text-[14px] leading-none text-content outline-none ring-1 ring-accent"
+          className="h-5 min-w-0 flex-1 rounded-sm bg-content/10 px-1 text-[14px] leading-none text-content outline-none focus-visible:outline-2 focus-visible:outline-accent"
         />
       </div>
       {showIssue ? (

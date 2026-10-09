@@ -1655,7 +1655,7 @@ function SidebarComponent({
 
   const workspaceHeader = (
     <div
-      className="flex h-10 shrink-0 select-none items-center gap-1 border-b border-stroke pl-3 pr-1.5"
+      className="flex h-10 shrink-0 select-none items-center gap-1 pl-3 pr-1.5"
       data-tauri-drag-region="deep"
     >
       <div className="flex min-w-0 flex-1 items-center">
@@ -1680,7 +1680,7 @@ function SidebarComponent({
   const sidebarContent = (
     <aside
       ref={resize.setPaneRef}
-      className="body-glass relative flex h-full min-h-0 shrink-0 flex-col border-r border-stroke"
+      className="body-glass relative flex h-full min-h-0 shrink-0 flex-col"
     >
       {railVisible ? (
         <>
@@ -1688,7 +1688,7 @@ function SidebarComponent({
           <div
             role="tablist"
             aria-label="Workspace"
-            className="flex h-9 shrink-0 items-center gap-px border-b border-stroke px-2"
+            className="flex h-9 shrink-0 items-center gap-px px-2"
           >
             {workspaceTabItems}
           </div>
@@ -1697,7 +1697,7 @@ function SidebarComponent({
         <>
           {titleBarAbove ? null : (
             <div
-              className="flex h-10 shrink-0 select-none items-center border-b border-stroke pr-1.5"
+              className="flex h-10 shrink-0 select-none items-center pr-1.5"
               data-tauri-drag-region="deep"
             >
               {IS_MAC ? <div className="w-[78px] shrink-0" /> : null}
@@ -1739,7 +1739,7 @@ function SidebarComponent({
             <div
               role="tablist"
               aria-label="Workspace"
-              className="flex h-9 shrink-0 items-center gap-px overflow-visible border-b border-stroke px-2"
+              className="flex h-9 shrink-0 items-center gap-px overflow-visible px-2"
             >
               {workspaceTabItems}
             </div>
@@ -1782,7 +1782,7 @@ function SidebarComponent({
           )}
         </div>
         {tab === "sessions" && cwd && cwd !== "~" ? (
-          <div className="flex h-9 shrink-0 items-center gap-1 border-b border-stroke px-2">
+          <div className="flex h-9 shrink-0 items-center gap-1 px-2">
             <div className="relative flex h-7 min-w-0 flex-1 items-center">
               <Search className="pointer-events-none absolute left-2 size-3 shrink-0 opacity-50" />
               {sessionSearchInput}
@@ -2051,7 +2051,7 @@ function SidebarComponent({
                                   ))}
                                 </ul>
                                 {onNew ? (
-                                  <div className="border-t border-stroke p-1">
+                                  <div className="p-1">
                                     <button
                                       type="button"
                                       data-no-drag
@@ -2061,7 +2061,7 @@ function SidebarComponent({
                                       onClick={() =>
                                         onNewInFolder(entry.folder.id)
                                       }
-                                      className="relative flex w-full items-center gap-1 rounded-md border border-transparent px-2.5 py-1.5 text-left text-content/45 hover:bg-content/10 hover:text-content"
+                                      className="relative flex w-full items-center gap-1 rounded-md px-2.5 py-1.5 text-left text-content/45 hover:bg-content/10 hover:text-content"
                                     >
                                       <Plus
                                         className="size-3 shrink-0"
@@ -2212,9 +2212,7 @@ function SidebarComponent({
         aria-valuenow={resize.width}
         aria-valuemin={MIN_WIDTH}
         aria-valuemax={MAX_WIDTH}
-        className={`absolute inset-y-0 -right-px z-10 w-1.5 cursor-col-resize touch-none ${
-          resize.dragging ? "bg-content/15" : "hover:bg-content/10"
-        }`}
+        className="absolute inset-y-0 -right-px z-10 w-1.5 cursor-col-resize touch-none"
         onPointerDown={resize.onPointerDown}
         onDoubleClick={resize.onDoubleClick}
       />
@@ -2389,7 +2387,7 @@ function SidebarProjectPicker({
   const inboxTrigger = useRef<HTMLElement | null>(null);
   return (
     <div
-      className="flex h-9 items-center gap-0.5 border-b border-stroke px-2"
+      className="flex h-9 items-center gap-0.5 px-2"
       data-tauri-drag-region="deep"
     >
       <SearchableProjectPickerWithMenu
@@ -2578,17 +2576,10 @@ function CompactProjectRail({
     >
       {titleBarAbove ? null : (
         <div
-          className="h-10 w-full shrink-0 border-b border-stroke"
+          className="h-10 w-full shrink-0"
           data-tauri-drag-region="deep"
         />
       )}
-      <span
-        aria-hidden
-        data-compact-rail-divider
-        className={`pointer-events-none absolute bottom-0 right-0 w-px bg-stroke ${
-          titleBarAbove ? "top-0" : "top-10"
-        }`}
-      />
       <div
         data-compact-rail-actions
         className="flex w-full shrink-0 flex-col items-center gap-1.5 py-1.5"
@@ -3122,7 +3113,7 @@ function FolderRenameRow({
             finish(false);
           }
         }}
-        className="relative min-w-0 flex-1 rounded bg-content/10 px-2 py-0.5 text-[13px] font-semibold leading-snug text-content outline-none ring-1 ring-accent/40"
+        className="relative min-w-0 flex-1 rounded bg-content/10 px-2 py-0.5 text-[13px] font-semibold leading-snug text-content outline-none focus-visible:outline-2 focus-visible:outline-accent"
       />
       <span className="relative shrink-0 text-[11px] tabular-nums text-content/45">
         {memberCount}
@@ -3543,20 +3534,20 @@ const SessionCard = memo(function SessionCard({
             ? (event) => onContextMenu(session.id, event)
             : undefined
         }
-        className={`relative border flex w-full cursor-default select-none touch-none flex-col rounded-md px-2.5 text-left ${cardPaddingY} ${
+        className={`relative flex w-full cursor-default select-none touch-none flex-col rounded-md px-2.5 text-left ${cardPaddingY} ${
           dragging ? "opacity-40" : ""
         } ${
           dropTarget
-            ? "text-content border-transparent"
+            ? "text-content"
             : isSelected
-              ? `bg-accent/15 text-content ${draft ? "border-content/30 border-dashed" : "border-transparent"}`
+              ? "bg-accent/15 text-content"
               : needsApproval
-                ? "bg-content/20 text-content border-content/30 border-dashed"
+                ? "bg-content/20 text-content"
                 : isActive
-                  ? `bg-selection text-content ${draft ? "border-content/30 border-dashed" : "border-transparent"}`
+                  ? "bg-selection text-content"
                   : draft
-                    ? "border-content/25 border-dashed text-content/80 hover:bg-content/5 hover:text-content"
-                    : `text-content/80 hover:text-content border-transparent ${
+                    ? "bg-content/5 text-content/80 hover:bg-content/8 hover:text-content"
+                    : `text-content/80 hover:text-content ${
                         orchestrationExpanded
                           ? "bg-content/5 hover:bg-content/10"
                           : "hover:bg-content/5"
@@ -3839,7 +3830,7 @@ function SessionRenameRow({
         onChange={(e) => setValue(e.target.value)}
         onBlur={() => finish(true)}
         onKeyDown={onKeyDown}
-        className="w-full rounded bg-content/10 px-2 py-1 text-[13px] font-semibold leading-snug text-content outline-none ring-1 ring-accent/40"
+        className="w-full rounded bg-content/10 px-2 py-1 text-[13px] font-semibold leading-snug text-content outline-none focus-visible:outline-2 focus-visible:outline-accent"
       />
     </div>
   );

@@ -194,7 +194,7 @@ export function GitChangesPanel({
       ref={paneRef}
       className="flex h-full min-h-0 flex-1 flex-col overflow-hidden"
     >
-      <header className="flex h-9 shrink-0 items-center gap-2 border-b border-stroke px-3">
+      <header className="flex h-9 shrink-0 items-center gap-2 border-b border-transparent px-3">
         <span className="text-[12px] font-medium text-content">Changes</span>
         {status ? (
           <span role="status" className="text-[11px] text-content/50">
@@ -239,7 +239,7 @@ export function GitChangesPanel({
               <div
                 role="menu"
                 aria-label="Branch actions"
-                className="absolute top-full right-0 z-30 mt-1 min-w-36 rounded-md border border-content/10 bg-background-base py-1 shadow-lg"
+                className="absolute top-full right-0 z-30 mt-1 min-w-36 rounded-md border border-transparent bg-background-base py-1 shadow-lg"
               >
                 <button
                   type="button"
@@ -306,7 +306,7 @@ export function GitChangesPanel({
         />
       ) : null}
       <div
-        className={`shrink-0 overflow-hidden border-t border-stroke ${
+        className={`shrink-0 overflow-hidden border-t border-transparent ${
           graphExpanded ? "min-h-0" : "h-7"
         }`}
         style={graphExpanded ? { height: graphHeight } : undefined}
@@ -695,7 +695,7 @@ function ChangedFiles({
     <aside
       className={`flex min-h-0 min-w-0 flex-col ${fill ? "flex-1" : "shrink-0"}`}
     >
-      <div className="shrink-0 border-b border-stroke p-2">
+      <div className="shrink-0 border-b border-transparent p-2">
         <div className="relative">
           <textarea
             ref={messageRef}
@@ -776,7 +776,7 @@ function ChangedFiles({
             aria-expanded={menuOpen}
             disabled={!canOpenMenu}
             onClick={() => setMenuOpen((open) => !open)}
-            className={`grid h-7 w-7 shrink-0 place-items-center rounded-r-md border-l border-background-base/10 ${
+            className={`grid h-7 w-7 shrink-0 place-items-center rounded-r-md border-l border-transparent ${
               canCommit
                 ? "bg-content text-background-base hover:bg-content/80"
                 : "bg-content/40 text-background-base hover:bg-content"
@@ -788,7 +788,7 @@ function ChangedFiles({
             <div
               role="menu"
               aria-label="Commit options"
-              className="absolute top-full right-0 z-30 mt-1 min-w-48 rounded-md border border-content/10 bg-background-base py-1 shadow-lg"
+              className="absolute top-full right-0 z-30 mt-1 min-w-48 rounded-md border border-transparent bg-background-base py-1 shadow-lg"
             >
               <button
                 type="button"
@@ -808,7 +808,7 @@ function ChangedFiles({
               >
                 Commit, Push & Create PR
               </button>
-              <div className="my-1 border-t border-content/10" />
+              <div className="my-1 border-t border-transparent" />
               <button
                 type="button"
                 role="menuitemcheckbox"

@@ -92,7 +92,7 @@ export function FilePreview({
     <div
       className={
         variant === "card"
-          ? "overflow-hidden rounded-[10px] border border-content/10 bg-content/6"
+          ? "overflow-hidden rounded-[10px] border border-transparent bg-content/6"
           : "min-w-0"
       }
     >
@@ -131,7 +131,6 @@ export function FilePreview({
       </div>
       {showDiff ? (
         <>
-          <div className="h-px bg-content/10" />
           <div
             className={
               variant === "popover"

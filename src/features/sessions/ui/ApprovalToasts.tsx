@@ -95,7 +95,7 @@ function ApprovalToastCard({
 
   return (
     <article
-      className="approval-toast pointer-events-auto overflow-hidden rounded-xl border border-content/20 border-dashed bg-content/10 shadow-xl backdrop-blur-xl"
+      className="approval-toast pointer-events-auto overflow-hidden rounded-xl bg-content/10 shadow-xl backdrop-blur-xl"
       role="status"
     >
       <button
@@ -119,7 +119,7 @@ function ApprovalToastCard({
         <span className="text-[11px] text-content/40">{harness}</span>
       </button>
       {notice.kind === "question" ? null : (
-        <div className="flex gap-2 border-t border-stroke px-3.5 py-2.5">
+        <div className="flex gap-2 bg-content/[0.02] px-3.5 py-2.5">
           <button
             type="button"
             className="flex-1 rounded-md bg-content px-2.5 py-1 text-[11px] font-medium text-background-base hover:bg-content/80"

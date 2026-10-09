@@ -213,7 +213,7 @@ export function DateTimePicker({
                     aria-current={
                       dateKey(date) === dateKey(today) ? "date" : undefined
                     }
-                className={`relative size-8 rounded text-xs tabular-nums focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent disabled:pointer-events-none disabled:text-content/20 ${dateKey(date) === selectedKey ? "bg-selection-hover font-medium text-content ring-1 ring-inset ring-content/20" : "text-content/70 hover:bg-content/5 hover:text-content"}`}
+                className={`relative size-8 rounded text-xs tabular-nums focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent disabled:pointer-events-none disabled:text-content/20 ${dateKey(date) === selectedKey ? "bg-selection-hover font-medium text-content" : "text-content/70 hover:bg-content/5 hover:text-content"}`}
                     onClick={() => pick(date)}
                   >
                     {date.getDate()}
@@ -230,7 +230,7 @@ export function DateTimePicker({
           </div>
         ))}
       </div>
-      <div className="mt-3 flex items-center justify-between gap-3 border-t border-stroke px-1 pt-3">
+      <div className="mt-3 flex items-center justify-between gap-3 px-1 pt-3">
         <div>
           <label
             htmlFor={timeId}
@@ -246,7 +246,7 @@ export function DateTimePicker({
             Local time, 24-hour
           </p>
         </div>
-        <div className="w-20 rounded border border-content/10 bg-content/5 focus-within:border-content/40 focus-within:outline-2 focus-within:outline-accent">
+        <div className="w-20 rounded bg-content/5 focus-within:outline-2 focus-within:outline-accent">
           <input
             id={timeId}
             type="text"

@@ -197,7 +197,7 @@ export function MonoDetails({
             memory: files ? memoryLines(files.memory).length : undefined,
           }}
         >
-          <dl className="flex flex-col gap-0.5 border-t border-stroke px-4 py-3">
+          <dl className="flex flex-col gap-0.5 border-t border-transparent px-4 py-3">
             <Property label="Model">
               <ModelPicker
                 harness={harness}

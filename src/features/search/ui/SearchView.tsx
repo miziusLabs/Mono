@@ -385,7 +385,7 @@ export function SearchView({
       className="flex min-h-0 min-w-0 flex-1 flex-col text-content"
     >
       <div
-        className="flex h-10 shrink-0 select-none items-center border-b border-stroke"
+        className="flex h-10 shrink-0 select-none items-center bg-content/[0.02]"
         data-tauri-drag-region="deep"
       >
         {IS_MAC && compactRail ? <div className="w-4 shrink-0" /> : null}
@@ -419,7 +419,7 @@ export function SearchView({
         {!IS_MAC ? <WindowControls /> : null}
       </div>
 
-      <div className="flex h-9 shrink-0 items-center gap-px border-b border-stroke px-3">
+      <div className="flex h-9 shrink-0 items-center gap-px bg-content/[0.015] px-3">
         {SCOPES.map((item) => {
           const selected = scope === item.id;
           return (

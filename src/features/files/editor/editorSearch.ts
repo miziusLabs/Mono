@@ -687,7 +687,7 @@ const findTheme = EditorView.theme(
       zIndex: "40",
       backgroundColor: "transparent",
       border: "0",
-      borderBottom: "1px solid var(--color-stroke)",
+      borderBottom: "1px solid transparent",
       pointerEvents: "auto",
     },
     ".cm-panel.cm-find": {
@@ -756,14 +756,13 @@ const findTheme = EditorView.theme(
       flex: "1 1 240px",
       height: "26px",
       padding: "0 8px",
-      border:
-        "1px solid color-mix(in srgb, var(--color-content) 12%, transparent)",
+      border: "1px solid transparent",
       borderRadius: "6px",
       backgroundColor:
         "color-mix(in srgb, var(--color-content) 6%, transparent)",
     },
     ".cm-find.is-empty .cm-find-search, .cm-find.is-invalid .cm-find-search": {
-      borderColor: "color-mix(in srgb, #f87171 55%, transparent)",
+      backgroundColor: "color-mix(in srgb, #f87171 8%, transparent)",
     },
     ".cm-find input": {
       minWidth: "0",

@@ -40,8 +40,7 @@ function editorThemeStyles(dark: boolean) {
     ".cm-gutters": {
       backgroundColor: "transparent",
       color: "color-mix(in srgb, var(--color-content) 38%, transparent)",
-      borderRight:
-        "1px solid color-mix(in srgb, var(--color-content) 7%, transparent)",
+      borderRight: "1px solid transparent",
       paddingLeft: "4px",
     },
     ".cm-lineNumbers .cm-gutterElement": {
@@ -77,23 +76,19 @@ function editorThemeStyles(dark: boolean) {
     ".cm-matchingBracket": {
       backgroundColor:
         "color-mix(in srgb, var(--color-content) 14%, transparent)",
-      outline:
-        "1px solid color-mix(in srgb, var(--color-content) 28%, transparent)",
     },
     ".cm-nonmatchingBracket": {
       backgroundColor: "color-mix(in srgb, #f87171 32%, transparent)",
-      outline: "1px solid color-mix(in srgb, #f87171 55%, transparent)",
     },
     ".cm-panels, .cm-tooltip": {
       backgroundColor: "var(--color-background-base)",
       color: "var(--color-content)",
     },
     ".cm-panels": {
-      borderColor: "color-mix(in srgb, var(--color-content) 10%, transparent)",
+      borderColor: "transparent",
     },
     ".cm-tooltip": {
-      border:
-        "1px solid color-mix(in srgb, var(--color-content) 12%, transparent)",
+      border: "1px solid transparent",
       borderRadius: "6px",
       overflow: "hidden",
     },

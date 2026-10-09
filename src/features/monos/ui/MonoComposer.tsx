@@ -251,7 +251,7 @@ export function MonoComposer({
     >
       <div
         ref={box}
-        className={`agent-chat-composer relative rounded-lg border bg-content/3 backdrop-blur-sm ${fileDrag ? "border-accent/60" : "border-content/10 has-focus:border-content/20"}`}
+        className={`agent-chat-composer relative rounded-lg border border-transparent bg-content/3 backdrop-blur-sm ${fileDrag ? "bg-accent/8" : "has-focus:bg-content/6"}`}
       >
         {fileDrag ? (
           <div className="pointer-events-none absolute inset-0 z-20 grid place-items-center rounded-lg bg-accent/8 text-[12px] text-content/70">

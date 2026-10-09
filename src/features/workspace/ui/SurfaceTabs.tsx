@@ -267,7 +267,7 @@ export function SurfaceTabs({
   }, [activeFileId, sortable.draggingId]);
 
   return (
-    <div className="flex h-9 min-w-0 shrink-0 border-b border-stroke">
+    <div className="flex h-9 min-w-0 shrink-0 border-b border-transparent">
       <div
         ref={lockOverscroll}
         role="tablist"

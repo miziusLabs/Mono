@@ -278,7 +278,7 @@ describe("InboxDetail layout", () => {
     expect(fixedHeader).toContain("px-4");
     expect(fixedHeader).not.toContain("h-10");
     expect(fixedHeader).not.toContain("px-5");
-    expect(fixedHeader).toContain("border-b");
+    expect(fixedHeader).not.toContain("border-b");
     expect(fixedHeader).not.toContain("A long inbox issue");
     expect(markup).toContain("text-[18px]");
     expect(markup).not.toContain("Related thread");

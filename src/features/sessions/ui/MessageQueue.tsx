@@ -68,11 +68,11 @@ export function MessageQueue({
   return (
     <div className="px-2 text-content/55" data-message-queue>
       <div
-        className="relative z-0 rounded-t-[10px] border border-b-0 border-content/10 bg-content/3 px-2 py-1"
+        className="relative z-0 rounded-t-[10px] bg-content/3 px-2 py-1"
         data-message-queue-card
       >
         {paused ? (
-          <div className="flex h-7 items-center gap-2 border-b border-stroke text-[12px]">
+          <div className="flex h-7 items-center gap-2 bg-content/[0.02] text-[12px]">
             <Pause className="size-3.5" />
             <span className="min-w-0 flex-1 truncate">
               {failed
@@ -112,7 +112,7 @@ export function MessageQueue({
             <div
               key={message.id}
               className={`flex min-h-7 items-center gap-2 text-[12px] ${
-                index > 0 ? "border-t border-stroke" : ""
+                index > 0 ? "pt-px" : ""
               }`}
             >
               <ListEnd className="size-3.5 shrink-0" />
@@ -134,7 +134,7 @@ export function MessageQueue({
                         saveEdit(message);
                       }
                     }}
-                    className="min-h-6 min-w-0 flex-1 resize-none rounded-md border border-content/15 bg-content/5 px-1.5 py-0.5 text-[12px] text-content outline-none focus:border-content/30"
+                    className="min-h-6 min-w-0 flex-1 resize-none rounded-md bg-content/8 px-1.5 py-0.5 text-[12px] text-content outline-none focus-visible:ring-1 focus-visible:ring-accent/60"
                   />
                   <button
                     type="button"

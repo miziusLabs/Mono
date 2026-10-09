@@ -207,11 +207,10 @@ import { inboxAskKey } from "../model/inboxAsk";
 const MIN_WIDTH = 240;
 const MAX_WIDTH = 420;
 
-// One height for the whole detail action row; `border` is inside it, so the
-// outline variant lines up with the filled and ghost ones.
+// Keep one height for the whole detail action row.
 const ACTION = "inline-flex items-center gap-1.5 rounded-md px-3 text-[12px]";
 const ACTION_FILLED = `${ACTION} h-6.5 bg-content text-background-base hover:bg-content/80`;
-const ACTION_OUTLINE = `${ACTION} h-7 border border-content/15 text-content/80 hover:bg-content/5`;
+const ACTION_OUTLINE = `${ACTION} h-7 bg-content/[0.03] text-content/80 hover:bg-content/8`;
 const ACTION_PANEL_HEADER = `${ACTION} h-6.5 text-content/70 hover:bg-content/10 hover:text-content`;
 const ACTION_GHOST = `${ACTION} h-7 text-content/70 hover:bg-content/10 hover:text-content`;
 const DEFAULT_WIDTH = 280;
@@ -905,9 +904,9 @@ export function InboxView({
   const list = (
     <div
       ref={resize.setPaneRef}
-      className="relative flex h-full min-h-0 shrink-0 flex-col border-r border-stroke"
+      className="relative flex h-full min-h-0 shrink-0 flex-col"
     >
-      <div className="flex h-9 shrink-0 items-center gap-px border-b border-stroke px-2">
+      <div className="flex h-9 shrink-0 items-center gap-px bg-content/[0.02] px-2">
         {visibleSources.length > 0 ? (
           <div
             role="tablist"
@@ -946,7 +945,7 @@ export function InboxView({
         ) : null}
       </div>
       {noSourcesConnected ? null : (
-        <div className="flex h-9 shrink-0 items-center gap-1 border-b border-stroke px-2">
+        <div className="flex h-9 shrink-0 items-center gap-1 bg-content/[0.015] px-2">
           <div className="relative flex h-7 min-w-0 flex-1 items-center">
             <Search className="pointer-events-none absolute left-2 size-3 shrink-0 opacity-50" />
             <input
@@ -1096,9 +1095,7 @@ export function InboxView({
         role="separator"
         aria-orientation="vertical"
         aria-label="Resize inbox list"
-        className={`absolute inset-y-0 -right-px z-10 w-1.5 cursor-col-resize touch-none ${
-          resize.dragging ? "bg-content/15" : "hover:bg-content/10"
-        }`}
+        className="absolute inset-y-0 -right-px z-10 w-1.5 cursor-col-resize touch-none"
         onPointerDown={resize.onPointerDown}
         onDoubleClick={resize.onDoubleClick}
       />
@@ -1142,7 +1139,7 @@ export function InboxView({
       className="flex min-h-0 min-w-0 flex-1 flex-col text-content"
     >
       <div
-        className="flex h-10 shrink-0 select-none items-center border-b border-stroke"
+        className="flex h-10 shrink-0 select-none items-center bg-content/[0.02]"
         data-tauri-drag-region="deep"
       >
         {IS_MAC && compactRail ? <div className="w-4 shrink-0" /> : null}
@@ -1333,12 +1330,10 @@ export function LinkedWorkItemPanel({
         aria-orientation="vertical"
         onPointerDown={resize.onPointerDown}
         onDoubleClick={resize.onDoubleClick}
-        className={`absolute inset-y-0 -left-1 z-20 w-2 cursor-col-resize touch-none ${
-          resize.dragging ? "bg-content/15" : "hover:bg-content/10"
-        }`}
+        className="absolute inset-y-0 -left-1 z-20 w-2 cursor-col-resize touch-none"
       />
       <div
-        className={`relative flex min-h-0 flex-1 flex-col border-l border-stroke ${
+        className={`relative flex min-h-0 flex-1 flex-col ${
           opening ? "linked-panel-slide" : ""
         }`}
       >
@@ -1544,10 +1539,10 @@ function InboxCard({
         item,
       )}: ${item.title}${attentionLabel ? `, ${attentionLabel}` : ""}${unseen ? ", new" : ""}${relatedSessionCount > 0 ? `, ${relatedSessionCount} related ${relatedSessionCount === 1 ? "thread" : "threads"}` : ""}`}
       onClick={onSelect}
-      className={`flex w-full flex-col rounded-md border px-2.5 py-2 text-left ${
+      className={`flex w-full flex-col rounded-md px-2.5 py-2 text-left ${
         active
-          ? "border-transparent bg-selection text-content"
-          : "border-transparent text-content/80 hover:bg-content/5 hover:text-content"
+          ? "bg-selection text-content"
+          : "text-content/80 hover:bg-content/5 hover:text-content"
       }`}
     >
       <span className="flex items-center gap-2">
@@ -1821,7 +1816,7 @@ export function GithubPrActions({
             aria-expanded={mergeMenuOpen}
             disabled={busy}
             onClick={() => setMergeMenuOpen((open) => !open)}
-            className={`grid w-7 place-items-center border-l border-background-base/20 hover:bg-background-base/10 disabled:cursor-default disabled:opacity-40 ${PR_ACTION_PRESS}`}
+        className={`grid w-7 place-items-center hover:bg-background-base/10 disabled:cursor-default disabled:opacity-40 ${PR_ACTION_PRESS}`}
           >
             <ChevronDown className="size-3" strokeWidth={1.75} />
           </button>
@@ -2610,7 +2605,7 @@ export function InboxDetail({
       data-inbox-detail-identity
       data-inbox-detail-fixed-header={panel ? "" : undefined}
       className={`flex min-w-0 items-center gap-2 text-[12px] text-content/50 ${
-        panel ? "h-9 shrink-0 border-b border-stroke px-4 pr-[34px]" : ""
+        panel ? "h-9 shrink-0 bg-content/[0.015] px-4 pr-[34px]" : ""
       }`}
     >
       <InboxProviderMark
@@ -2667,7 +2662,7 @@ export function InboxDetail({
       >
         <div
           data-inbox-detail-header
-          className={`relative border-b border-stroke ${
+          className={`relative ${
             panel ? "" : "z-10 shrink-0"
           }`}
         >
@@ -2904,7 +2899,7 @@ export function InboxDetail({
                   <div
                     role="group"
                     aria-label="Diff context"
-                    className="ml-auto flex items-center self-center rounded-md border border-content/10 bg-content/[0.03] p-0.5"
+                    className="ml-auto flex items-center self-center rounded-md bg-content/[0.03] p-0.5"
                   >
                     <button
                       type="button"
@@ -3206,7 +3201,7 @@ function InboxProjectPicker({
         type="button"
         disabled={projects.length === 0}
         onClick={() => setOpen((next) => !next)}
-        className="inline-flex h-7 max-w-48 items-center gap-1.5 rounded-md border border-content/10 bg-content/5 px-2 text-[12px] text-content/80 hover:bg-content/10 hover:text-content disabled:cursor-default disabled:opacity-40"
+        className="inline-flex h-7 max-w-48 items-center gap-1.5 rounded-md bg-content/5 px-2 text-[12px] text-content/80 hover:bg-content/10 hover:text-content disabled:cursor-default disabled:opacity-40"
       >
         {selected ? <InboxProjectMark project={selected} /> : null}
         <span className="min-w-0 truncate">
@@ -3221,7 +3216,7 @@ function InboxProjectPicker({
         <div
           ref={menu}
           role="listbox"
-          className="absolute left-0 top-full z-30 mt-1 max-h-64 min-w-full max-w-64 overflow-y-auto rounded-lg border border-content/10 bg-content/10 p-1 shadow-xl backdrop-blur-xl outline-none"
+          className="absolute left-0 top-full z-30 mt-1 max-h-64 min-w-full max-w-64 overflow-y-auto rounded-lg bg-content/10 p-1 shadow-xl backdrop-blur-xl outline-none"
         >
           {projects.map((project) => {
             const active = selected

@@ -1118,7 +1118,7 @@ describe("sidebar orchestration card", () => {
       ).toBe("true");
       props.approvalSessionIds = new Set([lead.id]);
       act(() => render());
-      expect(card().className).toContain("border-dashed");
+      expect(card().className).toContain("bg-content/20");
       expect(card().textContent).toContain("Needs input");
     },
   );
@@ -1567,12 +1567,7 @@ describe("collapsed rail Inbox actions", () => {
     const rail = container.querySelector<HTMLElement>(
       "[data-compact-project-rail]",
     )!;
-    expect(
-      rail.querySelector("[data-compact-rail-divider]")?.className,
-    ).toContain("top-0");
-    expect(
-      rail.querySelector("[data-compact-rail-divider]")?.className,
-    ).not.toContain("top-10");
+    expect(rail.querySelector("[data-compact-rail-divider]")).toBeNull();
     expect(container.textContent).not.toContain("Development");
     expect(container.querySelector('button[aria-label^="Back"]')).toBeNull();
   });
@@ -1596,13 +1591,10 @@ describe("collapsed rail Inbox actions", () => {
     expect(rail).not.toBeNull();
     expect(rail.className).toContain("w-12");
     expect(rail.className).not.toContain("border-r");
-    expect(
-      rail.querySelector("[data-compact-rail-divider]")?.className,
-    ).toContain("top-10");
+    expect(rail.querySelector("[data-compact-rail-divider]")).toBeNull();
     expect(
       rail.querySelectorAll('[class*="border-b"], [class*="border-t"]'),
-    ).toHaveLength(1);
-    expect(rail.firstElementChild?.className).toContain("border-b");
+    ).toHaveLength(0);
     expect(
       rail.querySelector("[data-compact-rail-actions]")?.className,
     ).toContain("gap-1.5");

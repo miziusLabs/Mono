@@ -338,7 +338,7 @@ export function UsageProviderChip({
           ) : (
             <>
               <div className="flex items-start gap-2.5 px-1 pb-2.5 pt-0.5">
-                <span className="grid size-7 shrink-0 place-items-center rounded-lg bg-content/[0.06] ring-1 ring-inset ring-content/[0.07]">
+                <span className="grid size-7 shrink-0 place-items-center rounded-lg bg-content/[0.06]">
                   <HarnessIcon harness={iconHarness} className="size-4" />
                 </span>
                 <div className="min-w-0 flex-1">
@@ -467,7 +467,7 @@ function AccountSwitchRow({
     <div className="px-2.5 pt-2.5">
       <button
         type="button"
-        className="flex h-8 w-full items-center gap-2 rounded-lg bg-content/[0.045] px-2.5 text-left text-[11px] ring-1 ring-inset ring-content/[0.06] hover:bg-content/[0.08]"
+        className="flex h-8 w-full items-center gap-2 rounded-lg bg-content/[0.045] px-2.5 text-left text-[11px] hover:bg-content/[0.08]"
         aria-label={`Switch account from ${accountLabel}`}
         onClick={onClick}
       >
@@ -537,10 +537,10 @@ function ProviderAccountPicker({
           return (
             <div
               key={account.id}
-              className={`pointer-events-none relative flex w-full items-center gap-3 rounded-lg px-2.5 py-2 text-left text-[11px] ring-1 ring-inset transition-colors ${
+              className={`pointer-events-none relative flex w-full items-center gap-3 rounded-lg px-2.5 py-2 text-left text-[11px] transition-colors ${
                 selected
-                  ? "bg-accent/10 text-content ring-accent/20"
-                  : "bg-content/[0.035] text-content/70 ring-content/[0.06]"
+                  ? "bg-accent/10 text-content"
+                  : "bg-content/[0.035] text-content/70"
               }`}
             >
               {/* A sibling target keeps the email button out of the selection button. */}
@@ -640,7 +640,7 @@ function SwitchSuggestion({
   onSwitch: () => void;
 }) {
   return (
-    <section className="mt-2 flex items-center gap-2.5 rounded-lg bg-content/[0.045] px-3 py-2.5 ring-1 ring-inset ring-content/[0.06]">
+    <section className="mt-2 flex items-center gap-2.5 rounded-lg bg-content/[0.045] px-3 py-2.5">
       <div className="min-w-0 flex-1">
         <p className="text-[10px] leading-4 text-content/45">
           {exhausted ? "Out of usage" : "Running low"} · switch to
@@ -721,7 +721,7 @@ function AddProviderAccount({
           value={label}
           disabled={running}
           placeholder="Work or Personal"
-          className="mt-1.5 h-8 w-full rounded-lg border border-content/10 bg-content/[0.04] px-2.5 text-[11px] text-content outline-none placeholder:text-content/25 focus:border-accent/45 disabled:opacity-55"
+          className="mt-1.5 h-8 w-full rounded-lg bg-content/[0.04] px-2.5 text-[11px] text-content outline-none placeholder:text-content/25 disabled:opacity-55"
           onChange={(event) => setLabel(event.target.value)}
         />
       </label>
@@ -778,7 +778,7 @@ function UsageWindowCard({
           ? "Monthly limit"
           : `${formatWindowLabel(window.windowMinutes)} limit`;
   return (
-    <section className="rounded-lg bg-content/[0.045] px-3 py-2.5 ring-1 ring-inset ring-content/[0.06]">
+    <section className="rounded-lg bg-content/[0.045] px-3 py-2.5">
       <div className="flex items-baseline justify-between gap-3">
         <h3 className="text-[11px] font-medium text-content/65">{title}</h3>
         <span className="shrink-0 text-[11px] font-medium tabular-nums">
@@ -859,12 +859,12 @@ function BankedResets({
     ...Array.from({ length: unlistedCount }, () => null),
   ];
   return (
-    <section className="mt-2.5 border-t border-content/[0.08] pt-2.5">
-      <div className="relative min-h-[78px] overflow-hidden rounded-lg bg-content/[0.04] px-3 py-3 pr-[84px] ring-1 ring-inset ring-content/[0.06]">
+    <section className="mt-2.5 pt-2.5">
+      <div className="relative min-h-[78px] overflow-hidden rounded-lg bg-content/[0.04] px-3 py-3 pr-[84px]">
         <div className="relative z-10 min-w-0">
           <div className="flex items-center gap-1.5">
             <h3 className="text-[11px] font-medium">Banked resets</h3>
-            <span className="rounded-full bg-content/[0.07] px-1.5 py-px text-[9px] font-medium tabular-nums text-content/65 ring-1 ring-inset ring-content/[0.07]">
+            <span className="rounded-full bg-content/[0.07] px-1.5 py-px text-[9px] font-medium tabular-nums text-content/65">
               {count}
             </span>
           </div>
@@ -1000,7 +1000,7 @@ function BankedResetRow({
   onUse: () => void;
 }) {
   return (
-    <article className="rounded-lg bg-content/[0.04] px-2.5 py-2 ring-1 ring-inset ring-content/[0.06]">
+    <article className="rounded-lg bg-content/[0.04] px-2.5 py-2">
       <h4 className="text-[10px] font-medium leading-4 text-content/70">
         {credit?.title ?? `Banked reset ${index + 1}`}
       </h4>
@@ -1047,7 +1047,7 @@ function BankedResetRow({
         ) : canUse && action !== "confirming" ? (
           <button
             type="button"
-            className="h-6 shrink-0 rounded-md bg-content/[0.07] px-2.5 text-[10px] font-medium text-content/70 ring-1 ring-inset ring-content/[0.08] transition-[background-color,color,transform] duration-150 ease-out hover:bg-content/[0.11] hover:text-content active:scale-[0.97] disabled:pointer-events-none disabled:opacity-35"
+            className="h-6 shrink-0 rounded-md bg-content/[0.07] px-2.5 text-[10px] font-medium text-content/70 transition-[background-color,color,transform] duration-150 ease-out hover:bg-content/[0.11] hover:text-content active:scale-[0.97] disabled:pointer-events-none disabled:opacity-35"
             disabled={disabled}
             onClick={onConfirm}
           >
@@ -1056,7 +1056,7 @@ function BankedResetRow({
         ) : null}
       </div>
       {action === "confirming" ? (
-        <div className="mt-2 flex items-center justify-between gap-2 border-t border-content/[0.07] pt-2">
+        <div className="mt-2 flex items-center justify-between gap-2 pt-2">
           <p className="text-[10px] leading-4 text-content/50">
             Spend this reset now?
           </p>
@@ -1090,7 +1090,7 @@ function EmptyUsageState({
   loading: boolean;
 }) {
   return (
-    <div className="rounded-lg bg-content/[0.04] px-3 py-4 text-center ring-1 ring-inset ring-content/[0.06]">
+    <div className="rounded-lg bg-content/[0.04] px-3 py-4 text-center">
       <p className="text-[11px] font-medium text-content/65">
         {loading
           ? "Loading usage…"

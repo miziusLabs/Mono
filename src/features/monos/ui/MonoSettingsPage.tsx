@@ -70,7 +70,7 @@ export function MonoSettingsPage({
 
         {children}
 
-        <nav className="flex flex-col gap-px border-t border-stroke p-2">
+        <nav className="flex flex-col gap-px border-t border-transparent p-2">
           <NavRow
             label="Soul"
             description="Defines who this bot is and the rules it follows. Always included in its context."

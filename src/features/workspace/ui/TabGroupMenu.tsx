@@ -223,7 +223,7 @@ export function TabGroupMenu({
               onHover={() => setSubmenu(null)}
               onPick={() => pickExtra(leadingAction.id)}
             />
-            <div role="separator" className="my-1 h-px bg-content/10" />
+            <div role="separator" className="my-1 h-px bg-transparent" />
           </>
         ) : null}
         <input
@@ -232,7 +232,7 @@ export function TabGroupMenu({
           onChange={(e) => setName(e.target.value)}
           onBlur={commitName}
           aria-label="Group name"
-          className="mb-2 w-full rounded-lg border border-content/10 bg-content/5 px-2.5 py-1.5 text-[13px] text-content outline-none ring-accent/40 focus:ring-1"
+          className="mb-2 w-full rounded-lg border border-transparent bg-content/5 px-2.5 py-1.5 text-[13px] text-content outline-none ring-accent/40 focus:ring-1"
         />
 
         {logoProject ? (
@@ -254,7 +254,7 @@ export function TabGroupMenu({
                   }
                 })();
               }}
-              className="grid size-9 shrink-0 place-items-center rounded-lg border border-content/10 bg-content/5 hover:bg-content/10"
+              className="grid size-9 shrink-0 place-items-center rounded-lg border border-transparent bg-content/5 hover:bg-content/10"
             >
               <ProjectLogoIcon
                 path={logoPath}
@@ -330,7 +330,7 @@ export function TabGroupMenu({
 
         {showActions ? (
           <>
-            <div className="my-1 h-px bg-content/10" />
+            <div className="my-1 h-px bg-transparent" />
 
             {ITEMS.slice(0, 2).map((item) => (
               <MenuRow
@@ -341,7 +341,7 @@ export function TabGroupMenu({
               />
             ))}
 
-            <div className="my-1 h-px bg-content/10" />
+            <div className="my-1 h-px bg-transparent" />
 
             {ITEMS.slice(2, 4).map((item) => (
               <MenuRow
@@ -352,7 +352,7 @@ export function TabGroupMenu({
               />
             ))}
 
-            <div className="my-1 h-px bg-content/10" />
+            <div className="my-1 h-px bg-transparent" />
 
             {ITEMS.slice(4).map((item) => (
               <MenuRow
@@ -367,11 +367,11 @@ export function TabGroupMenu({
 
         {extraItems && extraItems.length > 0 ? (
           <>
-            <div className="my-1 h-px bg-content/10" />
+            <div className="my-1 h-px bg-transparent" />
             {extraItems.map((item) => (
               <Fragment key={item.id}>
                 {item.sepBefore ? (
-                  <div role="separator" className="my-1 h-px bg-content/10" />
+                  <div role="separator" className="my-1 h-px bg-transparent" />
                 ) : null}
                 <MenuRow
                   item={item}
@@ -428,7 +428,7 @@ function MascotSwatch({
       onClick={onPick}
       className={`grid size-5 shrink-0 place-items-center rounded-md ${
         selected
-          ? "bg-selection-hover ring-1 ring-content/50"
+          ? "bg-selection-hover"
           : "hover:bg-content/8"
       }`}
     >

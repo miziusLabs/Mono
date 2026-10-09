@@ -226,7 +226,7 @@ function AssignmentModel({
           data-assignment-model-target
           className="flex flex-col overflow-hidden"
         >
-          <label className="flex shrink-0 items-center gap-2 border-b border-stroke px-3 py-2.5 text-content/50">
+          <label className="flex shrink-0 items-center gap-2 border-b border-transparent px-3 py-2.5 text-content/50">
             <Search className="size-3.5 shrink-0" strokeWidth={1.75} />
             <input
               ref={search}
@@ -500,11 +500,11 @@ export function OrchestrationPreview({
   const secondary =
     "flex h-7 items-center gap-1.5 rounded-md px-2.5 text-[11px] text-content/50 hover:bg-content/8 hover:text-content disabled:opacity-35";
   const field =
-    "w-full rounded-md border border-content/12 bg-background-base/40 px-2 py-1.5 text-[12px] leading-5 text-content outline-none placeholder:text-content/35 focus:border-content/30";
+    "w-full rounded-md border border-transparent bg-background-base/40 px-2 py-1.5 text-[12px] leading-5 text-content outline-none placeholder:text-content/35 focus-visible:outline-2 focus-visible:outline-accent";
   const fieldLabel = "mb-1 block text-[11px] leading-tight text-content/45";
   return (
     <div
-      className="mb-2 overflow-hidden rounded-xl border border-content/10 bg-content/3 font-sans"
+      className="mb-2 overflow-hidden rounded-xl border border-transparent bg-content/3 font-sans"
       aria-label="Orchestration proposal"
       data-orchestration-review
     >
@@ -588,7 +588,7 @@ export function OrchestrationPreview({
         </p>
       )}
       {!!proposal.tasks.length && (
-        <ul className="border-t border-stroke py-1">
+        <ul className="border-t border-transparent py-1">
           {visible.map((task) => {
             const index = proposal.tasks.indexOf(task);
             const open = expanded.includes(task.id);
@@ -710,7 +710,7 @@ export function OrchestrationPreview({
           type="button"
           aria-expanded={showAll}
           onClick={() => setShowAll(!showAll)}
-          className="flex h-8 w-full items-center gap-1.5 border-t border-stroke px-3 text-left text-[11px] text-content/45 hover:bg-content/5 hover:text-content/70"
+          className="flex h-8 w-full items-center gap-1.5 border-t border-transparent px-3 text-left text-[11px] text-content/45 hover:bg-content/5 hover:text-content/70"
         >
           {showAll ? (
             <ChevronDown className="size-3.5" />
@@ -728,7 +728,7 @@ export function OrchestrationPreview({
         </p>
       )}
       {!planning && (
-        <div className="flex flex-wrap items-center justify-between gap-2 border-t border-stroke px-3 py-2 text-[11px] text-content/45">
+        <div className="flex flex-wrap items-center justify-between gap-2 border-t border-transparent px-3 py-2 text-[11px] text-content/45">
           <div className="flex items-center gap-1.5">
             {editable ? (
               <>

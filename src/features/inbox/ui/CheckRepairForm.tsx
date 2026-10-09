@@ -282,7 +282,7 @@ export function CheckRepairForm({
           Wait for the latest checks before starting a fix.
         </p>
       ) : null}
-      <div className="flex shrink-0 items-center gap-3 border-t border-stroke px-3 py-2.5">
+      <div className="flex shrink-0 items-center gap-3 bg-content/[0.02] px-3 py-2.5">
         <div className="min-w-0 flex-1 text-[11px] leading-4">
           <p className="truncate text-content/65" title={selectedTitle}>
             {selectedTitle}

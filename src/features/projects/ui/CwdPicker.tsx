@@ -348,7 +348,7 @@ export function CwdPicker({
             ) : null}
           </div>
           {onNewTerminal ? (
-            <div className="shrink-0 border-t border-stroke py-1">
+            <div className="shrink-0 border-t border-transparent py-1">
               <button
                 type="button"
                 role="menuitem"

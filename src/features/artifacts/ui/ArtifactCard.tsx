@@ -16,7 +16,7 @@ export function ArtifactCard({
       aria-label={`Open ${label.toLowerCase()} ${card.title}`}
       onClick={() => onOpen?.(card.id)}
       disabled={!onOpen}
-      className="flex w-full max-w-lg items-start gap-3 rounded-xl border border-content/10 bg-content/5 px-4 py-3.5 text-left font-sans hover:border-content/20 hover:bg-content/8 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-accent disabled:opacity-60"
+      className="flex w-full max-w-lg items-start gap-3 rounded-xl border border-transparent bg-content/5 px-4 py-3.5 text-left font-sans hover:bg-content/8 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-accent disabled:opacity-60"
     >
       <File
         className="mt-0.5 size-5 shrink-0 text-content/55"

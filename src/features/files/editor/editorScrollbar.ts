@@ -294,8 +294,7 @@ const scrollbarTheme = EditorView.theme({
     bottom: "0",
     width: `${RAIL_WIDTH}px`,
     boxSizing: "border-box",
-    borderLeft:
-      "1px solid color-mix(in srgb, var(--color-content) 7%, transparent)",
+    borderLeft: "1px solid transparent",
     background: "transparent",
     cursor: "default",
     touchAction: "none",
@@ -357,8 +356,6 @@ const scrollbarTheme = EditorView.theme({
     height: "2px",
     pointerEvents: "none",
     backgroundColor: "var(--color-accent)",
-    boxShadow:
-      "0 0 0 1px color-mix(in srgb, var(--color-background-base) 42%, transparent)",
   },
   "&:not(.cm-focused) .cm-editorScrollbarCursor": {
     opacity: "0.6",

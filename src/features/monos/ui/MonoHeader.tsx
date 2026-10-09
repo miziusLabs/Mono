@@ -35,7 +35,7 @@ export function MonoHeader({
         status={state.status}
         className={`relative z-10 shrink-0 ${greeting ? "size-14" : "size-8"}`}
       />
-      <div className="mono-pill -mt-2 flex h-8 items-center rounded-full border px-3.5 backdrop-blur-md">
+      <div className="mono-pill -mt-2 flex h-8 items-center rounded-full px-3.5 backdrop-blur-md">
         <h2 className="text-[13px] font-semibold leading-none text-content">
           {agent.name}
         </h2>

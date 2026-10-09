@@ -19,7 +19,6 @@ import { drawSpeechBubble } from "../../sessions/model/speechBubble";
 const CELL = 6;
 const GAP = 1;
 const PITCH = CELL + GAP;
-const BORDER_OPACITY = 0.06;
 const PEAK_OPACITY = 0.72;
 const LOGO_OPACITY = 0.7;
 const BUBBLE_OPACITY = 0.9;
@@ -238,9 +237,6 @@ export function TerminalGridBackground() {
 
       const fade = arcade.fade();
       ctx.clearRect(0, 0, width, height);
-      ctx.lineWidth = 1;
-      ctx.strokeStyle = `rgba(${rgb}, ${BORDER_OPACITY * fade})`;
-
       const peak = PEAK_OPACITY * dim;
       for (let y = 0; y < rows; y++) {
         for (let x = 0; x < cols; x++) {
@@ -251,7 +247,6 @@ export function TerminalGridBackground() {
             ctx.fillStyle = `rgba(${rgb}, ${fillOpacity})`;
             ctx.fillRect(px, py, CELL, CELL);
           }
-          ctx.strokeRect(px + 0.5, py + 0.5, CELL - 1, CELL - 1);
         }
       }
 
@@ -550,8 +545,8 @@ export function TerminalGridBackground() {
                   onClick={() => pickMode(id)}
                   className={`cursor-pointer border px-2 py-1 ${
                     on
-                      ? "border-content/40 bg-content/10 text-content"
-                      : "border-content/10 text-content/40 hover:border-content/25 hover:text-content/70"
+                      ? "border-transparent bg-content/10 text-content"
+                      : "border-transparent text-content/40 hover:border-transparent hover:text-content/70"
                   }`}
                 >
                   {id}
@@ -564,7 +559,7 @@ export function TerminalGridBackground() {
               type="button"
               tabIndex={-1}
               onClick={releaseControl}
-              className="pointer-events-auto cursor-pointer border border-content/20 bg-background-base/70 px-2 py-1 text-content/70 hover:border-content/40 hover:text-content"
+              className="pointer-events-auto cursor-pointer border border-transparent bg-background-base/70 px-2 py-1 text-content/70 hover:border-transparent hover:text-content"
             >
               <span className="text-content/35">[</span> release{" "}
               <span className="text-content/35">]</span>
@@ -579,7 +574,7 @@ export function TerminalGridBackground() {
               tabIndex={-1}
               onMouseDown={(event) => event.preventDefault()}
               onClick={takeControl}
-              className="pointer-events-none flex cursor-pointer items-center gap-2 border border-content/25 bg-background-base/80 px-3 py-1.5 font-mono text-[11px] tracking-[0.16em] text-content/85 shadow-lg backdrop-blur-sm group-hover:pointer-events-auto hover:border-content/45 hover:bg-content/10 hover:text-content"
+              className="pointer-events-none flex cursor-pointer items-center gap-2 border border-transparent bg-background-base/80 px-3 py-1.5 font-mono text-[11px] tracking-[0.16em] text-content/85 shadow-lg backdrop-blur-sm group-hover:pointer-events-auto hover:border-transparent hover:bg-content/10 hover:text-content"
             >
               <span className="text-content/40">[</span>
               take control

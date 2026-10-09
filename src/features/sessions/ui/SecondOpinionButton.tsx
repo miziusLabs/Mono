@@ -119,7 +119,7 @@ export function BuildTargetButton({
       menuLabel="Build this plan with another model or provider"
       includeCurrent
       disabled={disabled}
-      triggerClassName="flex h-6 w-6 shrink-0 items-center justify-center rounded-r-md border-l border-background-base/20 bg-content text-background-base hover:bg-content/90 disabled:pointer-events-none disabled:opacity-40"
+      triggerClassName="flex h-6 w-6 shrink-0 items-center justify-center rounded-r-md bg-content text-background-base hover:bg-content/90 disabled:pointer-events-none disabled:opacity-40"
     />
   );
 }
@@ -425,7 +425,7 @@ export function SecondOpinionButton({
                 {description}
               </p>
             </div>
-            <div className="mx-1 mb-1 h-px bg-content/10" />
+            <div className="mx-1 mb-1" />
             {targets.length === 0 ? (
               <div className="px-2.5 py-2 text-[12px] leading-4 text-content/50">
                 {disabledTitle}

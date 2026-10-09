@@ -187,7 +187,7 @@ export function ProjectTerminalDock({
             : dock.side === "left"
               ? "border-r"
               : "border-l"
-      } border-stroke`}
+      } border-transparent`}
       onMouseDown={onFocus}
       onFocus={onFocus}
     >
@@ -196,7 +196,7 @@ export function ProjectTerminalDock({
         aria-orientation={vertical ? "horizontal" : "vertical"}
         aria-label="Resize terminal"
         aria-valuenow={dock.size}
-        className={`${sash} ${dragging ? "bg-content/15" : "hover:bg-content/10"}`}
+        className={sash}
         onPointerDown={onResizePointerDown}
         onPointerMove={onResizePointerMove}
         onPointerUp={onResizePointerUp}

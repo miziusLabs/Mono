@@ -36,7 +36,7 @@ export function UsageLimitNotice({
     <div
       className={
         variant === "mono"
-          ? "mx-1.5 mb-2 rounded-lg border border-amber-400/20 bg-amber-400/6 px-3 py-2.5 text-[12px] text-content/60"
+          ? "mx-1.5 mb-2 rounded-lg bg-amber-400/6 px-3 py-2.5 text-[12px] text-content/60"
           : "px-2 text-content/55"
       }
       data-usage-limit
@@ -46,7 +46,7 @@ export function UsageLimitNotice({
         className={
           variant === "mono"
             ? "flex items-center gap-2"
-            : "relative z-0 flex h-8 items-center gap-2 rounded-t-[10px] border border-b-0 border-amber-400/25 bg-amber-400/10 px-2 text-[12px]"
+            : "relative z-0 flex h-8 items-center gap-2 rounded-t-[10px] bg-amber-400/10 px-2 text-[12px]"
         }
       >
         <Gauge className="size-3.5 shrink-0 text-amber-400" />

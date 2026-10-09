@@ -133,7 +133,7 @@ export function WorktreesPage({
           Loading worktrees…
         </p>
       ) : !worktrees.length ? (
-        <div className="flex flex-col items-center gap-2 rounded-xl border border-stroke px-4 py-8 text-center">
+        <div className="flex flex-col items-center gap-2 rounded-xl border border-transparent px-4 py-8 text-center">
           <FolderTree className="size-5 text-content/35" />
           <p className="text-[13px] font-medium">No additional worktrees</p>
           <p className="text-[12px] text-content/50">
@@ -141,7 +141,7 @@ export function WorktreesPage({
           </p>
         </div>
       ) : (
-        <div className="divide-y divide-stroke overflow-hidden rounded-xl border border-stroke">
+        <div className="divide-y divide-transparent overflow-hidden rounded-xl border border-transparent">
           {worktrees.map((tree) => {
             const count = worktreeSessionIds(tree, liveSessions).length;
             const blocked = tree.locked

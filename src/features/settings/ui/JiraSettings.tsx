@@ -162,7 +162,7 @@ export function JiraSettings() {
                 required
                 autoComplete="off"
                 spellCheck={false}
-                className="h-8 w-full rounded-md border border-content/10 bg-transparent px-2 text-content outline-none focus:border-content/20"
+                className="h-8 w-full rounded-md border border-transparent bg-transparent px-2 text-content outline-none focus-visible:outline-2 focus-visible:outline-accent"
               />
             </label>
           ))}

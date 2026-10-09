@@ -366,7 +366,7 @@ function WorkspaceModePicker({
             </button>
           ) : null}
           {onOpenSettings ? (
-            <div className="h-9 border-t border-stroke">
+            <div className="h-9 border-t border-transparent">
               <button
                 type="button"
                 title="Open worktree settings"
@@ -453,7 +453,7 @@ function WorkspaceModePicker({
           {pickError || loadError ? (
             <p
               role="alert"
-              className="border-t border-stroke px-2 py-2 text-[11px] text-red-400"
+              className="border-t border-transparent px-2 py-2 text-[11px] text-red-400"
             >
               {pickError || loadError}
             </p>
@@ -552,7 +552,7 @@ export function WorktreeBasePicker({
           aria-label="Worktree base branch"
           className="flex flex-col overflow-hidden"
         >
-          <label className="flex shrink-0 items-center gap-2 border-b border-stroke px-2 py-2.5 text-content/50">
+          <label className="flex shrink-0 items-center gap-2 border-b border-transparent px-2 py-2.5 text-content/50">
             <Search className="size-3.5 shrink-0" />
             <input
               ref={search}

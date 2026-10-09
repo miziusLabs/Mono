@@ -706,7 +706,7 @@ export function BtwSheet({
           ref={contentRef}
           className="relative z-[1] flex h-full flex-col font-sans text-sm text-content"
         >
-          <div className="btw-sheet-body flex h-11 shrink-0 items-center gap-1 border-b border-content/8 pr-2 pl-2.5">
+          <div className="btw-sheet-body flex h-11 shrink-0 items-center gap-1 pr-2 pl-2.5">
             <div
               role="tablist"
               aria-label="Side questions"

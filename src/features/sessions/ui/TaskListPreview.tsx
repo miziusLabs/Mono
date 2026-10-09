@@ -11,9 +11,9 @@ export function TaskListPreview({ items, explanation }: Props) {
   return (
     <section
       aria-label="Task progress"
-      className="mb-2 overflow-hidden rounded-[10px] border border-content/10 bg-content/[0.035]"
+      className="mb-2 overflow-hidden rounded-[10px] bg-content/[0.035]"
     >
-      <div className="flex items-start gap-2 border-b border-stroke px-2.5 py-2">
+      <div className="flex items-start gap-2 bg-content/[0.025] px-2.5 py-2">
         <ListEnd
           className="mt-0.5 size-4 shrink-0 text-content/45"
           strokeWidth={1.75}
@@ -98,7 +98,7 @@ function TaskState({ status }: { status: TaskListItemStatus }) {
   return (
     <span
       aria-label="Pending"
-      className="mt-px size-4 shrink-0 rounded-full border border-content/25 bg-content/[0.02]"
+      className="mt-px size-4 shrink-0 rounded-full bg-content/15"
     />
   );
 }

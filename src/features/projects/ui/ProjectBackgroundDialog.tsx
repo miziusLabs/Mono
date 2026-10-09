@@ -182,7 +182,7 @@ export function ProjectBackgroundDialog({
       <div className="flex flex-col gap-5 p-4">
         <div>
           <div
-            className={`overflow-hidden rounded-xl border border-content/10 ${previewEffect === "gradient-blur" ? "bg-background-base" : "bg-content/5"}`}
+            className={`overflow-hidden rounded-xl border border-transparent ${previewEffect === "gradient-blur" ? "bg-background-base" : "bg-content/5"}`}
           >
             {previewSrc ? (
               previewEffect === "gradient-blur" ? (
@@ -216,7 +216,7 @@ export function ProjectBackgroundDialog({
             type="button"
             onClick={() => void choose()}
             disabled={busy}
-            className="mt-2 flex w-full items-center justify-center gap-1.5 rounded-md border border-content/10 px-2.5 py-1.5 text-[12px] text-content/70 hover:bg-content/10 hover:text-content disabled:opacity-40"
+            className="mt-2 flex w-full items-center justify-center gap-1.5 rounded-md border border-transparent px-2.5 py-1.5 text-[12px] text-content/70 hover:bg-content/10 hover:text-content disabled:opacity-40"
           >
             {busy ? (
               <Loader className="size-3.5 animate-spin" aria-hidden />
@@ -236,7 +236,7 @@ export function ProjectBackgroundDialog({
         </div>
 
         {path && !locked ? (
-          <div className="border-t border-stroke pt-4">
+          <div className="border-t border-transparent pt-4">
             <div className="flex items-center justify-between gap-4">
               <div className="min-w-0 flex-1">
                 <span className="text-[13px] font-medium text-content">
@@ -272,7 +272,7 @@ export function ProjectBackgroundDialog({
               <div
                 role="radiogroup"
                 aria-label="Show project background on"
-                className="grid w-44 grid-cols-2 gap-0.5 rounded-md border border-content/10 p-0.5 text-[12px]"
+                className="grid w-44 grid-cols-2 gap-0.5 rounded-md border border-transparent p-0.5 text-[12px]"
               >
                 {[
                   { value: "empty" as const, label: "Empty only" },
@@ -341,7 +341,7 @@ export function ProjectBackgroundDialog({
             type="button"
             onClick={() => void removeImage()}
             disabled={busy}
-            className="w-full rounded-md border border-content/10 px-2.5 py-1.5 text-[12px] text-red-400 hover:border-red-400/40 hover:bg-red-400/10 disabled:opacity-40"
+            className="w-full rounded-md border border-transparent px-2.5 py-1.5 text-[12px] text-red-400 hover:bg-red-400/10 disabled:opacity-40"
           >
             Remove background image
           </button>
@@ -359,7 +359,7 @@ function ProjectBackgroundRow({
   children: ReactNode;
 }) {
   return (
-    <div className="flex items-center justify-between gap-4 border-t border-stroke pt-4">
+    <div className="flex items-center justify-between gap-4 border-t border-transparent pt-4">
       <span className="text-[13px] font-medium text-content">{label}</span>
       {children}
     </div>

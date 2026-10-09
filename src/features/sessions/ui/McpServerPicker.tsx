@@ -79,9 +79,9 @@ export function McpServerPicker({
           onDismiss("escape");
         }
       }}
-      className="overflow-hidden rounded-lg border border-content/10 bg-content/5 shadow-xl backdrop-blur-xl"
+      className="overflow-hidden rounded-lg bg-content/5 shadow-xl backdrop-blur-xl"
     >
-      <div className="flex items-center gap-2 border-b border-content/10 px-3 py-2">
+      <div className="flex items-center gap-2 bg-content/[0.02] px-3 py-2">
         <Search className="size-3.5 shrink-0 text-content/45" />
         <input
           ref={search}
@@ -202,7 +202,7 @@ export function McpServerPicker({
       <button
         type="button"
         onClick={onManage}
-        className="flex w-full items-center gap-2 border-t border-content/10 px-3 py-2 text-left text-[12px] text-content/65 hover:bg-content/5 hover:text-content"
+        className="flex w-full items-center gap-2 px-3 py-2 text-left text-[12px] text-content/65 hover:bg-content/5 hover:text-content"
       >
         <Settings className="size-3.5" />
         Manage MCP Servers…

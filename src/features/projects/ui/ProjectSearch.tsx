@@ -172,7 +172,7 @@ export function ProjectSearch({
 
   return (
     <div className="flex min-h-0 flex-1 flex-col">
-      <div className="flex shrink-0 items-center gap-1 border-b border-stroke px-1.5 py-1">
+      <div className="flex shrink-0 items-center gap-1 border-b border-transparent px-1.5 py-1">
         <button
           type="button"
           onClick={onClose}
@@ -186,8 +186,8 @@ export function ProjectSearch({
           Search in files
         </span>
       </div>
-      <div className="shrink-0 space-y-2 border-b border-stroke p-2">
-        <div className="flex items-center gap-1 rounded-md border border-content/10 bg-content/5 px-2 pr-1">
+      <div className="shrink-0 space-y-2 border-b border-transparent p-2">
+        <div className="flex items-center gap-1 rounded-md border border-transparent bg-content/5 px-2 pr-1">
           <input
             ref={inputRef}
             value={query}
@@ -226,7 +226,7 @@ export function ProjectSearch({
           placeholder="files to include"
           aria-label="files to include"
           spellCheck={false}
-          className="w-full rounded-md border border-content/10 bg-content/5 px-2 py-1.5 text-[11px] text-content outline-none placeholder:text-content/35"
+          className="w-full rounded-md border border-transparent bg-content/5 px-2 py-1.5 text-[11px] text-content outline-none placeholder:text-content/35"
         />
         <input
           value={exclude}
@@ -234,7 +234,7 @@ export function ProjectSearch({
           placeholder="files to exclude"
           aria-label="files to exclude"
           spellCheck={false}
-          className="w-full rounded-md border border-content/10 bg-content/5 px-2 py-1.5 text-[11px] text-content outline-none placeholder:text-content/35"
+          className="w-full rounded-md border border-transparent bg-content/5 px-2 py-1.5 text-[11px] text-content outline-none placeholder:text-content/35"
         />
       </div>
 
@@ -260,7 +260,7 @@ export function ProjectSearch({
 
       <div className="min-h-0 flex-1 overflow-y-auto overscroll-none">
         {groups.map((group) => (
-          <section key={group.path} className="border-b border-stroke">
+          <section key={group.path} className="border-b border-transparent">
             <div className="flex items-center gap-1.5 px-2 py-1.5">
               <FileTypeIcon name={group.name} isDir={false} size={16} />
               <span className="min-w-0 flex-1 truncate text-[12px] text-content">

@@ -303,7 +303,6 @@ export function GraphResizeSash({
   maxHeight: () => number;
 }) {
   const drag = useRef<{ start: number; size: number } | null>(null);
-  const [dragging, setDragging] = useState(false);
   const paintedRef = useRef(height);
   paintedRef.current = height;
   const paintRef = useRef(onHeightPaint);
@@ -324,7 +323,6 @@ export function GraphResizeSash({
     const pointerId = event.pointerId;
     handle.setPointerCapture(pointerId);
     drag.current = { start: event.clientY, size: paintedRef.current };
-    setDragging(true);
     const restoreSelection = suppressTextSelection();
     const previousCursor = document.body.style.cursor;
     document.body.style.cursor = "row-resize";
@@ -344,7 +342,6 @@ export function GraphResizeSash({
       restoreSelection();
       document.body.style.cursor = previousCursor;
       document.documentElement.classList.remove("is-resizing");
-      setDragging(false);
       drag.current = null;
       try {
         handle.releasePointerCapture(pointerId);
@@ -370,9 +367,7 @@ export function GraphResizeSash({
       aria-orientation="horizontal"
       aria-label="Resize graph"
       aria-valuenow={height}
-      className={`z-10 h-1.5 shrink-0 cursor-row-resize touch-none ${
-        dragging ? "bg-content/15" : "hover:bg-content/10"
-      }`}
+      className="z-10 h-1.5 shrink-0 cursor-row-resize touch-none"
       onPointerDown={onPointerDown}
       onDoubleClick={() => commitRef.current(clamp(GRAPH_PANEL_DEFAULT))}
     />

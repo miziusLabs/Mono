@@ -1252,8 +1252,7 @@ const gitTheme = EditorView.theme({
     color: "var(--color-content)",
     background:
       "color-mix(in srgb, var(--color-background-base) 92%, transparent)",
-    boxShadow:
-      "0 0 0 1px color-mix(in srgb, var(--color-content) 14%, transparent), 0 6px 16px color-mix(in srgb, #000 22%, transparent)",
+    boxShadow: "0 6px 16px color-mix(in srgb, #000 22%, transparent)",
   },
   ".cm-gitHunkBtn": {
     display: "grid",

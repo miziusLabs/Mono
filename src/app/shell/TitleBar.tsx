@@ -909,7 +909,7 @@ function TitleBarComponent({
   // exempts buttons, links and inputs on its own.
   return (
     <header
-      className={`flex h-10 shrink-0 select-none items-stretch border-b border-stroke${
+      className={`flex h-10 shrink-0 select-none items-stretch${
         compactRail && !mono ? " body-glass" : ""
       }`}
       data-tauri-drag-region="deep"
@@ -969,11 +969,7 @@ function TitleBarComponent({
         </CwdPicker>
       ) : null}
 
-      <div
-        className={`flex min-w-0 flex-1 items-stretch${
-          showProjectButton ? " border-l border-stroke" : ""
-        }`}
-      >
+      <div className="flex min-w-0 flex-1 items-stretch">
         {mono ? (
           <MonoTitle look={mono.look} state={mono.state} />
         ) : (

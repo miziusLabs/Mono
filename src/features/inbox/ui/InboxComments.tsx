@@ -164,7 +164,7 @@ export function InboxComments({
             : "GitHub";
 
   return (
-    <section className="flex flex-col gap-3 border-t border-stroke pt-5">
+    <section className="flex flex-col gap-3 pt-5">
       <div className="flex items-center gap-2 text-[12px] text-content/50">
         {thread.commits ? (
           <>
@@ -197,7 +197,6 @@ export function InboxComments({
                 author={item.author}
                 commits={item.commits}
                 provider={provider}
-                first={index === 0}
                 last={index === items.length - 1}
               />
             ) : (
@@ -208,7 +207,6 @@ export function InboxComments({
                 provider={provider}
                 replyMode={replyMode}
                 onReply={onReply}
-                first={index === 0}
                 last={index === items.length - 1}
               />
             ),
@@ -287,7 +285,7 @@ export function InboxCommentForm({
   return (
     <form
       onSubmit={onFormSubmit}
-      className="flex flex-col gap-2 border-t border-stroke pt-5"
+      className="flex flex-col gap-2 pt-5"
     >
       {replyTo ? (
         <div className="flex items-center gap-2 text-[12px] text-content/50">
@@ -305,7 +303,7 @@ export function InboxCommentForm({
           </button>
         </div>
       ) : null}
-      <div className="rounded-md border border-content/10 bg-content/5 focus-within:border-content/20">
+      <div className="rounded-md bg-content/5 focus-within:ring-1 focus-within:ring-content/20">
         <textarea
           ref={field}
           rows={2}
@@ -335,7 +333,7 @@ export function InboxCommentForm({
 
 function CommentsPending() {
   return (
-    <div className="flex items-center gap-2 border-t border-stroke pt-5 text-[12px] text-content/45">
+    <div className="flex items-center gap-2 pt-5 text-[12px] text-content/45">
       <LoaderCircle className="size-3.5 animate-spin" strokeWidth={1.75} />
       Loading comments
     </div>
@@ -381,7 +379,7 @@ function InboxComment({
       <header
         className={`flex min-w-0 flex-wrap items-center gap-x-2 gap-y-1 text-[12px] text-content/50 ${
           nested ? "" : timeline ? "min-h-9 px-3 py-1.5" : "px-3 py-2"
-        } ${!nested && (hasBody || hasReplies) ? "border-b border-stroke" : ""}`}
+        }`}
       >
         <InboxCommentPerson
           avatar={!timeline}
@@ -475,11 +473,11 @@ function InboxComment({
         </div>
       ) : null}
       {hasReplies ? (
-        <div className="border-t border-stroke px-3">
-          {comment.replies.map((reply, index) => (
+        <div className="space-y-1 bg-content/[0.02] px-3">
+          {comment.replies.map((reply) => (
             <div
               key={reply.id}
-              className={`py-2.5 ${index > 0 ? "border-t border-stroke" : ""}`}
+              className="rounded-md py-2.5"
             >
               <InboxComment
                 comment={reply}
@@ -498,7 +496,7 @@ function InboxComment({
 
   if (nested) return <article>{inner}</article>;
   return (
-    <article className="overflow-hidden rounded-md border border-content/10 bg-content/5">
+    <article className="overflow-hidden rounded-md bg-content/5">
       {inner}
     </article>
   );
@@ -560,19 +558,17 @@ function isReviewEvent(comment: InboxComment): boolean {
   );
 }
 
-/** The single space between any two rail stops: headings, commits, reviews, comments. */
+/** The single space between timeline stops: headings, commits, reviews, comments. */
 const TIMELINE_GAP = "pb-3";
 
-/** One stop on the activity rail: a node, and a line down to the next stop. */
+/** One stop in the activity timeline. */
 function TimelineStop({
   node,
-  first,
   last,
   card = false,
   children,
 }: {
   node: ReactNode;
-  first: boolean;
   last: boolean;
   /** Centres the node on a comment card's header instead of a 20px row. */
   card?: boolean;
@@ -580,7 +576,7 @@ function TimelineStop({
 }) {
   return (
     <li className="flex gap-3">
-      <TimelineRail first={first} last={last} lead={card ? "h-2" : "h-0"}>
+      <TimelineRail last={last} lead={card ? "h-2" : "h-0"}>
         {node}
       </TimelineRail>
       <div className={`min-w-0 flex-1 ${last ? "" : TIMELINE_GAP}`}>
@@ -591,16 +587,14 @@ function TimelineStop({
 }
 
 /**
- * Rail column shared by every stop. The lead segment sets where the node sits,
- * so avatars, review icons and commit dots all land on their row's centre.
+ * Marker column shared by every stop. The lead spacing sets where the node
+ * sits, so avatars, review icons and commit dots all land on their row's centre.
  */
 function TimelineRail({
-  first,
   last,
   lead,
   children,
 }: {
-  first: boolean;
   last: boolean;
   lead: string;
   children: ReactNode;
@@ -608,12 +602,12 @@ function TimelineRail({
   return (
     <div aria-hidden className="flex w-5 shrink-0 flex-col items-center">
       <span
-        className={`w-px shrink-0 ${lead} ${first ? "" : "bg-content/10"}`}
+        className={`w-px shrink-0 ${lead}`}
       />
       <div className="flex size-5 shrink-0 items-center justify-center">
         {children}
       </div>
-      {last ? null : <span className="w-px flex-1 bg-content/10" />}
+      {last ? null : <span className="w-px flex-1" />}
     </div>
   );
 }
@@ -624,7 +618,6 @@ function InboxTimelineComment({
   provider,
   replyMode,
   onReply,
-  first,
   last,
 }: {
   comment: InboxComment;
@@ -632,7 +625,6 @@ function InboxTimelineComment({
   provider: InboxProvider;
   replyMode?: "thread" | "parent";
   onReply?: (target: InboxReplyTarget) => void;
-  first: boolean;
   last: boolean;
 }) {
   const author = comment.author || "ghost";
@@ -655,7 +647,6 @@ function InboxTimelineComment({
           : MessageSquare;
     return (
       <TimelineStop
-        first={first}
         last={last}
         node={
           <Icon
@@ -677,7 +668,6 @@ function InboxTimelineComment({
 
   return (
     <TimelineStop
-      first={first}
       last={last}
       card
       node={
@@ -707,13 +697,11 @@ function InboxCommitRun({
   author,
   commits,
   provider,
-  first,
   last,
 }: {
   author: string;
   commits: InboxCommit[];
   provider: InboxProvider;
-  first: boolean;
   last: boolean;
 }) {
   const name = author || "ghost";
@@ -721,7 +709,6 @@ function InboxCommitRun({
   return (
     <>
       <TimelineStop
-        first={first}
         last={false}
         node={
           <InboxAvatar
@@ -782,11 +769,11 @@ function InboxCommitStop({
 }) {
   return (
     <li className="flex gap-3">
-      {/* The rail runs through commit dots, so a push reads as one stretch. */}
+      {/* The dots keep grouped commits easy to scan. */}
       <div aria-hidden className="flex w-5 shrink-0 flex-col items-center">
-        <span className="h-1.5 w-px shrink-0 bg-content/10" />
-        <span className="size-2 shrink-0 rounded-full border-[1.5px] border-content/35" />
-        {last ? null : <span className="w-px flex-1 bg-content/10" />}
+        <span className="h-1.5 w-px shrink-0" />
+        <span className="size-2 shrink-0 rounded-full bg-content/20" />
+        {last ? null : <span className="w-px flex-1" />}
       </div>
       <div className={`min-w-0 flex-1 ${last ? "" : TIMELINE_GAP}`}>
         <button

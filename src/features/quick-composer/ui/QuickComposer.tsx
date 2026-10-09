@@ -494,7 +494,7 @@ export function QuickComposer({ onShown }: { onShown: () => void }) {
         if (picker) closePicker();
         else dismiss();
       }}
-      className="relative flex max-h-[520px] flex-col overflow-clip rounded-[16px] border border-content/10 bg-background-base/45 text-content"
+      className="relative flex max-h-[520px] flex-col overflow-clip rounded-[16px] border border-transparent bg-background-base/45 text-content"
     >
       <div
         title="Drag to move"
@@ -519,7 +519,7 @@ export function QuickComposer({ onShown }: { onShown: () => void }) {
         <X className="size-3" />
       </button>
       {attachments.dragging ? (
-        <div className="pointer-events-none absolute inset-0 z-30 grid place-items-center rounded-[16px] border border-dashed border-accent/60 bg-background-base/90 text-sm text-accent">
+        <div className="pointer-events-none absolute inset-0 z-30 grid place-items-center rounded-[16px] border border-dashed border-transparent bg-background-base/90 text-sm text-accent">
           Drop to attach
         </div>
       ) : null}
@@ -638,7 +638,7 @@ export function QuickComposer({ onShown }: { onShown: () => void }) {
           files.
         </p>
       ) : null}
-      <div className="flex shrink-0 items-center gap-1.5 border-t border-stroke px-3 py-2">
+      <div className="flex shrink-0 items-center gap-1.5 border-t border-transparent px-3 py-2">
         <button
           type="button"
           ref={plusRef}
@@ -761,7 +761,7 @@ export function QuickComposer({ onShown }: { onShown: () => void }) {
               id="quick-composer-commands"
               role="listbox"
               aria-label="Commands"
-              className="shrink-0 border-t border-stroke p-2"
+              className="shrink-0 border-t border-transparent p-2"
             >
               {commandOptions.length === 0 ? (
                 <p className="px-2 py-2 text-[12px] text-content/45">
@@ -815,7 +815,7 @@ export function QuickComposer({ onShown }: { onShown: () => void }) {
           ) : null}
 
           {picker === "project" ? (
-            <div className="flex min-h-0 flex-col border-t border-stroke">
+            <div className="flex min-h-0 flex-col border-t border-transparent">
               <label className="flex shrink-0 items-center gap-2 px-4 py-2 text-content/45">
                 <Search className="size-3.5 shrink-0" />
                 <input
@@ -902,7 +902,7 @@ function CommandLabel({ name }: { name: string }) {
 
 function Kbd({ children }: { children: string }) {
   return (
-    <kbd className="rounded border border-content/12 px-1 font-sans text-[10px] text-content/55">
+    <kbd className="rounded border border-transparent px-1 font-sans text-[10px] text-content/55">
       {children}
     </kbd>
   );

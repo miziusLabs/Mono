@@ -372,7 +372,7 @@ function ImageView({
           }
         />
       </div>
-      <footer className="flex h-8 shrink-0 items-center gap-3 border-t border-stroke px-3 text-[11px] text-content/50">
+      <footer className="flex h-8 shrink-0 items-center gap-3 border-t border-transparent px-3 text-[11px] text-content/50">
         <span className="tabular-nums">
           {natural ? `${natural.w} × ${natural.h}` : "—"}
         </span>

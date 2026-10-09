@@ -79,7 +79,7 @@ export function NotificationMuteDatePicker({
           {error}
         </p>
       ) : null}
-      <div className="mt-3 flex items-center justify-between gap-2 border-t border-stroke pt-2.5">
+      <div className="mt-3 flex items-center justify-between gap-2 pt-2.5">
         <button
           type="button"
           onClick={onCancel}
@@ -90,7 +90,7 @@ export function NotificationMuteDatePicker({
         <button
           type="submit"
           disabled={!projectIds.length}
-          className="primary-action flex shrink-0 items-center rounded-md border border-transparent px-2.5 py-1 text-[12px] focus-visible:outline-2 focus-visible:outline-accent disabled:cursor-default"
+          className="primary-action flex shrink-0 items-center rounded-md px-2.5 py-1 text-[12px] focus-visible:outline-2 focus-visible:outline-accent disabled:cursor-default"
         >
           Mute until then
         </button>

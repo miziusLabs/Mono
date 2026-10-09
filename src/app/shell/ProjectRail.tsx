@@ -344,7 +344,7 @@ export function ProjectRail({
     <nav
       ref={resize.setPaneRef}
       aria-label="Projects"
-      className={`sidebar-glass relative shrink-0 flex-col border-r border-stroke ${visible ? "flex" : "hidden"}`}
+      className={`sidebar-glass relative shrink-0 flex-col ${visible ? "flex" : "hidden"}`}
     >
       <div
         className="flex h-10 shrink-0 select-none items-center pr-1.5"
@@ -565,9 +565,7 @@ export function ProjectRail({
         aria-valuenow={resize.width}
         aria-valuemin={PROJECT_RAIL_WIDTH_MIN}
         aria-valuemax={PROJECT_RAIL_WIDTH_MAX}
-        className={`absolute inset-y-0 -right-px z-10 w-1.5 cursor-col-resize touch-none ${
-          resize.dragging ? "bg-content/15" : "hover:bg-content/10"
-        }`}
+        className="absolute inset-y-0 -right-px z-10 w-1.5 cursor-col-resize touch-none"
         onPointerDown={resize.onPointerDown}
         onDoubleClick={resize.onDoubleClick}
       />
@@ -1009,7 +1007,7 @@ function ProjectCard({
             <Internet className="size-3" strokeWidth={1.75} aria-hidden="true" />
             <span
               aria-hidden="true"
-              className={`absolute right-0 bottom-0 size-1.5 rounded-full ring-1 ring-background-base ${
+              className={`absolute right-0 bottom-0 size-1.5 rounded-full ${
                 online ? "bg-emerald-400" : "bg-content/35"
               }`}
             />

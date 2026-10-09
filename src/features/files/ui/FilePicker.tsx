@@ -219,10 +219,10 @@ export function FilePicker({
         aria-label={paletteMode ? "Command Palette" : "Go to File"}
         data-file-picker
         onMouseDown={(e) => e.stopPropagation()}
-        className="absolute left-1/2 top-[12%] flex w-[min(560px,calc(100vw-24px))] -translate-x-1/2 flex-col overflow-hidden rounded-lg border border-content/10 bg-content/5 backdrop-blur-xl"
+        className="absolute left-1/2 top-[12%] flex w-[min(560px,calc(100vw-24px))] -translate-x-1/2 flex-col overflow-hidden rounded-lg border border-transparent bg-content/5 backdrop-blur-xl"
       >
         <div className="pb-1.5">
-          <label className="flex items-center gap-2 border-b border-stroke px-2 py-2.5 text-content/50">
+          <label className="flex items-center gap-2 border-b border-transparent px-2 py-2.5 text-content/50">
             <Search className="size-3.5 shrink-0" strokeWidth={1.75} />
             <input
               ref={search}
@@ -353,7 +353,7 @@ function ActionList({
               />
             </span>
             {action.hint ? (
-              <kbd className="ml-auto shrink-0 rounded border border-content/10 bg-content/5 px-1.5 py-0.5 font-mono text-[10px] text-content/50">
+              <kbd className="ml-auto shrink-0 rounded border border-transparent bg-content/5 px-1.5 py-0.5 font-mono text-[10px] text-content/50">
                 {action.hint}
               </kbd>
             ) : null}

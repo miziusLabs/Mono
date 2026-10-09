@@ -223,7 +223,7 @@ export function SkillsPage({
                     ? "…"
                     : `${filtered.length} ${filtered.length === 1 ? "skill" : "skills"}`}
                 </span>
-                <label className="flex h-7 w-52 min-w-0 flex-1 items-center gap-2 rounded-md border border-content/10 px-2 text-content/45 focus-within:border-content/20">
+                <label className="flex h-7 w-52 min-w-0 flex-1 items-center gap-2 rounded-md border border-transparent px-2 text-content/45 focus-within:outline-2 focus-within:outline-accent">
                   <Search className="size-3.5 shrink-0" strokeWidth={1.75} />
                   <input
                     ref={filterInput}
@@ -257,7 +257,7 @@ export function SkillsPage({
                   aria-label={adding ? "Close skill form" : "Add skill"}
                   ref={addSkillButton}
                   disabled={busy}
-                  className="rounded-md border border-content/10 px-2.5 py-1 text-[12px] text-content/70 hover:bg-content/10 disabled:opacity-40"
+                  className="rounded-md border border-transparent px-2.5 py-1 text-[12px] text-content/70 hover:bg-content/10 disabled:opacity-40"
                   onClick={() => {
                     setAdding((value) => !value);
                     setCreateError(null);
@@ -270,7 +270,7 @@ export function SkillsPage({
             </div>
 
             {adding ? (
-              <div className="mb-4 overflow-hidden rounded-lg border border-content/10 bg-content/[0.03]">
+              <div className="mb-4 overflow-hidden rounded-lg border border-transparent bg-content/[0.03]">
                 <CreateSkillForm
                   key={cwd}
                   query={query}
@@ -301,7 +301,7 @@ export function SkillsPage({
             ) : skills == null ? (
               <p className="text-[12px] text-content/45">Loading skills…</p>
             ) : (
-              <div className="overflow-hidden rounded-lg border border-content/10">
+              <div className="overflow-hidden rounded-lg border border-transparent">
                 {filtered.length === 0 ? (
                   <p className="px-3 py-3 text-[12px] text-content/45">
                     {skills.length === 0
@@ -314,7 +314,7 @@ export function SkillsPage({
                     return (
                       <div
                         key={skill.path}
-                        className={`border-b border-content/5 px-3 py-2 last:border-b-0 ${previewSkill?.path === skill.path ? "bg-content/5" : ""} ${
+                        className={`border-b border-transparent px-3 py-2 last:border-b-0 ${previewSkill?.path === skill.path ? "bg-content/5" : ""} ${
                           disabled ? "opacity-50" : ""
                         }`}
                       >
@@ -424,7 +424,7 @@ export function SkillsPage({
           <aside
             id={previewId}
             aria-label="Skill preview"
-            className="flex min-h-0 min-w-0 flex-1 flex-col border-t border-stroke @3xl/skills:max-w-[720px] @3xl/skills:border-t-0 @3xl/skills:border-l"
+            className="flex min-h-0 min-w-0 flex-1 flex-col border-t border-transparent @3xl/skills:max-w-[720px] @3xl/skills:border-t-0 @3xl/skills:border-l"
           >
             <header className="flex shrink-0 items-start gap-2 px-4 pt-4 pb-2">
               <h2 className="min-w-0 flex-1 break-words text-[16px] font-semibold text-content">
@@ -441,7 +441,7 @@ export function SkillsPage({
                 <X className="size-3.5" strokeWidth={1.75} />
               </button>
             </header>
-            <div className="shrink-0 space-y-3 border-b border-stroke px-4 pt-1 pb-3">
+            <div className="shrink-0 space-y-3 border-b border-transparent px-4 pt-1 pb-3">
               <p className="select-text break-all text-[11px] text-content/50">
                 {previewSkill.path}
               </p>

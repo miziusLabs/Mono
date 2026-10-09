@@ -113,7 +113,7 @@ export function MonoChangesPanel({
       <div
         role="tablist"
         aria-label="Changes views"
-        className="flex h-9 shrink-0 items-stretch gap-4 border-b border-stroke px-4"
+        className="flex h-9 shrink-0 items-stretch gap-4 border-b border-transparent px-4"
       >
         <TabButton
           selected={tab === "changes"}
@@ -175,7 +175,7 @@ export function MonoChangesPanel({
         ) : null}
       </div>
       {loaded && !project && outside.length > 0 ? (
-        <p className="shrink-0 border-t border-stroke px-4 py-2 text-[11px] text-content/45">
+        <p className="shrink-0 border-t border-transparent px-4 py-2 text-[11px] text-content/45">
           These files aren’t in a Git repository, so there’s nothing to commit.
         </p>
       ) : null}
@@ -201,10 +201,10 @@ function TabButton({
       aria-selected={selected}
       disabled={disabled}
       onClick={onClick}
-      className={`-mb-px flex items-center gap-1.5 border-b text-[12px] font-medium disabled:opacity-35 ${
+      className={`-mb-px flex items-center gap-1.5 border-b border-transparent text-[12px] font-medium disabled:opacity-35 ${
         selected
-          ? "border-content text-content"
-          : "border-transparent text-content/50 hover:text-content/80"
+          ? "text-content"
+          : "text-content/50 hover:text-content/80"
       }`}
     >
       {children}
@@ -280,7 +280,7 @@ function ProjectHeading({
           <div
             role="menu"
             aria-label="Projects"
-            className="absolute top-full left-0 z-30 mt-1 min-w-44 rounded-md border border-content/10 bg-background-base py-1 shadow-lg"
+            className="absolute top-full left-0 z-30 mt-1 min-w-44 rounded-md border border-transparent bg-background-base py-1 shadow-lg"
           >
             {projects.map((entry) => (
               <button

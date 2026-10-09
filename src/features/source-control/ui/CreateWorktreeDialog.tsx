@@ -70,7 +70,7 @@ export function CreateWorktreeDialog({
     }
   };
   const field =
-    "h-9 rounded-md border border-content/10 bg-background-base px-2.5 text-[13px] outline-none focus:border-content/25 disabled:opacity-50";
+    "h-9 rounded-md border border-transparent bg-background-base px-2.5 text-[13px] outline-none focus-visible:outline-2 focus-visible:outline-accent disabled:opacity-50";
   return (
     <Modal
       title="Create worktree"

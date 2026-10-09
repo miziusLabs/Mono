@@ -521,7 +521,7 @@ export function SettingsView({
       className="flex min-h-0 min-w-0 flex-1 flex-col text-content"
     >
       <div
-        className="flex h-10 shrink-0 select-none items-center border-b border-stroke"
+        className="flex h-10 shrink-0 select-none items-center border-b border-transparent"
         data-tauri-drag-region="deep"
       >
         {IS_MAC && !besideRail ? <div className="w-[78px] shrink-0" /> : null}
@@ -670,7 +670,7 @@ function SettingsSearch({
 
   return (
     <div ref={root} className="relative shrink-0">
-      <label className="flex h-7 w-48 items-center gap-2 rounded-md border border-content/10 px-2 text-content/45 focus-within:border-content/20">
+      <label className="flex h-7 w-48 items-center gap-2 rounded-md border border-transparent px-2 text-content/45 focus-within:outline-2 focus-within:outline-accent">
         <Search className="size-3.5 shrink-0" strokeWidth={1.75} />
         <input
           ref={input}
@@ -1337,7 +1337,7 @@ function GithubSettings() {
         </SecondaryButton>
       </Row>
       {error ? (
-        <p className="border-b border-content/5 px-4 pb-3 text-[12px] text-red-400/90 last:border-b-0">
+        <p className="border-b border-transparent px-4 pb-3 text-[12px] text-red-400/90 last:border-b-0">
           {error}
         </p>
       ) : null}
@@ -1423,7 +1423,7 @@ function GitlabSettings() {
           </div>
         ) : (
           <div className="flex min-w-0 max-w-full flex-wrap items-center gap-2">
-            <label className="flex h-7 w-52 max-w-full shrink-0 items-center rounded-md border border-content/10 px-2 focus-within:border-content/20">
+            <label className="flex h-7 w-52 max-w-full shrink-0 items-center rounded-md border border-transparent px-2 focus-within:outline-2 focus-within:outline-accent">
               <input
                 type="url"
                 value={url}
@@ -1435,7 +1435,7 @@ function GitlabSettings() {
                 className="min-w-0 flex-1 bg-transparent text-[12px] text-content outline-none placeholder:text-content/35"
               />
             </label>
-            <label className="flex h-7 w-52 max-w-full shrink-0 items-center rounded-md border border-content/10 px-2 focus-within:border-content/20">
+            <label className="flex h-7 w-52 max-w-full shrink-0 items-center rounded-md border border-transparent px-2 focus-within:outline-2 focus-within:outline-accent">
               <input
                 type="password"
                 value={token}
@@ -1460,7 +1460,7 @@ function GitlabSettings() {
         )}
       </Row>
       {error ? (
-        <p className="border-b border-content/5 px-4 pb-3 text-[12px] text-red-400/90 last:border-b-0">
+        <p className="border-b border-transparent px-4 pb-3 text-[12px] text-red-400/90 last:border-b-0">
           {error}
         </p>
       ) : null}
@@ -1546,7 +1546,7 @@ function AzureDevOpsSettings() {
           </div>
         ) : (
           <div className="flex min-w-0 max-w-full flex-wrap items-center gap-2">
-            <label className="flex h-7 w-52 max-w-full shrink-0 items-center rounded-md border border-content/10 px-2 focus-within:border-content/20">
+            <label className="flex h-7 w-52 max-w-full shrink-0 items-center rounded-md border border-transparent px-2 focus-within:outline-2 focus-within:outline-accent">
               <input
                 type="url"
                 value={url}
@@ -1558,7 +1558,7 @@ function AzureDevOpsSettings() {
                 className="min-w-0 flex-1 bg-transparent text-[12px] text-content outline-none placeholder:text-content/35"
               />
             </label>
-            <label className="flex h-7 w-52 max-w-full shrink-0 items-center rounded-md border border-content/10 px-2 focus-within:border-content/20">
+            <label className="flex h-7 w-52 max-w-full shrink-0 items-center rounded-md border border-transparent px-2 focus-within:outline-2 focus-within:outline-accent">
               <input
                 type="password"
                 value={token}
@@ -1583,7 +1583,7 @@ function AzureDevOpsSettings() {
         )}
       </Row>
       {error ? (
-        <p className="border-b border-content/5 px-4 pb-3 text-[12px] text-red-400/90 last:border-b-0">
+        <p className="border-b border-transparent px-4 pb-3 text-[12px] text-red-400/90 last:border-b-0">
           {error}
         </p>
       ) : null}
@@ -1689,7 +1689,7 @@ function LinearSettings() {
           </SecondaryButton>
         ) : (
           <div className="flex max-w-full flex-wrap items-center gap-2">
-            <label className="flex h-7 w-52 max-w-full shrink-0 items-center rounded-md border border-content/10 px-2 focus-within:border-content/20">
+            <label className="flex h-7 w-52 max-w-full shrink-0 items-center rounded-md border border-transparent px-2 focus-within:outline-2 focus-within:outline-accent">
               <input
                 type="password"
                 value={token}
@@ -1714,12 +1714,12 @@ function LinearSettings() {
         )}
       </Row>
       {error ? (
-        <p className="border-b border-content/5 px-4 pb-3 text-[12px] text-red-400/90 last:border-b-0">
+        <p className="border-b border-transparent px-4 pb-3 text-[12px] text-red-400/90 last:border-b-0">
           {error}
         </p>
       ) : null}
       {connected && teams.length > 0 ? (
-        <div className="border-b border-content/5 px-4 py-3.5 last:border-b-0">
+        <div className="border-b border-transparent px-4 py-3.5 last:border-b-0">
           <div className="text-[13px] font-medium text-content">Teams</div>
           <p className="mt-1 text-[12px] leading-relaxed text-content/45">
             Unchecked teams stay out of the inbox.
@@ -2335,8 +2335,8 @@ function ChatBackgroundCard({
       title="Chat background"
       description="An image behind your chat panes. It stays on this device."
     >
-      <div className="border-b border-content/5 p-4 last:border-b-0">
-        <div className="overflow-hidden rounded-lg border border-content/10">
+      <div className="border-b border-transparent p-4 last:border-b-0">
+        <div className="overflow-hidden rounded-lg border border-transparent">
           {hasImage ? (
             <div
               className={`relative h-36 ${appearance.newThreadBackgroundEffect === "gradient-blur" ? "bg-background-base" : ""}`}
@@ -2611,12 +2611,12 @@ function ShortcutEditor({
           onFocus={beginRecording}
           onClick={beginRecording}
           onBlur={() => setRecording(false)}
-          className={`h-6 w-28 shrink-0 truncate rounded-md border bg-transparent px-1.5 py-0 font-mono text-[11px] leading-none outline-none focus:border-accent ${
+          className={`h-6 w-28 shrink-0 truncate rounded-md border bg-transparent px-1.5 py-0 font-mono text-[11px] leading-none outline-none focus-visible:outline-2 focus-visible:outline-accent ${
             busy ? "opacity-50" : ""
           } ${
             display === null
-              ? "border-dashed border-content/15 text-content/35"
-              : "border-content/15 text-content/80 hover:bg-content/10"
+              ? "border-dashed border-transparent text-content/35"
+              : "border-transparent text-content/80 hover:bg-content/10"
           }`}
         />
         {resetVisible ? (
@@ -2642,7 +2642,7 @@ function ShortcutEditor({
       {error ? (
         <p
           role="alert"
-          className="absolute top-full left-0 z-40 mt-1.5 w-max max-w-64 rounded-md border border-content/10 bg-background-base/95 px-2 py-1 text-[11px] whitespace-nowrap text-red-400 shadow-lg"
+          className="absolute top-full left-0 z-40 mt-1.5 w-max max-w-64 rounded-md border border-transparent bg-background-base/95 px-2 py-1 text-[11px] whitespace-nowrap text-red-400 shadow-lg"
         >
           {error}
         </p>
@@ -2747,7 +2747,7 @@ function KeybindingsPage() {
           <span className="shrink-0 text-[12px] text-content/40 tabular-nums">
             {rows.length} {rows.length === 1 ? "binding" : "bindings"}
           </span>
-          <label className="flex h-7 w-44 shrink-0 items-center gap-2 rounded-md border border-content/10 px-2 text-content/45 focus-within:border-content/20">
+          <label className="flex h-7 w-44 shrink-0 items-center gap-2 rounded-md border border-transparent px-2 text-content/45 focus-within:outline-2 focus-within:outline-accent">
             <Search className="size-3.5 shrink-0" strokeWidth={1.75} />
             <input
               value={query}
@@ -2762,7 +2762,7 @@ function KeybindingsPage() {
         </div>
       }
     >
-      <div className="flex items-center border-b border-stroke bg-content/5 px-4 py-2 text-[11px] font-semibold uppercase tracking-[0.08em] text-content/40">
+      <div className="flex items-center border-b border-transparent bg-content/5 px-4 py-2 text-[11px] font-semibold uppercase tracking-[0.08em] text-content/40">
         <span className="min-w-0 flex-1">Command</span>
         <span className="w-40 shrink-0">Keybinding</span>
         <span className="w-28 shrink-0">When</span>
@@ -2778,7 +2778,7 @@ function KeybindingsPage() {
           return (
             <div
               key={row.command}
-              className="flex h-11 items-center border-b border-content/5 px-4 text-[12px] last:border-b-0"
+              className="flex h-11 items-center border-b border-transparent px-4 text-[12px] last:border-b-0"
             >
               <span
                 className={`min-w-0 flex-1 truncate ${disabled ? "text-content/45" : ""}`}
@@ -3026,7 +3026,7 @@ function ProviderBinaryControl({
                 disabled={working}
                 autoFocus
                 onChange={(event) => setDraft(event.target.value)}
-                className="mt-1.5 h-8 w-full rounded-md border border-content/10 bg-content/[0.04] px-2 font-mono text-[11px] text-content outline-none placeholder:font-sans placeholder:text-content/35 focus:border-accent/45 disabled:opacity-50"
+                className="mt-1.5 h-8 w-full rounded-md border border-transparent bg-content/[0.04] px-2 font-mono text-[11px] text-content outline-none placeholder:font-sans placeholder:text-content/35 focus-visible:outline-2 focus-visible:outline-accent disabled:opacity-50"
               />
               <p className="mt-1.5 text-[10px] text-content/40">
                 Enter the absolute path to the CLI executable. Changes apply
@@ -3066,7 +3066,7 @@ function ProviderBinaryControl({
             </form>
           ) : (
             <>
-              <div className="mt-2 rounded-md border border-content/10 bg-content/[0.03] px-2.5 py-2">
+              <div className="mt-2 rounded-md border border-transparent bg-content/[0.03] px-2.5 py-2">
                 <span className="block max-h-12 overflow-y-auto whitespace-pre-wrap break-all font-mono text-[10px] text-content/65">
                   {inspection?.path ??
                     (error
@@ -3488,11 +3488,11 @@ function ProviderAccountsSettings() {
         return (
           <div
             key={provider}
-            className="border-b border-content/5 last:border-b-0"
+            className="border-b border-transparent last:border-b-0"
           >
             <div className="flex items-center gap-4 px-4 py-3.5">
               <div className="flex min-w-0 flex-1 items-center gap-2.5">
-                <span className="grid size-7 shrink-0 place-items-center rounded-lg bg-content/[0.05] ring-1 ring-inset ring-content/[0.06]">
+                <span className="grid size-7 shrink-0 place-items-center rounded-lg bg-content/[0.05]">
                   <HarnessIcon harness={provider} className="size-4" />
                 </span>
                 <div className="min-w-0">
@@ -3509,13 +3509,13 @@ function ProviderAccountsSettings() {
                 type="button"
                 disabled={Boolean(working)}
                 onClick={() => startAdd(provider)}
-                className="flex shrink-0 items-center gap-1.5 rounded-md border border-content/10 px-2.5 py-1 text-[12px] text-content/70 transition-transform duration-150 hover:bg-content/10 hover:text-content active:scale-[0.97] disabled:cursor-default disabled:opacity-40"
+                className="flex shrink-0 items-center gap-1.5 rounded-md border border-transparent px-2.5 py-1 text-[12px] text-content/70 transition-transform duration-150 hover:bg-content/10 hover:text-content active:scale-[0.97] disabled:cursor-default disabled:opacity-40"
               >
                 <Plus className="size-3.5" strokeWidth={1.75} aria-hidden />
                 Add account
               </button>
             </div>
-            <div className="border-t border-content/5 bg-content/[0.015] pl-10">
+            <div className="border-t border-transparent bg-content/[0.015] pl-10">
               {accounts.map((account) => {
                 const editing =
                   editor?.provider === provider &&
@@ -3540,7 +3540,7 @@ function ProviderAccountsSettings() {
                 ) : (
                   <div
                     key={account.id}
-                    className="flex h-12 items-center gap-3 border-b border-content/5 px-4 py-2 last:border-b-0"
+                    className="flex h-12 items-center gap-3 border-b border-transparent px-4 py-2 last:border-b-0"
                   >
                     <div className="min-w-0 flex-1">
                       <div className="flex min-w-0 items-center gap-1.5">
@@ -3625,7 +3625,7 @@ function ProviderAccountsSettings() {
       })}
       {error ? (
         <p
-          className="border-t border-content/5 px-4 py-2.5 text-[11px] leading-4 text-red-400"
+          className="border-t border-transparent px-4 py-2.5 text-[11px] leading-4 text-red-400"
           role="alert"
         >
           {error}
@@ -3651,12 +3651,12 @@ function ProviderAccountEditor({
   const adding = !editor.accountId;
   return (
     <form
-      className="flex h-12 items-center border-b border-content/5 px-4 py-2 last:border-b-0"
+      className="flex h-12 items-center border-b border-transparent px-4 py-2 last:border-b-0"
       onSubmit={onSubmit}
     >
       <div
         data-provider-account-editor-field
-        className="flex items-center pr-1 h-8 min-w-0 flex-1 overflow-hidden rounded-md border border-content/10 bg-content/[0.04] focus-within:border-accent/45"
+        className="flex items-center pr-1 h-8 min-w-0 flex-1 overflow-hidden rounded-md border border-transparent bg-content/[0.04] focus-within:outline-2 focus-within:outline-accent"
       >
         <label className="h-full min-w-0 flex-1">
           <span className="sr-only">Account name</span>
@@ -3882,7 +3882,7 @@ function ArchivePage({
           archivedProjects.map((project) => (
             <div
               key={project.path}
-              className="flex items-center gap-3 border-b border-content/5 px-4 py-2.5 last:border-b-0"
+              className="flex items-center gap-3 border-b border-transparent px-4 py-2.5 last:border-b-0"
             >
               <div className="min-w-0 flex-1">
                 <div className="truncate text-[13px]">
@@ -3937,7 +3937,7 @@ function ArchivePage({
           archived.map((session) => (
             <div
               key={session.id}
-              className="flex items-center gap-3 border-b border-content/5 px-4 py-2.5 last:border-b-0"
+              className="flex items-center gap-3 border-b border-transparent px-4 py-2.5 last:border-b-0"
             >
               <HarnessIcon
                 harness={session.harness}
@@ -4184,8 +4184,8 @@ function Group({
         {action ? <div className="shrink-0 pb-0.5">{action}</div> : null}
       </div>
       <div
-        className={`overflow-hidden rounded-xl border bg-content/3 transition-colors ${
-          flash ? "border-accent/60" : "border-content/10"
+        className={`overflow-hidden rounded-xl border border-transparent transition-colors ${
+          flash ? "bg-accent/5" : "bg-content/3"
         }`}
       >
         {children}
@@ -4213,7 +4213,7 @@ function Row({
     <div
       id={id ? settingDomId(id) : undefined}
       data-setting-id={id}
-      className={`settings-row flex items-start gap-6 border-b border-content/5 px-4 py-3.5 transition-colors last:border-b-0 ${
+      className={`settings-row flex items-start gap-6 border-b border-transparent px-4 py-3.5 transition-colors last:border-b-0 ${
         flash ? "bg-accent/10" : ""
       }`}
     >
@@ -4249,7 +4249,7 @@ function Segmented<T extends string>({
     <div
       role="radiogroup"
       aria-label={label}
-      className="inline-grid max-w-full shrink-0 gap-0.5 rounded-md border border-content/10 p-0.5 text-[12px]"
+      className="inline-grid max-w-full shrink-0 gap-0.5 rounded-md border border-transparent p-0.5 text-[12px]"
       style={{
         gridTemplateColumns: `repeat(${options.length}, minmax(0, 1fr))`,
       }}
@@ -4396,7 +4396,7 @@ function NotificationsBlocked() {
           onClick={() => {
             void openNotificationSettings().catch(() => {});
           }}
-          className="rounded-md border border-content/10 px-2 py-1 text-content/70 hover:bg-content/10 hover:text-content"
+          className="rounded-md border border-transparent px-2 py-1 text-content/70 hover:bg-content/10 hover:text-content"
         >
           Open System Settings
         </button>
@@ -4539,7 +4539,7 @@ function Select({
         aria-expanded={open}
         aria-haspopup="listbox"
         onClick={() => setOpen((prev) => !prev)}
-        className="flex w-full items-center justify-between gap-2 rounded-md border border-content/10 bg-content/5 px-2 py-1 text-left text-[12px] text-content outline-none hover:border-content/20"
+        className="flex w-full items-center justify-between gap-2 rounded-md border border-transparent bg-content/5 px-2 py-1 text-left text-[12px] text-content outline-none hover:border-transparent focus-visible:outline-2 focus-visible:outline-accent"
       >
         <span className="flex min-w-0 flex-1 items-center gap-1.5">
           {selected?.icon ? (

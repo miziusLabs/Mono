@@ -1908,16 +1908,12 @@ export function Composer({
           ref={boxRef}
           data-composer-box
           data-composer-editing={resendEdited ? "" : undefined}
-          className={`relative z-10 border bg-content/3 backdrop-blur-sm ${
-            resendEdited
-              ? "edit-last-turn-composer rounded-lg"
-              : "rounded-lg border-content/10 has-focus:border-content/20"
+          className={`relative z-10 rounded-lg backdrop-blur-sm ${
+            fileDrag ? "bg-accent/8" : "bg-content/3"
           } ${
-            fileDrag
-              ? "border-accent/60"
-              : resendEdited
-                ? ""
-                : "border-content/10 has-focus:border-content/20"
+            resendEdited
+              ? "edit-last-turn-composer"
+              : "has-focus:ring-1 has-focus:ring-content/20"
           }`}
         >
           {fileDrag ? (
@@ -2386,7 +2382,7 @@ export function Composer({
                 aria-label="Stop editing last message"
                 onMouseDown={(event) => event.preventDefault()}
                 onClick={exitEditMode}
-                className="edit-last-turn-button flex h-6.5 shrink-0 items-center gap-1 rounded-md border border-current/20 px-2 text-[11px] font-medium transition-[background-color,color,border-color] hover:border-current/35 hover:bg-content/15 hover:text-content focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-accent"
+                className="edit-last-turn-button flex h-6.5 shrink-0 items-center gap-1 rounded-md bg-content/8 px-2 text-[11px] font-medium transition-[background-color,color] hover:bg-content/15 hover:text-content focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-accent"
               >
                 <X className="size-3" strokeWidth={1.8} />
                 <span>Cancel edit</span>

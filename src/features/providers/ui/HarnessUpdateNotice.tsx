@@ -176,11 +176,11 @@ export function HarnessUpdateNotice({
       aria-label="Harness updates"
       role="status"
       style={{ zIndex: LAYER.toast, top: topOffset }}
-      className="fixed right-3 isolate w-[min(340px,calc(100vw-24px))] overflow-hidden rounded-xl border border-content/10 text-content shadow-xl"
+      className="fixed right-3 isolate w-[min(340px,calc(100vw-24px))] overflow-hidden rounded-xl border border-transparent text-content shadow-xl"
     >
       <GlassBackdrop />
       <div className="relative z-[1]">
-        <div className="flex items-center gap-2 border-b border-stroke px-3 py-2">
+        <div className="flex items-center gap-2 border-b border-transparent px-3 py-2">
           <span className="min-w-0 flex-1 truncate text-[12px] font-semibold">
             {updates.length === 1
               ? "Harness update available"
@@ -205,7 +205,7 @@ export function HarnessUpdateNotice({
             <X className="size-3" strokeWidth={2} />
           </button>
         </div>
-        <div className="divide-y divide-stroke">
+        <div className="divide-y divide-transparent">
           {updates.map((update) => (
             <HarnessUpdateRow
               key={update.harness}
@@ -215,7 +215,7 @@ export function HarnessUpdateNotice({
             />
           ))}
         </div>
-        <p className="border-t border-stroke px-3 py-2 text-[11px] text-content/50">
+        <p className="border-t border-transparent px-3 py-2 text-[11px] text-content/50">
           {anyUpdated
             ? "Model picker refreshed with the new version’s models."
             : "New models often need the latest version."}

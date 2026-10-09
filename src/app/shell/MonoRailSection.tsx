@@ -117,7 +117,7 @@ export function MonoRailSection({
             title="New mono"
             aria-label="New mono"
             onClick={onCreate}
-            className="grid h-8 w-full cursor-default place-items-center rounded-md border border-dashed border-content/15 text-content/50 hover:border-content/30 hover:bg-content/5 hover:text-content"
+            className="grid h-8 w-full cursor-default place-items-center rounded-md text-content/50 hover:bg-content/5 hover:text-content"
           >
             <Plus className="size-3.5" strokeWidth={1.75} />
           </button>
@@ -315,7 +315,7 @@ function MonoMenu({
           commitName();
           onClose();
         }}
-        className="mb-2 w-full rounded-lg border border-content/10 bg-content/5 px-2.5 py-1.5 text-[13px] text-content outline-none ring-accent/40 placeholder:text-content/45 focus:ring-1"
+        className="mb-2 w-full rounded-lg bg-content/5 px-2.5 py-1.5 text-[13px] text-content outline-none ring-accent/40 placeholder:text-content/45 focus:ring-1"
       />
       <div className="mb-2 flex flex-col gap-2">
         <MascotPicker
@@ -329,7 +329,7 @@ function MonoMenu({
           onPick={(color) => updateMono(monoId, (mono) => ({ ...mono, color }))}
         />
       </div>
-      <div role="separator" className="my-1 h-px bg-content/10" />
+      <div role="separator" className="my-1" />
       <button
         type="button"
         role="menuitem"

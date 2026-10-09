@@ -51,13 +51,6 @@ export function MarkdownSourceEditor({
           </Fragment>
         ))}
       </div>
-      {lineNumbers ? (
-        <div
-          aria-hidden
-          className="pointer-events-none absolute inset-y-0 w-px bg-content/10"
-          style={{ left: gutterWidth }}
-        />
-      ) : null}
       <textarea
         ref={textareaRef}
         aria-label={label}

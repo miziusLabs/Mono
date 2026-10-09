@@ -386,7 +386,7 @@ export function ProjectPickerPopover({
       onKeyDown={onPickerKeyDown}
       className="flex flex-col overflow-hidden"
     >
-      <label className="flex h-11 shrink-0 items-center gap-2.5 border-b border-stroke px-3 text-content/45 focus-within:text-content/70">
+      <label className="flex h-11 shrink-0 items-center gap-2.5 border-b border-transparent px-3 text-content/45 focus-within:text-content/70">
         <Search className="size-4 shrink-0" strokeWidth={1.75} />
         <span className="sr-only">Search projects</span>
         <input
@@ -519,7 +519,7 @@ export function ProjectPickerPopover({
         )}
       </div>
       {onOpenProject || monos?.onCreate ? (
-        <div className="shrink-0 border-t border-stroke p-1.5">
+        <div className="shrink-0 border-t border-transparent p-1.5">
           {monos?.onCreate ? (
             <button
               type="button"

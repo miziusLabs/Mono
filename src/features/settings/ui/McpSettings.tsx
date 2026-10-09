@@ -86,7 +86,7 @@ function McpPicker<T extends string>({
         aria-haspopup="listbox"
         aria-expanded={open}
         onClick={() => setOpen(!open)}
-        className="mt-1 flex h-8 w-full items-center gap-2 rounded-md border border-content/10 bg-content/5 px-2 text-left text-[12px] text-content outline-none hover:border-content/20 focus-visible:outline-2 focus-visible:outline-offset-1 focus-visible:outline-accent"
+        className="mt-1 flex h-8 w-full items-center gap-2 rounded-md border border-transparent bg-content/5 px-2 text-left text-[12px] text-content outline-none hover:border-transparent focus-visible:outline-2 focus-visible:outline-offset-1 focus-visible:outline-accent"
       >
         {selected?.icon}
         <span className="min-w-0 flex-1 truncate">
@@ -243,7 +243,7 @@ function AddServerModal({
             value={name}
             pattern={provider === "opencode" ? undefined : "[A-Za-z0-9_-]*"}
             onChange={(event) => setName(event.target.value)}
-            className="mt-1 block w-full rounded-md border border-stroke bg-background-base px-2 py-1.5 text-sm text-content"
+            className="mt-1 block w-full rounded-md border border-transparent bg-background-base px-2 py-1.5 text-sm text-content"
             placeholder="my-server"
           />
         </label>
@@ -255,7 +255,7 @@ function AddServerModal({
             onChange={(event) => setConfig(event.target.value)}
             rows={7}
             spellCheck={false}
-            className="mt-1 block w-full rounded-md border border-stroke bg-background-base px-2 py-1.5 font-mono text-xs text-content"
+            className="mt-1 block w-full rounded-md border border-transparent bg-background-base px-2 py-1.5 font-mono text-xs text-content"
             placeholder={
               '{"mcpServers":{"my-server":{"command":"npx","args":["-y","example-mcp"]}}}'
             }
@@ -268,7 +268,7 @@ function AddServerModal({
         {error ? (
           <p
             role="alert"
-            className="rounded-md border border-red-500/30 bg-red-500/10 p-2 text-xs text-red-400"
+            className="rounded-md border border-transparent bg-red-500/10 p-2 text-xs text-red-400"
           >
             {error}
           </p>
@@ -277,14 +277,14 @@ function AddServerModal({
           <button
             type="button"
             onClick={onClose}
-            className="rounded-md border border-stroke px-3 py-1.5 text-xs hover:bg-content/5"
+            className="rounded-md border border-transparent px-3 py-1.5 text-xs hover:bg-content/5"
           >
             Cancel
           </button>
           <button
             type="submit"
             disabled={busy}
-            className="rounded-md border border-stroke px-3 py-1.5 text-xs hover:bg-content/5 disabled:opacity-50"
+            className="rounded-md border border-transparent px-3 py-1.5 text-xs hover:bg-content/5 disabled:opacity-50"
           >
             {busy ? "Adding…" : "Add server"}
           </button>
@@ -461,7 +461,7 @@ function McpConnections({
             type="button"
             onClick={() => void refresh()}
             disabled={loading || busy !== null}
-            className="flex items-center gap-1.5 rounded-md border border-stroke px-3 py-1.5 text-xs hover:bg-content/5 disabled:opacity-50"
+            className="flex items-center gap-1.5 rounded-md border border-transparent px-3 py-1.5 text-xs hover:bg-content/5 disabled:opacity-50"
           >
             <RefreshCw className="size-3.5" />
             Refresh
@@ -480,7 +480,7 @@ function McpConnections({
                 : "Showing available providers"
             }
             onClick={() => setShowAllProviders(!showAllProviders)}
-            className={`grid size-7 place-items-center rounded-md border border-content/10 hover:bg-content/5 ${showAllProviders ? "bg-selection text-content" : "text-content/55"}`}
+            className={`grid size-7 place-items-center rounded-md border border-transparent hover:bg-content/5 ${showAllProviders ? "bg-selection text-content" : "text-content/55"}`}
           >
             <ListFilter className="size-3.5" />
           </button>
@@ -488,7 +488,7 @@ function McpConnections({
             type="button"
             aria-label="Add MCP server"
             onClick={() => setAddOpen(true)}
-            className="grid size-7 place-items-center rounded-md border border-stroke hover:bg-content/5"
+            className="grid size-7 place-items-center rounded-md border border-transparent hover:bg-content/5"
           >
             <Plus className="size-3.5" />
           </button>
@@ -496,7 +496,7 @@ function McpConnections({
       </div>
       <div
         role="group"
-        className="inline-flex max-w-full flex-wrap gap-0.5 rounded-md border border-content/10 p-0.5 text-[12px]"
+        className="inline-flex max-w-full flex-wrap gap-0.5 rounded-md border border-transparent p-0.5 text-[12px]"
         aria-label="Filter MCP servers by provider"
       >
         {(["all", ...filterProviders] as const).map((provider) => (
@@ -525,7 +525,7 @@ function McpConnections({
       {error ? (
         <p
           role="alert"
-          className="rounded-md border border-red-500/30 bg-red-500/10 p-3 text-xs text-red-400"
+          className="rounded-md border border-transparent bg-red-500/10 p-3 text-xs text-red-400"
         >
           {error}
         </p>
@@ -542,13 +542,13 @@ function McpConnections({
           No MCP servers configured for this provider.
         </p>
       ) : (
-        <div className="overflow-hidden rounded-xl border border-content/10 bg-content/3">
+        <div className="overflow-hidden rounded-xl border border-transparent bg-content/3">
           {visible.map((server) => (
             <div
               key={`${server.provider}:${server.scope}:${server.configPath}:${server.name}`}
-              className="flex flex-wrap items-center gap-3 border-b border-content/5 px-4 py-3.5 last:border-b-0"
+              className="flex flex-wrap items-center gap-3 border-b border-transparent px-4 py-3.5 last:border-b-0"
             >
-              <span className="grid size-7 shrink-0 place-items-center rounded-lg bg-content/[0.05] ring-1 ring-inset ring-content/[0.06]">
+              <span className="grid size-7 shrink-0 place-items-center rounded-lg bg-content/[0.05]">
                 <ProviderIcon provider={server.provider} />
               </span>
               <div className="min-w-0 flex-1">
@@ -575,7 +575,7 @@ function McpConnections({
                   type="button"
                   disabled={busy !== null}
                   onClick={() => void login(server)}
-                  className="rounded-md border border-stroke px-2 py-1 text-xs hover:bg-content/5 disabled:opacity-50"
+                  className="rounded-md border border-transparent px-2 py-1 text-xs hover:bg-content/5 disabled:opacity-50"
                 >
                   Sign in
                 </button>
@@ -594,7 +594,7 @@ function McpConnections({
                             [server.name]: event.target.value as Scope,
                           }))
                         }
-                        className="rounded border border-stroke bg-background-base px-1 py-1 text-content"
+                        className="rounded border border-transparent bg-background-base px-1 py-1 text-content"
                       >
                         <option value="local">Local</option>
                         <option value="project">Project</option>
@@ -606,7 +606,7 @@ function McpConnections({
                     type="button"
                     disabled={busy !== null}
                     onClick={() => void remove(server)}
-                    className="rounded-md border border-stroke px-2 py-1 text-xs hover:bg-content/5 disabled:opacity-50"
+                    className="rounded-md border border-transparent px-2 py-1 text-xs hover:bg-content/5 disabled:opacity-50"
                   >
                     Remove
                   </button>
@@ -619,7 +619,7 @@ function McpConnections({
                       setError(String(cause)),
                     )
                   }
-                  className="rounded-md border border-stroke px-2 py-1 text-xs hover:bg-content/5"
+                  className="rounded-md border border-transparent px-2 py-1 text-xs hover:bg-content/5"
                 >
                   Show config
                 </button>

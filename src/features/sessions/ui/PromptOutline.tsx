@@ -325,7 +325,7 @@ export function PromptOutline({
             </p>
           ) : null}
           {preview.detail ? (
-            <p className="line-clamp-2 border-l-2 border-content/15 pl-3 text-sm leading-snug text-content/35">
+            <p className="line-clamp-2 pl-3 text-sm leading-snug text-content/35">
               {preview.detail}
             </p>
           ) : null}

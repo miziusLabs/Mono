@@ -54,12 +54,12 @@ export function ColorSwatchRow({
             aria-pressed={selected}
             onMouseDown={(event) => event.preventDefault()}
             onClick={() => onPickIndex(index)}
-            className="grid size-5 place-items-center rounded-full"
+            className="grid size-5 place-items-center rounded-full focus-visible:outline-2 focus-visible:outline-accent"
           >
             <span
-              className={`size-3.5 rounded-full ${
+              className={`size-3.5 rounded-full transition-transform ${
                 selected
-                  ? "ring-2 ring-content/80 ring-offset-1 ring-offset-transparent"
+                  ? "scale-110"
                   : ""
               }`}
               style={{ background: color }}
@@ -75,12 +75,12 @@ export function ColorSwatchRow({
         aria-pressed={customColor != null}
         onMouseDown={(event) => event.preventDefault()}
         onClick={onToggleCustom}
-        className="grid size-5 place-items-center rounded-full"
+        className="grid size-5 place-items-center rounded-full focus-visible:outline-2 focus-visible:outline-accent"
       >
         <span
-          className={`grid size-3.5 place-items-center overflow-hidden rounded-full ${
+          className={`grid size-3.5 place-items-center overflow-hidden rounded-full transition-transform ${
             pipetteActive
-              ? "ring-2 ring-content/80 ring-offset-1 ring-offset-transparent"
+              ? "scale-110"
               : ""
           }`}
           style={
@@ -189,7 +189,7 @@ export function ColorPickerPopover({ value, onChange }: Props) {
   const hueColor = hsvToHex(hsv.h, 100, 100);
 
   return (
-    <div className="mt-2 rounded-lg border border-content/10 bg-content/5 p-2">
+    <div className="mt-2 rounded-lg bg-content/5 p-2">
       <div
         ref={svRef}
         role="slider"
@@ -204,7 +204,7 @@ export function ColorPickerPopover({ value, onChange }: Props) {
         onPointerDown={onSvPointer}
       >
         <span
-          className="pointer-events-none absolute size-3.5 -translate-x-1/2 -translate-y-1/2 rounded-full border-2 border-white shadow-md"
+          className="pointer-events-none absolute size-3.5 -translate-x-1/2 -translate-y-1/2 rounded-full shadow-md"
           style={{
             left: `${hsv.s}%`,
             top: `${100 - hsv.v}%`,
@@ -228,7 +228,7 @@ export function ColorPickerPopover({ value, onChange }: Props) {
         onPointerDown={onHuePointer}
       >
         <span
-          className="pointer-events-none absolute top-1/2 size-3.5 -translate-x-1/2 -translate-y-1/2 rounded-full border-2 border-white shadow-md"
+          className="pointer-events-none absolute top-1/2 size-3.5 -translate-x-1/2 -translate-y-1/2 rounded-full shadow-md"
           style={{
             left: `${(hsv.h / 360) * 100}%`,
             background: hueColor,
@@ -238,7 +238,7 @@ export function ColorPickerPopover({ value, onChange }: Props) {
 
       <div className="mt-2 flex items-center gap-2">
         <span
-          className="size-7 shrink-0 rounded-md border border-content/10"
+          className="size-7 shrink-0 rounded-md"
           style={{ background: preview }}
           aria-hidden
         />
@@ -248,7 +248,7 @@ export function ColorPickerPopover({ value, onChange }: Props) {
           spellCheck={false}
           aria-label="Hex color"
           onChange={(e) => onHexInput(e.target.value)}
-          className="min-w-0 flex-1 rounded-md border border-content/10 bg-content/5 px-2 py-1 font-mono text-[12px] text-content outline-none ring-accent/40 focus:ring-1"
+          className="min-w-0 flex-1 rounded-md bg-content/5 px-2 py-1 font-mono text-[12px] text-content outline-none ring-accent/40 focus:ring-1"
         />
       </div>
     </div>

@@ -256,7 +256,7 @@ export function TodayHabits({
   if (!habits) return null;
   if (habits.length === 0) return <HabitsEmpty />;
   const today = habitsToday(habits, now);
-  if (today.length === 0) return <div className="border-t border-stroke" />;
+  if (today.length === 0) return <div className="border-t border-transparent" />;
   const upcoming = today.filter((item) => item.state !== "done");
   const done = today.filter((item) => item.state === "done");
   const cards = (items: typeof today) => (
@@ -321,7 +321,7 @@ const CLOCK_GLOW_PATH = mascotPath(CLOCK_GLOW);
 /** Empty state for a Mono with no habits yet. */
 export function HabitsEmpty() {
   return (
-    <div className="flex flex-col items-center justify-center gap-4 border-t border-stroke px-6 py-10 text-center">
+    <div className="flex flex-col items-center justify-center gap-4 border-t border-transparent px-6 py-10 text-center">
       <svg
         aria-hidden
         viewBox={`0 0 16 ${CLOCK.length}`}

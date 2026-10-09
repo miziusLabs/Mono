@@ -140,8 +140,8 @@ export function ProjectNotificationSettings({
         ) : null}
       </div>
       <div
-        className={`overflow-hidden rounded-xl border bg-content/3 transition-colors ${
-          highlighted ? "border-accent/60" : "border-content/10"
+        className={`overflow-hidden rounded-xl transition-colors ${
+          highlighted ? "bg-accent/8" : "bg-content/3"
         }`}
       >
         {error ? (
@@ -160,7 +160,7 @@ export function ProjectNotificationSettings({
         {projects.length ? (
           <>
             {selecting ? (
-              <div className="flex min-h-9 flex-wrap items-center justify-between gap-3 border-b border-content/5 px-4 py-3.5">
+              <div className="flex min-h-9 flex-wrap items-center justify-between gap-3 bg-content/[0.02] px-4 py-3.5">
                 <label className="flex cursor-pointer items-center gap-2.5 text-[12px] text-content/55 hover:text-content/80">
                   <ProjectSelection
                     label="Select all projects"
@@ -186,7 +186,7 @@ export function ProjectNotificationSettings({
                 ) : null}
               </div>
             ) : null}
-            <div>
+            <div className="flex flex-col gap-1">
               {projects.map((project) => {
                 const path =
                   project.paths.find(
@@ -222,7 +222,7 @@ export function ProjectNotificationSettings({
                     key={project.id}
                     ref={project.id === targetId ? targetCard : undefined}
                     tabIndex={-1}
-                    className="min-w-0 border-b border-content/5 outline-none last:border-b-0 focus-visible:ring-1 focus-visible:ring-inset focus-visible:ring-accent/50"
+                    className="min-w-0 rounded-md outline-none focus-visible:ring-1 focus-visible:ring-inset focus-visible:ring-accent/50"
                   >
                     <legend className="sr-only">{project.name}</legend>
                     <div className="flex flex-wrap items-center justify-between gap-x-6 gap-y-3 px-4 py-3.5">
@@ -307,13 +307,13 @@ export function ProjectNotificationSettings({
                     <div
                       id={panelId}
                       hidden={!isExpanded}
-                      className="border-t border-content/5 px-4"
+                      className="bg-content/[0.015] px-4"
                     >
                       <div
                         className={
                           selecting
-                            ? "@[400px]/notifications:pl-14"
-                            : "@[400px]/notifications:pl-7"
+                            ? "@[400px]/notifications:pl-14 space-y-1"
+                            : "@[400px]/notifications:pl-7 space-y-1"
                         }
                       >
                         {muted ? (
@@ -329,7 +329,7 @@ export function ProjectNotificationSettings({
                         {categories.map((category) => (
                           <label
                             key={category.id}
-                            className="flex min-h-11 cursor-pointer items-center justify-between gap-6 border-b border-content/5 py-3.5 text-[13px] text-content last:border-b-0 hover:text-content/75"
+                            className="flex min-h-11 cursor-pointer items-center justify-between gap-6 rounded-md py-3.5 text-[13px] text-content hover:bg-content/[0.03] hover:text-content/75"
                           >
                             <span>{category.label}</span>
                             <span className="relative flex shrink-0">
@@ -399,7 +399,7 @@ function ProjectSelection({
           if (input) input.indeterminate = mixed;
         }}
         onChange={(event) => onChange(event.target.checked)}
-        className="peer size-4 cursor-pointer appearance-none rounded border border-content/20 bg-transparent checked:border-accent checked:bg-accent indeterminate:border-accent indeterminate:bg-accent hover:border-content/40 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
+        className="peer size-4 cursor-pointer appearance-none rounded bg-content/15 checked:bg-accent indeterminate:bg-accent focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
       />
       {mixed ? (
         <Minus

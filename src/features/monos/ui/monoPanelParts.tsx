@@ -40,7 +40,7 @@ export function PageHeader({
   return (
     // Same height as the panel's own header, so a page does not jump.
     <header
-      className="flex h-10 shrink-0 items-center gap-1 border-b border-stroke pl-2"
+      className="flex h-10 shrink-0 items-center gap-1 border-b border-transparent pl-2"
       style={{
         paddingRight: "calc(0.75rem + var(--mono-window-controls-width, 0px))",
       }}
@@ -67,7 +67,7 @@ export function Section({
   children: ReactNode;
 }) {
   return (
-    <section className="border-t border-stroke px-2 pb-4 pt-3">
+    <section className="border-t border-transparent px-2 pb-4 pt-3">
       <div className="flex items-center justify-between px-2 pb-2">
         <h4 className="text-[11px] font-medium uppercase tracking-wide text-content/40">
           {title}
@@ -209,7 +209,7 @@ export function MascotPicker({
             onClick={() => onPick(name)}
             className={`grid h-8 min-w-0 place-items-center rounded-md ${
               selected
-                ? "bg-selection ring-1 ring-content/20"
+                ? "bg-selection"
                 : "hover:bg-content/6"
             }`}
           >

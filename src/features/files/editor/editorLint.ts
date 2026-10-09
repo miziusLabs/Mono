@@ -233,6 +233,7 @@ const lintTheme = EditorView.theme({
     marginLeft: "0",
   },
   ".cm-tooltip-lint .cm-diagnostic-error": {
-    borderLeft: "2px solid #f87171",
+    borderLeft: "2px solid transparent",
+    backgroundColor: "color-mix(in srgb, #f87171 10%, transparent)",
   },
 });

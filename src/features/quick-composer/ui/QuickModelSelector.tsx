@@ -165,7 +165,7 @@ export function QuickModelSelector({
   return (
     <section
       aria-label="Model selector"
-      className="flex min-h-0 flex-col border-t border-stroke"
+      className="flex min-h-0 flex-col border-t border-transparent"
       onKeyDown={(event) => {
         if (event.key === "Escape") {
           event.preventDefault();
@@ -177,7 +177,7 @@ export function QuickModelSelector({
       <nav
         role="tablist"
         aria-label="Providers"
-        className="grid h-11 shrink-0 grid-flow-col auto-cols-fr items-center gap-1 border-b border-stroke px-2"
+        className="grid h-11 shrink-0 grid-flow-col auto-cols-fr items-center gap-1 border-b border-transparent px-2"
       >
         {tabs.map((id, index) => {
           const title = id === "favorites" ? "Favorites" : HARNESS_TITLE[id];
@@ -221,7 +221,7 @@ export function QuickModelSelector({
         })}
       </nav>
       <div className="flex min-h-0 min-w-0 flex-1 flex-col">
-        <label className="flex h-10 shrink-0 items-center gap-2 border-b border-stroke px-4 text-content/40">
+        <label className="flex h-10 shrink-0 items-center gap-2 border-b border-transparent px-4 text-content/40">
           <Search className="size-3.5 shrink-0" />
           <input
             ref={searchRef}
@@ -338,7 +338,7 @@ export function QuickModelSelector({
           )}
         </div>
         {effort && effort.options.length > 0 ? (
-          <div className="shrink-0 border-t border-stroke px-4 pb-3 pt-2">
+          <div className="shrink-0 border-t border-transparent px-4 pb-3 pt-2">
             <div className="mb-1 grid grid-cols-[28px_1fr_28px] items-center">
               {canToggleFast ? (
                 <button

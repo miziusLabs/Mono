@@ -16,7 +16,7 @@ import {
 } from "../model/protocol";
 
 const input =
-  "w-full rounded-lg border border-content/15 bg-content/3 px-3 py-2 text-[13px] outline-none focus:border-content/35";
+  "w-full rounded-lg border border-transparent bg-content/3 px-3 py-2 text-[13px] outline-none focus-visible:outline-2 focus-visible:outline-accent";
 const button =
   "rounded-lg bg-selection px-3 py-2 text-[13px] font-medium hover:bg-selection-hover disabled:opacity-40";
 
@@ -263,7 +263,7 @@ export function ConnectionsSettings() {
         )}
       </div>
       {machines.length > 0 ? (
-        <div className="divide-y divide-stroke overflow-hidden rounded-xl border border-stroke">
+        <div className="divide-y divide-transparent overflow-hidden rounded-xl border border-transparent">
           {machines.map((machine) => (
             <div key={machine.id}>
               <div className="flex items-center gap-3 px-4 py-4">
@@ -325,7 +325,7 @@ export function ConnectionsSettings() {
                 <div
                   role="group"
                   aria-label={`Confirm removing ${machine.name}`}
-                  className="flex flex-col gap-3 border-t border-stroke bg-content/3 px-4 py-4 text-[12px] leading-relaxed text-content/60"
+                  className="flex flex-col gap-3 border-t border-transparent bg-content/3 px-4 py-4 text-[12px] leading-relaxed text-content/60"
                 >
                   <p className="text-[13px] font-medium text-content">
                     Remove {machine.name} from this desktop?
@@ -381,13 +381,13 @@ export function ConnectionsSettings() {
           ))}
         </div>
       ) : loaded && !adding ? (
-        <div className="rounded-xl border border-dashed border-content/15 px-5 py-8 text-center text-[13px] text-content/45">
+        <div className="rounded-xl border border-dashed border-transparent px-5 py-8 text-center text-[13px] text-content/45">
           Add your always-on Windows, Mac, or Linux machine to get started.
         </div>
       ) : null}
       {adding && (
         <form
-          className="flex flex-col gap-4 rounded-xl border border-stroke p-5"
+          className="flex flex-col gap-4 rounded-xl border border-transparent p-5"
           onSubmit={(event) => {
             event.preventDefault();
             void begin();
@@ -477,7 +477,7 @@ export function ConnectionsSettings() {
       )}
       {busy && jobId && (
         <div
-          className="flex flex-col gap-3 rounded-xl border border-stroke p-5"
+          className="flex flex-col gap-3 rounded-xl border border-transparent p-5"
           role="status"
           ref={progress}
         >

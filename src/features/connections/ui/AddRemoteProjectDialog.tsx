@@ -118,7 +118,7 @@ export function AddRemoteProjectDialog({
           event.preventDefault();
           void open();
         }}
-        className="absolute z-[1] left-1/2 top-[16%] flex max-h-[70vh] w-[min(480px,calc(100vw-24px))] -translate-x-1/2 flex-col gap-3 rounded-lg border border-content/10 bg-background-base dark:bg-content/5 p-4 shadow-xl backdrop-blur-xl"
+        className="absolute z-[1] left-1/2 top-[16%] flex max-h-[70vh] w-[min(480px,calc(100vw-24px))] -translate-x-1/2 flex-col gap-3 rounded-lg border border-transparent bg-background-base dark:bg-content/5 p-4 shadow-xl backdrop-blur-xl"
       >
         <div className="flex flex-col gap-1">
           <h2 className="text-[13px] font-medium leading-tight text-content">
@@ -177,7 +177,7 @@ export function AddRemoteProjectDialog({
             )}
             <input
               aria-label="Folder path on the machine"
-              className="h-8 shrink-0 rounded-md border border-content/10 bg-content/3 px-2.5 font-mono text-[12px] text-content outline-none focus:border-content/25"
+              className="h-8 shrink-0 rounded-md border border-transparent bg-content/3 px-2.5 font-mono text-[12px] text-content outline-none focus-visible:outline-2 focus-visible:outline-accent"
               placeholder="/home/me/code/my-app"
               value={path}
               spellCheck={false}
@@ -188,7 +188,7 @@ export function AddRemoteProjectDialog({
             />
             <div
               aria-label="Folders"
-              className="min-h-24 flex-1 overflow-y-auto overscroll-contain rounded-md border border-content/10"
+              className="min-h-24 flex-1 overflow-y-auto overscroll-contain rounded-md border border-transparent"
             >
               <div className="p-1">
                 {directory?.parent ? (

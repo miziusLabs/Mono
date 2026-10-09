@@ -276,7 +276,7 @@ fn menu(
     let header = MenuItemBuilder::with_id("mono-chat-header", "Monos")
         .enabled(false)
         .build(app)?;
-    let mut builder = MenuBuilder::new(app).item(&header).separator();
+    let mut builder = MenuBuilder::new(app).item(&header);
     if monos.is_empty() {
         let empty =
             MenuItemBuilder::with_id("mono-chat-empty", "Create a Mono in Mono to chat here")
@@ -296,9 +296,7 @@ fn menu(
         }
     }
     for action in &menu_bar::ACTIONS {
-        builder = builder
-            .separator()
-            .item(&MenuItemBuilder::with_id(action.id, action.title).build(app)?);
+        builder = builder.item(&MenuItemBuilder::with_id(action.id, action.title).build(app)?);
     }
     builder.build()
 }

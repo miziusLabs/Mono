@@ -44,7 +44,7 @@ export function MonoStatusDot({
   return (
     <span
       aria-hidden
-      className={`absolute rounded-full ring-1 ring-background-base ${className} ${
+      className={`absolute rounded-full ${className} ${
         status === "working"
           ? "motion-safe:animate-pulse"
           : status === "needs-you"

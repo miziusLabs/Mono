@@ -1336,7 +1336,7 @@ function AgentTranscriptComponent({
                               data-transcript-search-current={
                                 isCurrentItem(entry) || undefined
                               }
-                              className={`flow-root pb-1 last:pb-0 pl-5 zen-fold-rail ${
+                              className={`flow-root pb-1 last:pb-0 zen-fold-rail ${
                                 offset === foldWork.length - 1
                                   ? "zen-fold-tail"
                                   : ""
@@ -2442,7 +2442,7 @@ function UserMessageBlock({
               data-chat-message-role={photos.length ? undefined : "user"}
               className={`user-message-bubble relative min-w-0 px-3 py-2 font-sans text-content transition-[background-color] duration-200 ${
                 block.draft
-                  ? "border border-dashed border-content/30 bg-content/4"
+                  ? "bg-content/6"
                   : "bg-content/10"
               } ${editing ? "edit-last-turn-bubble" : ""} ${
                 bubbleTail && chat && !block.draft && !compactFollowUp
@@ -2451,7 +2451,7 @@ function UserMessageBlock({
               } ${
                 chat
                   ? `w-fit max-w-[min(100%,36rem)] ${singleLine ? "rounded-full" : "rounded-xl"}`
-                  : "rounded-lg border border-content/10"
+                  : "rounded-lg"
               }`}
               style={{ zIndex: stickyIndex }}
             >
@@ -2509,7 +2509,7 @@ function UserMessageBlock({
               ) : null}
               {block.ciContext ? (
                 <details
-                  className="group/ci mt-2 min-w-0 border-t border-content/10 pt-2"
+                  className="group/ci mt-2 min-w-0 bg-content/[0.02] pt-2"
                   onClick={(event) => event.stopPropagation()}
                 >
                   <summary className="flex w-fit cursor-pointer list-none items-center gap-1.5 rounded text-xs text-content/50 transition-colors hover:text-content/80 focus-visible:outline focus-visible:outline-1 focus-visible:outline-content/40 [&::-webkit-details-marker]:hidden">
@@ -2526,7 +2526,7 @@ function UserMessageBlock({
                 </details>
               ) : null}
               {block.draft ? (
-                <div className="mt-2 flex items-center justify-between gap-4 border-t border-dashed border-content/20 pt-2">
+                <div className="mt-2 flex items-center justify-between gap-4 bg-content/[0.02] pt-2">
                   <span className="flex items-center gap-1.5 text-xs text-content/50">
                     <CircleDashed className="size-3.5" strokeWidth={1.75} />
                     Draft
@@ -3220,15 +3220,6 @@ export function MonoActivityTrail({
                 data-mono-activity-block={block.id}
                 className="relative min-w-0 pl-4"
               >
-                {/* The rail runs between the steps' dots, not past the ends. */}
-                <span
-                  aria-hidden="true"
-                  className={`absolute left-[2.5px] w-px bg-content/12 ${
-                    step === 0 ? "top-[13px]" : "top-0"
-                  } ${
-                    step === segment.blocks.length - 1 ? "h-[13px]" : "bottom-0"
-                  } ${segment.blocks.length === 1 ? "hidden" : ""}`}
-                />
                 <span
                   aria-hidden="true"
                   className="absolute left-0 top-[10px] size-1.5 rounded-full bg-content/25"
@@ -4708,8 +4699,7 @@ function HandoffDivider({ block }: { block: Block }) {
 
   return (
     <div className="px-4 py-5">
-      <div className="flex items-center gap-3">
-        <div className="h-px min-w-4 flex-1 bg-content/12" />
+      <div className="flex items-center justify-center gap-3">
         <div
           role="separator"
           aria-label={
@@ -4730,7 +4720,6 @@ function HandoffDivider({ block }: { block: Block }) {
             </>
           )}
         </div>
-        <div className="h-px min-w-4 flex-1 bg-content/12" />
       </div>
     </div>
   );
@@ -4798,8 +4787,7 @@ function InterjectionDivider({ block }: { block: Block }) {
   const { label, severityText, severityClass } = interjectionChrome(meta);
   return (
     <div className="px-4 py-4">
-      <div className="flex items-center gap-3">
-        <div className="h-px min-w-4 flex-1 bg-content/12" />
+      <div className="flex items-center justify-center gap-3">
         <div
           role="separator"
           aria-label={`Interjection: ${label}`}
@@ -4812,7 +4800,6 @@ function InterjectionDivider({ block }: { block: Block }) {
             </span>
           ) : null}
         </div>
-        <div className="h-px min-w-4 flex-1 bg-content/12" />
       </div>
       {block.text ? (
         <div className="mt-2 px-2">

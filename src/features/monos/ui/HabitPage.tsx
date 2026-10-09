@@ -159,7 +159,7 @@ function Row({ label, children }: { label: string; children: ReactNode }) {
 
 function Section({ title, children }: { title: string; children: ReactNode }) {
   return (
-    <section className="border-t border-stroke px-2 pb-4 pt-3">
+    <section className="border-t border-transparent px-2 pb-4 pt-3">
       <h4 className="px-2 pb-2 text-[11px] font-medium uppercase tracking-wide text-content/40">
         {title}
       </h4>

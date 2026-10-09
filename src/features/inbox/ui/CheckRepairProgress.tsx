@@ -318,7 +318,7 @@ function RepairCard({
         check.workflow === single.check.workflow,
     ).length === 1;
   return (
-    <div className="overflow-hidden rounded-lg border border-stroke bg-content/[0.02]">
+    <div className="overflow-hidden rounded-lg bg-content/[0.03]">
       <div className="flex min-w-0 flex-wrap items-center gap-x-3 gap-y-1 px-3 py-2.5">
         <button
           type="button"
@@ -382,7 +382,7 @@ function RepairCard({
           <button
             type="button"
             onClick={() => void repair.onOpenSession?.(group.sessionId)}
-            className="inline-flex shrink-0 items-center gap-1.5 rounded-md border border-stroke px-2.5 py-1.5 text-[11px] text-content/70 hover:bg-selection hover:text-content focus-visible:outline focus-visible:outline-1 focus-visible:outline-content/50"
+            className="inline-flex shrink-0 items-center gap-1.5 rounded-md bg-content/[0.04] px-2.5 py-1.5 text-[11px] text-content/70 hover:bg-selection hover:text-content focus-visible:outline focus-visible:outline-1 focus-visible:outline-content/50"
           >
             <MessageSquare aria-hidden="true" className="size-3.5" />
             Open conversation
@@ -392,7 +392,7 @@ function RepairCard({
       {expanded ? (
         <div
           id={detailsId}
-          className="space-y-2 border-t border-stroke px-3 py-2.5 text-[11px] text-content/55"
+          className="space-y-2 bg-content/[0.02] px-3 py-2.5 text-[11px] text-content/55"
         >
           <p>Included checks</p>
           <ul className="flex max-h-36 flex-wrap gap-1.5 overflow-y-auto">

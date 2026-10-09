@@ -137,11 +137,11 @@ export function LinkedWorkItemUpdateNotice({
     <section
       aria-label={`New activity on ${kindLabel} ${card.number}`}
       aria-live="polite"
-      className="pointer-events-auto absolute top-3 right-3 z-40 isolate w-[min(320px,calc(100%_-_24px))] overflow-hidden rounded-xl border border-content/10 text-content shadow-xl"
+      className="pointer-events-auto absolute top-3 right-3 z-40 isolate w-[min(320px,calc(100%_-_24px))] overflow-hidden rounded-xl text-content shadow-xl"
     >
       <GlassBackdrop />
       <div className="linked-activity-notice relative z-[1]">
-        <div className="relative z-[1] flex items-center justify-between gap-0.5 border-b border-stroke px-3 py-2">
+        <div className="relative z-[1] flex items-center justify-between gap-0.5 bg-content/[0.03] px-3 py-2">
           <div className="flex items-center gap-1.5">
             <span className="size-2 shrink-0 rounded-full bg-accent" />
             <KindIcon className="size-3.5 text-content/55" strokeWidth={1.75} />
@@ -182,7 +182,7 @@ export function LinkedWorkItemUpdateNotice({
         </div>
 
         {card.entries.length > 0 ? (
-          <div className="relative z-[1] max-h-52 overflow-y-auto border-t border-stroke divide-y divide-stroke">
+          <div className="relative z-[1] max-h-52 space-y-1 overflow-y-auto bg-content/[0.02]">
             {card.entries.slice(0, 3).map((entry) => (
               <button
                 key={`${entry.kind}:${entry.id}`}
@@ -194,7 +194,7 @@ export function LinkedWorkItemUpdateNotice({
                     void openUrl(entry.url);
                   }
                 }}
-                className="flex w-full items-start gap-2 px-3 py-2 text-left hover:bg-content/5 disabled:cursor-default disabled:hover:bg-transparent"
+                className="flex w-full items-start gap-2 rounded-md px-3 py-2 text-left hover:bg-content/5 disabled:cursor-default disabled:hover:bg-transparent"
               >
                 <span className="mt-0.5 text-content/45">
                   <ActivityIcon entry={entry} />
@@ -223,7 +223,7 @@ export function LinkedWorkItemUpdateNotice({
         ) : null}
 
         {terminalState ? (
-          <div className="relative z-[1] border-t border-stroke px-3 py-2.5">
+          <div className="relative z-[1] bg-content/[0.02] px-3 py-2.5">
             <div className="flex items-center gap-2 text-[11px]">
               <TerminalIcon
                 className={
@@ -275,7 +275,7 @@ export function LinkedWorkItemUpdateNotice({
           </div>
         ) : null}
 
-        <div className="relative z-[1] flex min-w-0 items-center gap-1.5 border-t border-stroke px-3 py-2.5 text-[11px]">
+        <div className="relative z-[1] flex min-w-0 items-center gap-1.5 bg-content/[0.03] px-3 py-2.5 text-[11px]">
           <button
             type="button"
             title={agentLabel}

@@ -29,7 +29,7 @@ export function InboxMiniCard({ card, onDismiss }: Props) {
 
   return (
     <div className="px-3 pt-2">
-      <div className="relative rounded-md border border-content/10 bg-content/6 px-2.5 py-2 pr-8">
+      <div className="relative rounded-md bg-content/6 px-2.5 py-2 pr-8">
         <button
           type="button"
           title={`Open in ${providerLabel}`}

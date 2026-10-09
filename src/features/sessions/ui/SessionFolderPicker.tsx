@@ -55,9 +55,9 @@ export function SessionFolderPicker({ folders, onPick, onDismiss }: Props) {
       data-session-folder-picker
       role="dialog"
       aria-label="Choose a session folder"
-      className="overflow-hidden rounded-lg border border-content/10 bg-content/5 backdrop-blur-xl"
+      className="overflow-hidden rounded-lg bg-content/5 backdrop-blur-xl"
     >
-      <div className="flex items-center gap-2 border-b border-stroke px-2.5 py-2">
+      <div className="flex items-center gap-2 bg-content/[0.02] px-2.5 py-2">
         <Folder className="size-3.5 shrink-0 text-content/50" />
         <input
           ref={inputRef}

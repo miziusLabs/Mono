@@ -167,7 +167,7 @@ export function MonoSessionsPanel({
                 data-mono-session={launch.sessionId}
                 disabled={unavailable || !!opening}
                 onClick={() => void open(launch.sessionId)}
-                className="group flex w-full items-center gap-2 rounded-lg border border-stroke bg-content/3 px-3 py-2.5 text-left outline-none hover:border-content/20 hover:bg-content/6 focus-visible:ring-1 focus-visible:ring-accent disabled:cursor-default disabled:opacity-50"
+                className="group flex w-full items-center gap-2 rounded-lg border border-transparent bg-content/3 px-3 py-2.5 text-left outline-none hover:bg-content/6 focus-visible:ring-1 focus-visible:ring-accent disabled:cursor-default disabled:opacity-50"
               >
                 <div className="min-w-0 flex-1">
                   <p className="truncate text-[13px] font-medium text-content">
