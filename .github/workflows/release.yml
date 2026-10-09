@@ -2,18 +2,90 @@ name: Release
 
 on:
   push:
-    tags:
-      - "v*"
+    branches: [main]
+    paths:
+      - package.json
+      - package-lock.json
+      - Cargo.toml
+      - Cargo.lock
+      - src-tauri/tauri.conf.json
 
 permissions:
   contents: read
 
 jobs:
+  version:
+    name: Check version change
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    outputs:
+      changed: ${{ steps.detect.outputs.changed }}
+      version: ${{ steps.detect.outputs.version }}
+      tag: ${{ steps.detect.outputs.tag }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Detect a version bump
+        id: detect
+        env:
+          BEFORE_SHA: ${{ github.event.before }}
+        run: |
+          set -euo pipefail
+          if [[ -z "$BEFORE_SHA" || "$BEFORE_SHA" =~ ^0+$ ]]; then
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+
+          previous_version="$(git show "$BEFORE_SHA:package.json" | node -e 'let data = ""; process.stdin.on("data", chunk => data += chunk); process.stdin.on("end", () => console.log(JSON.parse(data).version));')"
+          version="$(node -p "require('./package.json').version")"
+          if [[ "$version" == "$previous_version" ]]; then
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+
+          VERSION="$version" node <<'NODE'
+          const fs = require("node:fs");
+          const version = process.env.VERSION;
+          const packageLock = JSON.parse(fs.readFileSync("package-lock.json", "utf8"));
+          const tauri = JSON.parse(fs.readFileSync("src-tauri/tauri.conf.json", "utf8"));
+          const workspace = fs.readFileSync("Cargo.toml", "utf8");
+          const cargoLock = fs.readFileSync("Cargo.lock", "utf8");
+          const workspaceVersion = workspace.match(/^\[workspace\.package\][\s\S]*?^version = "([^"]+)"/m)?.[1];
+          const crateVersion = cargoLock.match(/^\[\[package\]\]\nname = "monocode"\nversion = "([^"]+)"/m)?.[1];
+          const versions = [
+            ["package-lock.json", packageLock.version],
+            ["package-lock.json root package", packageLock.packages?.[""]?.version],
+            ["Cargo.toml", workspaceVersion],
+            ["Cargo.lock", crateVersion],
+            ["tauri.conf.json", tauri.version],
+          ];
+          if (!/^\d+\.\d+\.\d+$/.test(version)) {
+            throw new Error(`Invalid release version: ${version}`);
+          }
+          for (const [file, value] of versions) {
+            if (value !== version) {
+              throw new Error(`${file} has version ${value}; expected ${version}`);
+            }
+          }
+          NODE
+
+          printf 'changed=true\nversion=%s\ntag=v%s\n' "$version" "$version" >> "$GITHUB_OUTPUT"
+
   release:
-    needs: [linux, linux-rpm, windows, host]
+    needs: [version, linux, linux-rpm, windows, host]
+    if: needs.version.outputs.changed == 'true'
     runs-on: macos-latest
     permissions:
       contents: write
+    env:
+      RELEASE_TAG: ${{ needs.version.outputs.tag }}
     steps:
       - uses: actions/checkout@v4
         with:
@@ -45,7 +117,7 @@ jobs:
       - name: Check tag matches app version
         run: |
           set -euo pipefail
-          TAG="${GITHUB_REF_NAME#v}"
+          TAG="${RELEASE_TAG#v}"
           CONF=$(node -p "require('./src-tauri/tauri.conf.json').version")
           PKG=$(node -p "require('./package.json').version")
           CARGO=$(awk '/^\[workspace.package\]/{f=1} f && /^version = /{gsub(/"/, "", $3); print $3; exit}' Cargo.toml)
@@ -173,7 +245,7 @@ jobs:
           R2_PUBLIC_BASE_URL: ${{ secrets.R2_PUBLIC_BASE_URL }}
         run: |
           set -euo pipefail
-          VERSION="${GITHUB_REF_NAME#v}"
+          VERSION="${RELEASE_TAG#v}"
           BUNDLE="target/release/bundle"
           ARM_BUNDLE="target/aarch64-apple-darwin/release/bundle"
           INTEL_BUNDLE="target/x86_64-apple-darwin/release/bundle"
@@ -311,7 +383,7 @@ jobs:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           set -euo pipefail
-          VERSION="${GITHUB_REF_NAME#v}"
+          VERSION="${RELEASE_TAG#v}"
           BUNDLE="target/release/bundle"
           ARM_BUNDLE="target/aarch64-apple-darwin/release/bundle"
           INTEL_BUNDLE="target/x86_64-apple-darwin/release/bundle"
@@ -363,16 +435,17 @@ jobs:
             "$INTEL_DMG" "$RELEASE_ASSETS/Mono_x64.app.tar.gz" "$RELEASE_ASSETS/Mono_x64.app.tar.gz.sig"
             "$DEB" "$APPIMAGE" "$APPIMAGE_SIG" "$RPM" "$NSIS" "$NSIS_SIG" "${HOST_FILES[@]}"
           )
-          if ! gh release view "$GITHUB_REF_NAME" >/dev/null 2>&1; then
-            gh release create "$GITHUB_REF_NAME" \
+          if ! gh release view "$RELEASE_TAG" >/dev/null 2>&1; then
+            gh release create "$RELEASE_TAG" \
               --draft \
               --prerelease="$RELEASE_PRERELEASE" \
+              --target "$GITHUB_SHA" \
               --title "Mono $VERSION" \
               --notes "See CHANGELOG.md for details."
           fi
           verify_release() {
             local expected_draft="$1"
-            gh release view "$GITHUB_REF_NAME" --json isDraft,isPrerelease,assets > "$RUNNER_TEMP/release-state.json"
+            gh release view "$RELEASE_TAG" --json isDraft,isPrerelease,assets > "$RUNNER_TEMP/release-state.json"
             node - "$RUNNER_TEMP/release-state.json" "$expected_draft" "${RELEASE_FILES[@]}" <<'NODE'
           const fs = require("node:fs");
           const path = require("node:path");
@@ -395,13 +468,13 @@ jobs:
           }
           NODE
           }
-          IS_DRAFT=$(gh release view "$GITHUB_REF_NAME" --json isDraft --jq .isDraft)
+          IS_DRAFT=$(gh release view "$RELEASE_TAG" --json isDraft --jq .isDraft)
           if [[ "$IS_DRAFT" == true ]]; then
             # Draft assets can be replaced after an interrupted upload. A
             # published release is immutable, so only resume drafts.
-            gh release upload "$GITHUB_REF_NAME" "${RELEASE_FILES[@]}" --clobber
+            gh release upload "$RELEASE_TAG" "${RELEASE_FILES[@]}" --clobber
             verify_release true
-            gh release edit "$GITHUB_REF_NAME" --draft=false --prerelease="$RELEASE_PRERELEASE"
+            gh release edit "$RELEASE_TAG" --draft=false --prerelease="$RELEASE_PRERELEASE"
           elif [[ "$IS_DRAFT" != false ]]; then
             echo "Unexpected GitHub Release state: $IS_DRAFT" >&2
             exit 1
@@ -424,6 +497,8 @@ jobs:
             --endpoint-url "$ENDPOINT"
 
   host:
+    needs: version
+    if: needs.version.outputs.changed == 'true'
     name: Standalone host packages
     strategy:
       fail-fast: false
@@ -453,8 +528,12 @@ jobs:
           if-no-files-found: error
 
   linux:
+    needs: version
+    if: needs.version.outputs.changed == 'true'
     name: Linux packages
     runs-on: ubuntu-22.04
+    env:
+      RELEASE_TAG: ${{ needs.version.outputs.tag }}
     steps:
       - uses: actions/checkout@v4
 
@@ -551,6 +630,8 @@ jobs:
           if-no-files-found: error
 
   linux-rpm:
+    needs: version
+    if: needs.version.outputs.changed == 'true'
     name: Linux rpm package
     runs-on: ubuntu-latest
     # Build on EL 10 so the published rpm's glibc requirement matches the
@@ -614,8 +695,12 @@ jobs:
           if-no-files-found: error
 
   windows:
+    needs: version
+    if: needs.version.outputs.changed == 'true'
     name: Windows packages
     runs-on: windows-latest
+    env:
+      RELEASE_TAG: ${{ needs.version.outputs.tag }}
     steps:
       - uses: actions/checkout@v4
 
