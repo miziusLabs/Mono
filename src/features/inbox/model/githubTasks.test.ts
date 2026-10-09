@@ -223,7 +223,7 @@ describe("dedupeInboxItems", () => {
         number: 10,
         updatedAt: "2026-08-27T10:00:00Z",
         projectPath: "/tmp/agent-terminal",
-        repo: "hardbeat920/monocode",
+        repo: "miziusLabs/Mono",
       }),
       item({
         number: 10,
@@ -239,7 +239,7 @@ describe("dedupeInboxItems", () => {
     expect(deduped).toHaveLength(1);
     expect(deduped[0]?.projectPath).toBe("/tmp/monocode");
     expect(inboxItemKey(deduped[0]!)).toBe(
-      "github:hardbeat920/monocode:issue:10",
+      "github:miziusLabs/Mono:issue:10",
     );
   });
 
@@ -297,7 +297,7 @@ describe("groupProjectsByRepo", () => {
   it("fetches each GitHub remote once", () => {
     expect(
       groupProjectsByRepo([
-        { path: "/tmp/monocode", repo: "hardbeat920/monocode" },
+        { path: "/tmp/monocode", repo: "miziusLabs/Mono" },
         { path: "/tmp/agent-terminal", repo: "HardBeat920/monocode" },
         { path: "/tmp/docs", repo: "acme/docs" },
       ]).map((project) => project.path),

@@ -2,7 +2,7 @@ import { modelsFor } from "../../../../features/sessions/model/models";
 import {
   killChild,
   resolveCodexBinary,
-  restoreMonoCodexAgentState,
+  restoreMonoxAgentState,
   spawnChild,
   unwatchChild,
   watchChild,
@@ -356,7 +356,7 @@ async function startLive(
       {
         clientInfo: {
           name: "monocode-text",
-          title: "MonoCode",
+          title: "Mono",
           version: "0.1.0",
         },
         capabilities: { experimentalApi: true },
@@ -399,7 +399,7 @@ async function openThread(
     session.storeConfig = store.config;
     hasSavedContext = store.hasThread;
     if (requestedThreadId && hasSavedContext)
-      await restoreMonoCodexAgentState(
+      await restoreMonoxAgentState(
         session.providerAccountId,
         requestedThreadId,
       );

@@ -21,7 +21,7 @@ const STATE_NAMES: &[&str] = &[
     "backups",
 ];
 
-pub(crate) struct MonoCodexStore {
+pub(crate) struct MonoxStore {
     pub home: PathBuf,
     auth: Mutex<Vec<KeyringMirror>>,
 }
@@ -34,7 +34,7 @@ struct KeyringMirror {
     source_value: Option<String>,
 }
 
-impl MonoCodexStore {
+impl MonoxStore {
     /// Refreshes written by the private server must also reach the ordinary CLI.
     /// Do not overwrite a login changed independently while this server ran.
     pub(crate) fn sync_auth(&self) {
@@ -157,11 +157,11 @@ pub fn codex_mono_store_restore_agent_state(
     restore_agent_edges(&home, &thread_id)
 }
 
-pub(crate) fn prepare(app: &AppHandle, account_id: Option<&str>) -> Result<MonoCodexStore, String> {
+pub(crate) fn prepare(app: &AppHandle, account_id: Option<&str>) -> Result<MonoxStore, String> {
     let (source, home) = locations(app, account_id)?;
     prepare_files(&source, &home)?;
     let auth = prepare_keyring(&source, &home)?;
-    Ok(MonoCodexStore {
+    Ok(MonoxStore {
         home,
         auth: Mutex::new(auth),
     })

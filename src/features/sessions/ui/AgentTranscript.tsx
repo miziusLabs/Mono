@@ -145,7 +145,7 @@ import { lastUserTurnBlock } from "../model/editLastTurn";
 import {
   monoCodeToolCall,
   monoCodeWorkSummary,
-  type MonoCodeToolCall,
+  type MonoToolCall,
 } from "../model/monocodeToolCall";
 import {
   isOperatorUserTurn,
@@ -3370,7 +3370,7 @@ function ActivityPhaseGroup({
          */}
         <span className="relative flex size-3.5 shrink-0 items-center justify-center">
           {monoCodePhase ? (
-            <MonoCodeMark className="size-3.5 group-hover:opacity-0" />
+            <MonoMark className="size-3.5 group-hover:opacity-0" />
           ) : (
             <ActivityPhaseIcon
               kind={phase.kind}
@@ -4163,7 +4163,7 @@ function ActivityToolRow({
   const appCall = monoCodeToolCall(block);
   if (appCall) {
     return (
-      <MonoCodeCallRow block={block} call={appCall} onApproval={onApproval} />
+      <MonoCallRow block={block} call={appCall} onApproval={onApproval} />
     );
   }
   const label = toolCallLabel(block, cwd);
@@ -4236,18 +4236,18 @@ function ActivityToolRow({
   );
 }
 
-function MonoCodeMark({ className = "size-4" }: { className?: string }) {
-  return <img src="/monocode.png" alt="" className={`shrink-0 ${className}`} />;
+function MonoMark({ className = "size-4" }: { className?: string }) {
+  return <img src="/mono.png" alt="" className={`shrink-0 ${className}`} />;
 }
 
-/** MonoCode commands read like the other activity rows; failures expose their output. */
-function MonoCodeCallRow({
+/** Mono commands read like the other activity rows; failures expose their output. */
+function MonoCallRow({
   block,
   call,
   onApproval,
 }: {
   block: Block;
-  call: MonoCodeToolCall;
+  call: MonoToolCall;
   onApproval?: (requestId: number, decision: ApprovalDecision) => void;
 }) {
   const state = toolCallState(block);
@@ -4273,7 +4273,7 @@ function MonoCodeCallRow({
         className={`flex min-w-0 max-w-full items-center gap-1 rounded bg-content/6 px-1 font-mono text-[13px] ${state === "rejected" ? "text-red-400" : "text-content/70"}`}
         title={command}
       >
-        <MonoCodeMark className="size-3.5" />
+        <MonoMark className="size-3.5" />
         <span className="min-w-0 truncate">{command}</span>
       </span>
       <ToolCallStatusIcon state={state} />
@@ -4291,7 +4291,7 @@ function MonoCodeCallRow({
         <button
           type="button"
           aria-expanded={errorOpen}
-          aria-label={`${errorOpen ? "Hide" : "Show"} error details for MonoCode: ${call.label}`}
+          aria-label={`${errorOpen ? "Hide" : "Show"} error details for Mono: ${call.label}`}
           onClick={() => setErrorOpen((value) => !value)}
           className="flex w-full min-w-0 items-center gap-1.5 py-1 text-left"
         >
@@ -4452,7 +4452,7 @@ function ToolCall({
   if (appCall) {
     return (
       <div className={frame}>
-        <MonoCodeCallRow block={block} call={appCall} onApproval={onApproval} />
+        <MonoCallRow block={block} call={appCall} onApproval={onApproval} />
       </div>
     );
   }

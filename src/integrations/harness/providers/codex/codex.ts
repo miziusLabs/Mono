@@ -13,7 +13,7 @@ import {
 import {
   killChild,
   resolveCodexBinary,
-  restoreMonoCodexAgentState,
+  restoreMonoxAgentState,
   spawnChild,
   unwatchChild,
   watchChild,
@@ -470,7 +470,7 @@ export function bindCodexSession(
   });
 }
 
-export async function migrateMonoCodexSession(input: {
+export async function migrateMonoxSession(input: {
   sessionId: string;
   threadId: string;
   cwd: string;
@@ -661,7 +661,7 @@ async function ensureLive(input: HarnessSessionInput): Promise<Live> {
     await rpc.request("initialize", {
       clientInfo: {
         name: "monocode",
-        title: "MonoCode",
+        title: "Mono",
         version: "0.1.0",
       },
       capabilities: {
@@ -672,7 +672,7 @@ async function ensureLive(input: HarnessSessionInput): Promise<Live> {
     });
     await rpc.notify("initialized", undefined);
     if (store?.hasThread && canResume && resume) {
-      await restoreMonoCodexAgentState(
+      await restoreMonoxAgentState(
         input.providerAccountId,
         resume.threadId,
       );
@@ -1437,7 +1437,7 @@ async function handleServerRequest(
       if (!live.cancelled && !live.muteUpdates)
         live.onEvent({
           type: "status",
-          text: "This MCP server requested a form or browser sign-in that MonoCode does not support yet. Complete it in the server's own interface.",
+          text: "This MCP server requested a form or browser sign-in that Mono does not support yet. Complete it in the server's own interface.",
         });
       await live.rpc.respond(id, {
         action: "cancel",

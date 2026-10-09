@@ -340,7 +340,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 
 - **BTW** opens a read-only side conversation on a completed agent response without changing the main thread. Use the response's BTW control or `/btw` in the composer. Side conversations support Claude, Codex, Cursor, Grok, OpenCode, Pi, and omp, retain their threads and model settings, and use the provider that produced the original turn even after a handoff. In #353.
-- `/operator` gives an agent opt-in access to MonoCode in that thread through a local `app` CLI. It can inspect models, start or draft sessions, read and message project sessions, organize folders, and read notes. App access lasts for that thread; `/mono` and `/monocode` remain supported aliases. See [Agent access to MonoCode](README.md#agent-access-to-monocode). In #423.
+- `/operator` gives an agent opt-in access to MonoCode in that thread through a local `app` CLI. It can inspect models, start or draft sessions, read and message project sessions, organize folders, and read notes. App access lasts for that thread; `/mono` and `/monocode` remain supported aliases. See [Agent access to MonoCode](README.md#agent-access-to-mono). In #423.
 - Claude and Codex account controls show the cached account's plan, email, and organization in Settings, the account picker, and the usage popover. Identity refreshes after reconnecting. In #372.
 - A usage-limit notice shows the provider's reset time and countdown, pauses queued messages, and offers manual resume or automatic resume after the limit resets.
 - The macOS Quick composer global shortcut can be changed in Settings → Keybindings. The default remains Command+Shift+Space.
@@ -388,7 +388,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
-- Jira Cloud joins the Inbox with site, email, and API-token connection settings; issue browsing; descriptions and comment threads; comment posting; and shared project filters. **Ask** and **Start work** include the ticket's description and Jira identifier, and Start work lets you choose a local project. This integration uses API tokens without scopes; scoped tokens and Jira Data Center are not supported. See [Jira setup](https://github.com/hardbeat920/monocode/blob/v0.1.55/docs/jira.md).
+- Jira Cloud joins the Inbox with site, email, and API-token connection settings; issue browsing; descriptions and comment threads; comment posting; and shared project filters. **Ask** and **Start work** include the ticket's description and Jira identifier, and Start work lets you choose a local project. This integration uses API tokens without scopes; scoped tokens and Jira Data Center are not supported. See [Jira setup](https://github.com/miziusLabs/Mono/blob/v0.1.55/docs/jira.md).
 - Jira issues support background activity notifications, project-level mute controls scoped to each Jira site, and **Issue appeared** automation triggers that run in the automation's selected workspace. Project lists follow pagination, connection failures remain isolated from other Inbox providers, and disconnecting clears saved credentials and cached Jira content.
 - Conversations have in-transcript Find with match highlighting, previous/next navigation, and Command/Ctrl+F, F3, and Command/Ctrl+G shortcuts. Global conversation-search results now jump to the matching transcript block.
 - Command/Ctrl+Up and Command/Ctrl+Down switch to the previous or next session inside the focused tab. Sessions already visible elsewhere swap panes instead of mounting twice.
@@ -1368,73 +1368,73 @@ First public release. macOS (Apple Silicon) only.
 - Updater endpoint and minisign public key are injected at release time rather than committed, so forks do not inherit the maintainer's update channel.
 - macOS release builds sign with `APPLE_SIGNING_IDENTITY` via a config overlay; the committed default remains ad-hoc `-` for community builds.
 
-[Unreleased]: https://github.com/hardbeat920/monocode/compare/v0.10.0...HEAD
-[0.10.0]: https://github.com/hardbeat920/monocode/compare/v0.9.0...v0.10.0
-[0.9.0]: https://github.com/hardbeat920/monocode/compare/v0.8.0...v0.9.0
-[0.8.0]: https://github.com/hardbeat920/monocode/compare/v0.7.1...v0.8.0
-[0.7.1]: https://github.com/hardbeat920/monocode/compare/v0.7.0...v0.7.1
-[0.7.0]: https://github.com/hardbeat920/monocode/compare/v0.6.0...v0.7.0
-[0.6.0]: https://github.com/hardbeat920/monocode/compare/v0.5.0...v0.6.0
-[0.5.0]: https://github.com/hardbeat920/monocode/compare/v0.4.3...v0.5.0
-[0.4.3]: https://github.com/hardbeat920/monocode/compare/v0.4.2...v0.4.3
-[0.4.1]: https://github.com/hardbeat920/monocode/compare/v0.4.0...v0.4.1
-[0.4.0]: https://github.com/hardbeat920/monocode/compare/v0.3.0...v0.4.0
-[0.3.0]: https://github.com/hardbeat920/monocode/compare/v0.2.0...v0.3.0
-[0.2.0]: https://github.com/hardbeat920/monocode/compare/v0.1.56...v0.2.0
-[0.1.56]: https://github.com/hardbeat920/monocode/compare/v0.1.55...v0.1.56
-[0.1.55]: https://github.com/hardbeat920/monocode/compare/v0.1.54...v0.1.55
-[0.1.54]: https://github.com/hardbeat920/monocode/compare/v0.1.53...v0.1.54
-[0.1.53]: https://github.com/hardbeat920/monocode/compare/v0.1.52...v0.1.53
-[0.1.52]: https://github.com/hardbeat920/monocode/compare/v0.1.51...v0.1.52
-[0.1.51]: https://github.com/hardbeat920/monocode/compare/v0.1.50...v0.1.51
-[0.1.50]: https://github.com/hardbeat920/monocode/compare/v0.1.49...v0.1.50
-[0.1.49]: https://github.com/hardbeat920/monocode/compare/v0.1.48...v0.1.49
-[0.1.48]: https://github.com/hardbeat920/monocode/compare/v0.1.47...v0.1.48
-[0.1.47]: https://github.com/hardbeat920/monocode/compare/v0.1.46...v0.1.47
-[0.1.46]: https://github.com/hardbeat920/monocode/compare/v0.1.45...v0.1.46
-[0.1.45]: https://github.com/hardbeat920/monocode/compare/v0.1.44...v0.1.45
-[0.1.44]: https://github.com/hardbeat920/monocode/compare/v0.1.43...v0.1.44
-[0.1.43]: https://github.com/hardbeat920/monocode/compare/v0.1.42...v0.1.43
-[0.1.42]: https://github.com/hardbeat920/monocode/compare/v0.1.41...v0.1.42
-[0.1.41]: https://github.com/hardbeat920/monocode/compare/v0.1.40...v0.1.41
-[0.1.40]: https://github.com/hardbeat920/monocode/compare/v0.1.39...v0.1.40
-[0.1.39]: https://github.com/hardbeat920/monocode/compare/v0.1.38...v0.1.39
-[0.1.38]: https://github.com/hardbeat920/monocode/compare/v0.1.37...v0.1.38
-[0.1.37]: https://github.com/hardbeat920/monocode/compare/v0.1.36...v0.1.37
-[0.1.36]: https://github.com/hardbeat920/monocode/compare/v0.1.35...v0.1.36
-[0.1.35]: https://github.com/hardbeat920/monocode/compare/v0.1.34...v0.1.35
-[0.1.34]: https://github.com/hardbeat920/monocode/compare/v0.1.33...v0.1.34
-[0.1.33]: https://github.com/hardbeat920/monocode/compare/v0.1.32...v0.1.33
-[0.1.32]: https://github.com/hardbeat920/monocode/compare/v0.1.31...v0.1.32
-[0.1.31]: https://github.com/hardbeat920/monocode/compare/v0.1.30...v0.1.31
-[0.1.30]: https://github.com/hardbeat920/monocode/compare/v0.1.29...v0.1.30
-[0.1.29]: https://github.com/hardbeat920/monocode/compare/v0.1.28...v0.1.29
-[0.1.28]: https://github.com/hardbeat920/monocode/compare/v0.1.27...v0.1.28
-[0.1.27]: https://github.com/hardbeat920/monocode/compare/v0.1.26...v0.1.27
-[0.1.26]: https://github.com/hardbeat920/monocode/compare/v0.1.25...v0.1.26
-[0.1.25]: https://github.com/hardbeat920/monocode/compare/v0.1.24...v0.1.25
-[0.1.24]: https://github.com/hardbeat920/monocode/compare/v0.1.23...v0.1.24
-[0.1.23]: https://github.com/hardbeat920/monocode/compare/v0.1.22...v0.1.23
-[0.1.22]: https://github.com/hardbeat920/monocode/compare/v0.1.21...v0.1.22
-[0.1.21]: https://github.com/hardbeat920/monocode/compare/v0.1.20...v0.1.21
-[0.1.20]: https://github.com/hardbeat920/monocode/compare/v0.1.19...v0.1.20
-[0.1.19]: https://github.com/hardbeat920/monocode/compare/v0.1.18...v0.1.19
-[0.1.18]: https://github.com/hardbeat920/monocode/compare/v0.1.17...v0.1.18
-[0.1.17]: https://github.com/hardbeat920/monocode/compare/v0.1.16...v0.1.17
-[0.1.16]: https://github.com/hardbeat920/monocode/compare/v0.1.15...v0.1.16
-[0.1.15]: https://github.com/hardbeat920/monocode/compare/v0.1.14...v0.1.15
-[0.1.14]: https://github.com/hardbeat920/monocode/compare/v0.1.13...v0.1.14
-[0.1.13]: https://github.com/hardbeat920/monocode/compare/v0.1.12...v0.1.13
-[0.1.12]: https://github.com/hardbeat920/monocode/compare/v0.1.11...v0.1.12
-[0.1.11]: https://github.com/hardbeat920/monocode/compare/v0.1.10...v0.1.11
-[0.1.10]: https://github.com/hardbeat920/monocode/compare/v0.1.9...v0.1.10
-[0.1.9]: https://github.com/hardbeat920/monocode/compare/v0.1.8...v0.1.9
-[0.1.8]: https://github.com/hardbeat920/monocode/compare/v0.1.7...v0.1.8
-[0.1.7]: https://github.com/hardbeat920/monocode/compare/v0.1.6...v0.1.7
-[0.1.6]: https://github.com/hardbeat920/monocode/compare/v0.1.5...v0.1.6
-[0.1.5]: https://github.com/hardbeat920/monocode/compare/v0.1.4...v0.1.5
-[0.1.4]: https://github.com/hardbeat920/monocode/compare/v0.1.3...v0.1.4
-[0.1.3]: https://github.com/hardbeat920/monocode/compare/v0.1.2...v0.1.3
-[0.1.2]: https://github.com/hardbeat920/monocode/compare/v0.1.1...v0.1.2
-[0.1.1]: https://github.com/hardbeat920/monocode/compare/v0.1.0...v0.1.1
-[0.1.0]: https://github.com/hardbeat920/monocode/releases/tag/v0.1.0
+[Unreleased]: https://github.com/miziusLabs/Mono/compare/v0.10.0...HEAD
+[0.10.0]: https://github.com/miziusLabs/Mono/compare/v0.9.0...v0.10.0
+[0.9.0]: https://github.com/miziusLabs/Mono/compare/v0.8.0...v0.9.0
+[0.8.0]: https://github.com/miziusLabs/Mono/compare/v0.7.1...v0.8.0
+[0.7.1]: https://github.com/miziusLabs/Mono/compare/v0.7.0...v0.7.1
+[0.7.0]: https://github.com/miziusLabs/Mono/compare/v0.6.0...v0.7.0
+[0.6.0]: https://github.com/miziusLabs/Mono/compare/v0.5.0...v0.6.0
+[0.5.0]: https://github.com/miziusLabs/Mono/compare/v0.4.3...v0.5.0
+[0.4.3]: https://github.com/miziusLabs/Mono/compare/v0.4.2...v0.4.3
+[0.4.1]: https://github.com/miziusLabs/Mono/compare/v0.4.0...v0.4.1
+[0.4.0]: https://github.com/miziusLabs/Mono/compare/v0.3.0...v0.4.0
+[0.3.0]: https://github.com/miziusLabs/Mono/compare/v0.2.0...v0.3.0
+[0.2.0]: https://github.com/miziusLabs/Mono/compare/v0.1.56...v0.2.0
+[0.1.56]: https://github.com/miziusLabs/Mono/compare/v0.1.55...v0.1.56
+[0.1.55]: https://github.com/miziusLabs/Mono/compare/v0.1.54...v0.1.55
+[0.1.54]: https://github.com/miziusLabs/Mono/compare/v0.1.53...v0.1.54
+[0.1.53]: https://github.com/miziusLabs/Mono/compare/v0.1.52...v0.1.53
+[0.1.52]: https://github.com/miziusLabs/Mono/compare/v0.1.51...v0.1.52
+[0.1.51]: https://github.com/miziusLabs/Mono/compare/v0.1.50...v0.1.51
+[0.1.50]: https://github.com/miziusLabs/Mono/compare/v0.1.49...v0.1.50
+[0.1.49]: https://github.com/miziusLabs/Mono/compare/v0.1.48...v0.1.49
+[0.1.48]: https://github.com/miziusLabs/Mono/compare/v0.1.47...v0.1.48
+[0.1.47]: https://github.com/miziusLabs/Mono/compare/v0.1.46...v0.1.47
+[0.1.46]: https://github.com/miziusLabs/Mono/compare/v0.1.45...v0.1.46
+[0.1.45]: https://github.com/miziusLabs/Mono/compare/v0.1.44...v0.1.45
+[0.1.44]: https://github.com/miziusLabs/Mono/compare/v0.1.43...v0.1.44
+[0.1.43]: https://github.com/miziusLabs/Mono/compare/v0.1.42...v0.1.43
+[0.1.42]: https://github.com/miziusLabs/Mono/compare/v0.1.41...v0.1.42
+[0.1.41]: https://github.com/miziusLabs/Mono/compare/v0.1.40...v0.1.41
+[0.1.40]: https://github.com/miziusLabs/Mono/compare/v0.1.39...v0.1.40
+[0.1.39]: https://github.com/miziusLabs/Mono/compare/v0.1.38...v0.1.39
+[0.1.38]: https://github.com/miziusLabs/Mono/compare/v0.1.37...v0.1.38
+[0.1.37]: https://github.com/miziusLabs/Mono/compare/v0.1.36...v0.1.37
+[0.1.36]: https://github.com/miziusLabs/Mono/compare/v0.1.35...v0.1.36
+[0.1.35]: https://github.com/miziusLabs/Mono/compare/v0.1.34...v0.1.35
+[0.1.34]: https://github.com/miziusLabs/Mono/compare/v0.1.33...v0.1.34
+[0.1.33]: https://github.com/miziusLabs/Mono/compare/v0.1.32...v0.1.33
+[0.1.32]: https://github.com/miziusLabs/Mono/compare/v0.1.31...v0.1.32
+[0.1.31]: https://github.com/miziusLabs/Mono/compare/v0.1.30...v0.1.31
+[0.1.30]: https://github.com/miziusLabs/Mono/compare/v0.1.29...v0.1.30
+[0.1.29]: https://github.com/miziusLabs/Mono/compare/v0.1.28...v0.1.29
+[0.1.28]: https://github.com/miziusLabs/Mono/compare/v0.1.27...v0.1.28
+[0.1.27]: https://github.com/miziusLabs/Mono/compare/v0.1.26...v0.1.27
+[0.1.26]: https://github.com/miziusLabs/Mono/compare/v0.1.25...v0.1.26
+[0.1.25]: https://github.com/miziusLabs/Mono/compare/v0.1.24...v0.1.25
+[0.1.24]: https://github.com/miziusLabs/Mono/compare/v0.1.23...v0.1.24
+[0.1.23]: https://github.com/miziusLabs/Mono/compare/v0.1.22...v0.1.23
+[0.1.22]: https://github.com/miziusLabs/Mono/compare/v0.1.21...v0.1.22
+[0.1.21]: https://github.com/miziusLabs/Mono/compare/v0.1.20...v0.1.21
+[0.1.20]: https://github.com/miziusLabs/Mono/compare/v0.1.19...v0.1.20
+[0.1.19]: https://github.com/miziusLabs/Mono/compare/v0.1.18...v0.1.19
+[0.1.18]: https://github.com/miziusLabs/Mono/compare/v0.1.17...v0.1.18
+[0.1.17]: https://github.com/miziusLabs/Mono/compare/v0.1.16...v0.1.17
+[0.1.16]: https://github.com/miziusLabs/Mono/compare/v0.1.15...v0.1.16
+[0.1.15]: https://github.com/miziusLabs/Mono/compare/v0.1.14...v0.1.15
+[0.1.14]: https://github.com/miziusLabs/Mono/compare/v0.1.13...v0.1.14
+[0.1.13]: https://github.com/miziusLabs/Mono/compare/v0.1.12...v0.1.13
+[0.1.12]: https://github.com/miziusLabs/Mono/compare/v0.1.11...v0.1.12
+[0.1.11]: https://github.com/miziusLabs/Mono/compare/v0.1.10...v0.1.11
+[0.1.10]: https://github.com/miziusLabs/Mono/compare/v0.1.9...v0.1.10
+[0.1.9]: https://github.com/miziusLabs/Mono/compare/v0.1.8...v0.1.9
+[0.1.8]: https://github.com/miziusLabs/Mono/compare/v0.1.7...v0.1.8
+[0.1.7]: https://github.com/miziusLabs/Mono/compare/v0.1.6...v0.1.7
+[0.1.6]: https://github.com/miziusLabs/Mono/compare/v0.1.5...v0.1.6
+[0.1.5]: https://github.com/miziusLabs/Mono/compare/v0.1.4...v0.1.5
+[0.1.4]: https://github.com/miziusLabs/Mono/compare/v0.1.3...v0.1.4
+[0.1.3]: https://github.com/miziusLabs/Mono/compare/v0.1.2...v0.1.3
+[0.1.2]: https://github.com/miziusLabs/Mono/compare/v0.1.1...v0.1.2
+[0.1.1]: https://github.com/miziusLabs/Mono/compare/v0.1.0...v0.1.1
+[0.1.0]: https://github.com/miziusLabs/Mono/releases/tag/v0.1.0

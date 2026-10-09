@@ -15,6 +15,7 @@ mod fs;
 mod gitlab;
 mod harness;
 mod harness_updates;
+mod identity_migration;
 mod inbox_media;
 mod jira;
 mod linear;
@@ -56,7 +57,7 @@ mod windows;
 mod worktree_lifecycle;
 mod worktrees;
 
-// Phase 1 seam: spawn / kill harness children per MonoCode thread.
+// Phase 1 seam: spawn / kill harness children per Mono thread.
 // Adapters own the protocol; this host only supervises processes.
 
 /// Project directory for new sessions — prefer cwd, else home.
@@ -226,6 +227,7 @@ fn should_request_quit(code: Option<i32>) -> bool {
 
 #[cfg_attr(mobile, tauri::mobile_entry_point)]
 pub fn run() {
+    identity_migration::migrate().expect("failed to migrate existing Mono data");
     #[cfg(target_os = "macos")]
     macos::register_spellcheck_default();
     #[cfg(windows)]
@@ -597,7 +599,7 @@ pub fn run() {
             project_logo::forget_logo_file,
         ])
         .build(tauri::generate_context!())
-        .expect("error while building MonoCode");
+        .expect("error while building Mono");
 
     app.run(|handle, event| match event {
         #[cfg(target_os = "macos")]

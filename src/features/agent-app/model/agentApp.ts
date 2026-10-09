@@ -406,7 +406,7 @@ function startLaunch(
     throw new Error("Unknown harness; run models.list for available providers");
   const chosenHarness = harness as HarnessId;
   if (!isHarnessAvailable(chosenHarness))
-    throw new Error(`${chosenHarness} is not available in MonoCode`);
+    throw new Error(`${chosenHarness} is not available in Mono`);
   const requestedModel = optionalString(input.model, "model");
   const model = requestedModel
     ? modelsFor(chosenHarness).find((entry) => entry.id === requestedModel)

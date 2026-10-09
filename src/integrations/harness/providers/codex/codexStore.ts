@@ -1,8 +1,8 @@
 import {
   acquireHarnessBridge,
-  copyMonoCodexThreads,
+  copyMonoxThreads,
   killChild,
-  prepareMonoCodexStore,
+  prepareMonoxStore,
   spawnChild,
   unwatchChild,
   watchChild,
@@ -74,7 +74,7 @@ export function prepareCodexMonoContext(input: {
 async function prepare(
   input: Parameters<typeof prepareCodexMonoContext>[0],
 ): Promise<PreparedContext> {
-  const store = await prepareMonoCodexStore(
+  const store = await prepareMonoxStore(
     input.providerAccountId,
     input.threadId,
   );
@@ -116,7 +116,7 @@ async function prepare(
       "codex",
     );
     await request("initialize", {
-      clientInfo: { name: "monocode", title: "MonoCode", version: "0.1.0" },
+      clientInfo: { name: "monocode", title: "Mono", version: "0.1.0" },
       capabilities: { experimentalApi: true },
     });
     await rpc.notify("initialized", undefined);
@@ -189,7 +189,7 @@ async function prepare(
           throw new Error("Codex did not retain a Mono thread file");
         paths.push(retained.thread.path);
       }
-      await copyMonoCodexThreads(
+      await copyMonoxThreads(
         input.providerAccountId,
         root.id,
         paths,

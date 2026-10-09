@@ -160,7 +160,7 @@ pub struct OmpAssistantText {
     concat: String,
 }
 
-/// Recover displayed OMP custom messages that older MonoCode builds omitted
+/// Recover displayed OMP custom messages that older Mono builds omitted
 /// from their persisted transcript. The provider id is already stored with the
 /// session; matching the original JSONL keeps the repair deterministic instead
 /// of guessing from neighbouring reasoning text.
@@ -1226,7 +1226,7 @@ pub enum GitHubStarStatus {
     Unavailable,
 }
 
-const MONOCODE_STAR_ENDPOINT: &str = "/user/starred/hardbeat920/monocode";
+const MONOCODE_STAR_ENDPOINT: &str = "/user/starred/miziusLabs/Mono";
 
 /// Whether the GitHub CLI is installed and has an active authenticated account.
 #[tauri::command]
@@ -1263,7 +1263,7 @@ fn git_github_status_for() -> GitHubStatus {
     }
 }
 
-/// Whether the active GitHub CLI account has starred the MonoCode repository.
+/// Whether the active GitHub CLI account has starred the Mono repository.
 #[tauri::command]
 pub async fn github_monocode_star_status() -> Result<GitHubStarStatus, String> {
     tauri::async_runtime::spawn_blocking(github_monocode_star_status_for)
@@ -1288,7 +1288,7 @@ fn github_star_status_from_result(result: Result<String, String>) -> GitHubStarS
     }
 }
 
-/// Star the MonoCode repository for the active GitHub CLI account.
+/// Star the Mono repository for the active GitHub CLI account.
 #[tauri::command]
 pub async fn github_star_monocode() -> Result<(), String> {
     tauri::async_runtime::spawn_blocking(|| {
@@ -2593,7 +2593,7 @@ fn with_signing_hint(error: String) -> String {
         return error;
     }
     format!(
-        "{error}\n\nGit couldn't sign this commit. MonoCode runs git without a terminal, \
+        "{error}\n\nGit couldn't sign this commit. Mono runs git without a terminal, \
          so your signer needs a GUI passphrase prompt (e.g. pinentry-mac) or an unlocked agent."
     )
 }
@@ -6755,7 +6755,7 @@ mod tests {
                 return false;
             }
         }
-        git(dir, &["config", "user.name", "MonoCode"])
+        git(dir, &["config", "user.name", "Mono"])
             && git(dir, &["config", "user.email", "monocode@test"])
             && git(dir, &["config", "commit.gpgsign", "false"])
             && git(dir, &["config", "core.autocrlf", "false"])
@@ -6794,7 +6794,7 @@ mod tests {
         Command::new("git")
             .args([
                 "-c",
-                "user.name=MonoCode",
+                "user.name=Mono",
                 "-c",
                 "user.email=monocode@test",
                 "-c",
@@ -6802,9 +6802,9 @@ mod tests {
             ])
             .args(args)
             .current_dir(dir)
-            .env("GIT_AUTHOR_NAME", "MonoCode")
+            .env("GIT_AUTHOR_NAME", "Mono")
             .env("GIT_AUTHOR_EMAIL", "monocode@test")
-            .env("GIT_COMMITTER_NAME", "MonoCode")
+            .env("GIT_COMMITTER_NAME", "Mono")
             .env("GIT_COMMITTER_EMAIL", "monocode@test")
             .status()
             .map(|status| status.success())
@@ -7726,7 +7726,7 @@ mod tests {
                 .status()
                 .map(|status| !status.success())
                 .unwrap_or(true)
-            || !git(&b.0, &["config", "user.name", "MonoCode"])
+            || !git(&b.0, &["config", "user.name", "Mono"])
             || !git(&b.0, &["config", "user.email", "monocode@test"])
             || !git(&b.0, &["config", "commit.gpgsign", "false"])
             || !git(&b.0, &["config", "core.autocrlf", "false"])
@@ -7773,8 +7773,8 @@ mod tests {
     #[test]
     fn pr_head_filter_qualifies_branch_with_repo_owner() {
         assert_eq!(
-            github_pr_head_filter("hardbeat920/monocode", "main").as_deref(),
-            Some("hardbeat920:main")
+            github_pr_head_filter("miziusLabs/Mono", "main").as_deref(),
+            Some("miziusLabs:main")
         );
     }
 
@@ -7783,25 +7783,25 @@ mod tests {
         let json = r#"{
             "nameWithOwner": "EricRasputin/monocode-eric",
             "parent": {
-                "name": "monocode",
-                "owner": { "login": "hardbeat920" }
+                "name": "Mono",
+                "owner": { "login": "miziusLabs" }
             }
         }"#;
         assert_eq!(
             parse_github_repositories(json).unwrap(),
-            vec!["EricRasputin/monocode-eric", "hardbeat920/monocode"]
+            vec!["EricRasputin/monocode-eric", "miziusLabs/Mono"]
         );
     }
 
     #[test]
     fn parse_github_repositories_keeps_a_normal_repo_single() {
         let json = r#"{
-            "nameWithOwner": "hardbeat920/monocode",
+            "nameWithOwner": "miziusLabs/Mono",
             "parent": null
         }"#;
         assert_eq!(
             parse_github_repositories(json).unwrap(),
-            vec!["hardbeat920/monocode"]
+            vec!["miziusLabs/Mono"]
         );
     }
 
@@ -7942,8 +7942,8 @@ mod tests {
     #[test]
     fn split_github_repo_reads_owner_and_name() {
         assert_eq!(
-            split_github_repo(" hardbeat920/monocode ").unwrap(),
-            ("hardbeat920".into(), "monocode".into())
+            split_github_repo(" miziusLabs/Mono ").unwrap(),
+            ("miziusLabs".into(), "Mono".into())
         );
         assert!(split_github_repo("monocode").is_err());
         assert!(split_github_repo("acme/web extra").is_err());

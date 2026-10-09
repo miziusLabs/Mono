@@ -1651,7 +1651,7 @@ struct ProcessSnapshot {
     harness_parent: Option<u32>,
 }
 
-/// Kill harness trees left behind by a previous MonoCode that exited
+/// Kill harness trees left behind by a previous Mono that exited
 /// before SIGKILL ran (crash, force-quit, or the detached escalate thread).
 /// Off-thread: the sweep shells out to `ps` and then waits on a SIGKILL, and
 /// launch would otherwise hold the first window for both. Nothing this run

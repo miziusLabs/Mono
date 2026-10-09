@@ -70,7 +70,7 @@ impl Job {
             inner: Mutex::new(JobData {
                 view: JobView {
                     id: uuid::Uuid::new_v4().to_string(),
-                    message: "Connecting to SSH and setting up MonoCode Host…".into(),
+                    message: "Connecting to SSH and setting up Mono Host…".into(),
                     prompt: None,
                     done: false,
                     error: None,
@@ -398,7 +398,7 @@ pub fn bootstrap_script(platform: HostPlatform) -> String {
 
 fn bootstrap_script_from_template(platform: HostPlatform, template: &str) -> String {
     let version = env!("CARGO_PKG_VERSION");
-    let url = format!("https://github.com/hardbeat920/monocode/releases/download/v{version}");
+    let url = format!("https://github.com/miziusLabs/Mono/releases/download/v{version}");
     match platform {
         // include_str! preserves checkout line endings, including Windows CRLF.
         HostPlatform::Unix => template
@@ -649,9 +649,9 @@ pub fn device_name() -> String {
         .take(80)
         .collect();
     if name.is_empty() {
-        "MonoCode desktop".into()
+        "Mono desktop".into()
     } else {
-        format!("MonoCode on {name}")
+        format!("Mono on {name}")
     }
 }
 
@@ -835,7 +835,7 @@ mod tests {
         let script = bootstrap_script(HostPlatform::Windows);
         assert!(!script.contains("@@"));
         assert!(script.contains("checksum mismatch"));
-        assert!(script.contains("Protect-MonoCodeDirectory"));
+        assert!(script.contains("Protect-MonoDirectory"));
         assert!(pairing_script(HostPlatform::Windows, "Nick's $PC").contains("'Nick''s $PC'"));
     }
     #[cfg(windows)]
@@ -889,7 +889,7 @@ mod tests {
     #[test]
     fn device_names_are_bounded_single_lines() {
         let name = device_name();
-        assert!(name.starts_with("MonoCode"));
+        assert!(name.starts_with("Mono"));
         assert!(name.chars().count() <= 100);
         assert!(!name.chars().any(char::is_control));
     }
