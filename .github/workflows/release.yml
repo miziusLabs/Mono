@@ -9,6 +9,7 @@ on:
       - Cargo.toml
       - Cargo.lock
       - src-tauri/tauri.conf.json
+  create:
 
 permissions:
   contents: read
@@ -16,6 +17,7 @@ permissions:
 jobs:
   version:
     name: Check version change
+    if: github.event_name == 'push' || (github.event_name == 'create' && github.event.ref_type == 'tag' && startsWith(github.event.ref, 'v'))
     runs-on: ubuntu-latest
     permissions:
       contents: read
@@ -36,18 +38,30 @@ jobs:
         id: detect
         env:
           BEFORE_SHA: ${{ github.event.before }}
+          EVENT_NAME: ${{ github.event_name }}
+          REF_NAME: ${{ github.event.ref }}
+          REF_TYPE: ${{ github.event.ref_type }}
         run: |
           set -euo pipefail
-          if [[ -z "$BEFORE_SHA" || "$BEFORE_SHA" =~ ^0+$ ]]; then
-            echo "changed=false" >> "$GITHUB_OUTPUT"
-            exit 0
-          fi
-
-          previous_version="$(git show "$BEFORE_SHA:package.json" | node -e 'let data = ""; process.stdin.on("data", chunk => data += chunk); process.stdin.on("end", () => console.log(JSON.parse(data).version));')"
           version="$(node -p "require('./package.json').version")"
-          if [[ "$version" == "$previous_version" ]]; then
-            echo "changed=false" >> "$GITHUB_OUTPUT"
-            exit 0
+          if [[ "$EVENT_NAME" == "push" ]]; then
+            if [[ -z "$BEFORE_SHA" || "$BEFORE_SHA" =~ ^0+$ ]]; then
+              echo "changed=false" >> "$GITHUB_OUTPUT"
+              exit 0
+            fi
+
+            previous_version="$(git show "$BEFORE_SHA:package.json" | node -e 'let data = ""; process.stdin.on("data", chunk => data += chunk); process.stdin.on("end", () => console.log(JSON.parse(data).version));')"
+            if [[ "$version" == "$previous_version" ]]; then
+              echo "changed=false" >> "$GITHUB_OUTPUT"
+              exit 0
+            fi
+            tag="v$version"
+          else
+            tag="$REF_NAME"
+            if [[ "$REF_TYPE" != "tag" || "${tag#v}" != "$version" ]]; then
+              echo "Tag $tag does not match app version $version" >&2
+              exit 1
+            fi
           fi
 
           VERSION="$version" node <<'NODE'
@@ -66,7 +80,7 @@ jobs:
             ["Cargo.lock", crateVersion],
             ["tauri.conf.json", tauri.version],
           ];
-          if (!/^\d+\.\d+\.\d+$/.test(version)) {
+          if (!/^\d+\.\d+\.\d+(?:-[0-9A-Za-z-]+(?:\.[0-9A-Za-z-]+)*)?(?:\+[0-9A-Za-z-]+(?:\.[0-9A-Za-z-]+)*)?$/.test(version)) {
             throw new Error(`Invalid release version: ${version}`);
           }
           for (const [file, value] of versions) {
@@ -76,7 +90,7 @@ jobs:
           }
           NODE
 
-          printf 'changed=true\nversion=%s\ntag=v%s\n' "$version" "$version" >> "$GITHUB_OUTPUT"
+          printf 'changed=true\nversion=%s\ntag=%s\n' "$version" "$tag" >> "$GITHUB_OUTPUT"
 
   release:
     needs: [version, linux, linux-rpm, windows, host]
